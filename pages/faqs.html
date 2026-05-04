@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FAQs — eFPS | Bureau of Internal Revenue</title>
+  <meta name="description" content="Frequently asked questions about the BIR Electronic Filing and Payment System (eFPS)."/>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="../assets/css/style.css"/>
+  <style>
+    .faq-layout { display: grid; grid-template-columns: 220px 1fr; gap: 2.5rem; align-items: start; }
+    .faq-sidebar {
+      position: sticky; top: calc(var(--nav-h) + 1.5rem);
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .faq-sidebar h3 {
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .85rem;
+    }
+    .faq-cat-btn {
+      display: block; width: 100%;
+      text-align: left;
+      background: none; border: none;
+      padding: .5rem .7rem;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-size: .88rem;
+      color: var(--gray-600);
+      cursor: pointer;
+      transition: background var(--dur-fast), color var(--dur-fast);
+      margin-bottom: .15rem;
+    }
+    .faq-cat-btn:hover, .faq-cat-btn.active {
+      background: var(--gold-pale);
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    .faq-section { display: none; }
+    .faq-section.active { display: block; }
+
+    .contact-card {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      color: var(--white);
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+    .contact-card h4 { color: var(--gold-light); margin-bottom: .5rem; font-family: var(--font-display); }
+    .contact-card p { font-size: .85rem; color: rgba(255,255,255,.75); margin-bottom: .75rem; }
+    .contact-card a { color: var(--gold-light); font-weight: 700; }
+
+    @media (max-width: 768px) {
+      .faq-layout { grid-template-columns: 1fr; }
+      .faq-sidebar { position: static; }
+    }
+  </style>
+</head>
+<body>
+  <div style="background-color: #dc2626; color: white; text-align: center; padding: 10px; font-weight: bold; position: sticky; top: 0; z-index: 9999; font-size: 14px; letter-spacing: 0.05em;">
+  ⚠️ ACADEMIC PROJECT ONLY: This is a student redesign mockup for an HCI class. This is NOT the official BIR eFPS website. Do not enter real personal information.
+  </div>
+  <div id="nav-placeholder"></div>
+
+  <div class="alert-banner" role="alert" aria-label="Filing deadline notice">
+    <div class="alert-banner-inner">
+      <svg class="alert-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M8 1.5L14.5 13H1.5L8 1.5z" stroke="#f59e0b" stroke-width="1.3" fill="none"/>
+        <path d="M8 6v3.5M8 11v.5" stroke="#f59e0b" stroke-width="1.3" stroke-linecap="round"/>
+      </svg>
+      <div>
+        <span class="alert-label">Filing Deadline</span>
+        <div class="alert-text">
+          <strong style="color:#e8bc6a">Annual ITR (1701/1702)</strong> — deadline extended to <strong style="color:#e8bc6a">April 30, 2025</strong>. No late-filing penalties for eFPS filers through <strong style="color:#e8bc6a">May 5, 2025</strong>.&nbsp; <a href="../pages/issuances.html">Read RMC 19-2025 →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../pages/efps-home.html">Home</a><span>›</span>
+        <span aria-current="page">Frequently Asked Questions</span>
+      </div>
+      <h1>Frequently Asked Questions</h1>
+      <p>Find answers to the most common questions about eFPS enrollment, filing, payment, and troubleshooting.</p>
+    </div>
+  </div>
+
+  <main id="main-content">
+    <div class="page-content">
+
+      <!-- Search -->
+      <div class="search-bar" role="search" style="max-width:600px; margin-bottom:2rem;">
+        <label for="faq-search" class="sr-only">Search FAQs</label>
+        <input class="form-input" type="search" id="faq-search" placeholder="Type a keyword to search FAQs…" aria-label="Search FAQs"/>
+        <button class="btn btn-primary" type="button">Search</button>
+      </div>
+
+      <div class="faq-layout">
+
+        <!-- Sidebar -->
+        <aside class="faq-sidebar" aria-label="FAQ categories">
+          <h3>Categories</h3>
+          <button class="faq-cat-btn active" data-faq-cat="general">📋 General Info</button>
+          <button class="faq-cat-btn" data-faq-cat="enrollment">✅ Enrollment</button>
+          <button class="faq-cat-btn" data-faq-cat="filing">📄 Tax Filing</button>
+          <button class="faq-cat-btn" data-faq-cat="payment">💳 Payment</button>
+          <button class="faq-cat-btn" data-faq-cat="technical">🛠️ Technical Issues</button>
+          <button class="faq-cat-btn" data-faq-cat="security">🔐 Security</button>
+
+          <div class="contact-card">
+            <h4>Still need help?</h4>
+            <p>Contact the eFPS Helpdesk 24/7.</p>
+            <a href="tel:+63287595400">📞 8759-5400</a>
+            <br/>
+            <a href="mailto:contact_us@bir.gov.ph" style="font-size:.82rem; margin-top:.3rem; display:inline-block;">✉ contact_us@bir.gov.ph</a>
+          </div>
+        </aside>
+
+        <!-- FAQ Content -->
+        <div>
+
+          <!-- ═══ GENERAL ═══ -->
+          <section class="faq-section active" id="faq-general" aria-labelledby="heading-general">
+            <div class="mb-4">
+              <p class="section-label">Category</p>
+              <h2 class="section-title" id="heading-general">General Information</h2>
+              <div class="divider-accent"></div>
+            </div>
+            <div class="accordion" data-multi="false" aria-label="General FAQ accordion">
+
+              <div class="accordion-item">
+                <button class="accordion-btn" aria-expanded="false">
+                  What is the BIR eFPS?
+                  <span class="accordion-icon" aria-hidden="true">▼</span>
+                </button>
+                <div class="accordion-body">
+                  <div class="accordion-content">
+                    <p>The Electronic Filing and Payment System (eFPS) is the Bureau of Internal Revenue's official internet-based platform that allows taxpayers to electronically file their tax returns and pay their tax liabilities online.</p>
+                    <p>eFPS is available 24 hours a day, 7 days a week, providing convenience and efficiency for taxpayers across the Philippines and abroad.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <button class="accordion-btn" aria-expanded="false">
+                  Who is required to use eFPS?
+                  <span class="accordion-icon" aria-hidden="true">▼</span>
+                </button>
+                <div class="accordion-body">
+                  <div class="accordion-content">
+                    <p>The following taxpayers are mandated to file and pay via eFPS:</p>
+                    <ul>
+                      <li>Top 5,000 private corporations (as identified by the BIR)</li>
+                      <li>Insurance companies and stock brokers</li>
+                      <li>Large taxpayers enrolled under the Large Taxpayers Service</li>
+                      <li>Government-owned and controlled corporations (GOCCs)</li>
+                      <li>Taxpayers identified under specific Revenue Memorandum Orders</li>
+                    </ul>
+                    <p>Other taxpayers may voluntarily enroll in eFPS.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <button class="accordion-btn" aria-expanded="false">
+                  What tax forms can be filed through eFPS?
+                  <span class="accordion-icon" aria-hidden="true">▼</span>
+                </button>
+                <div class="accordion-body">
+                  <div class="accordion-content">
+                    <p>eFPS supports electronic filing of the following forms (among others):</p>
+                    <ul>
+                      <li>BIR Form 1700/1701/1702 — Annual Income Tax Returns</li>
+                      <li>BIR Form 2550M/2550Q — Monthly/Quarterly VAT Returns</li>
+                      <li>BIR Form 1601-C — Monthly Withholding Tax (Compensation)</li>
+                      <li>BIR Form 1601-EQ/FQ — Expanded Withholding Tax Returns</li>
+                      <li>BIR Form 2551Q — Quarterly Percentage Tax</li>
+                      <li>BIR Form 2000/2000-OT — Documentary Stamp Tax</li>
+                      <li>BIR Form 1800/1801 — Estate and Donor's Tax Returns</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <button class="accordion-btn" aria-expanded="false">
+                  Is there a filing fee for using eFPS?
+                  <span class="accordion-icon" aria-hidden="true">▼</span>
+                </button>
+                <div class="accordion-body">
+                  <div class="accordion-content">
+                    <p>No. There is <strong>no filing fee</strong> for using the eFPS. The system is provided free of charge to all enrolled taxpayers. However, your bank may impose transaction fees for online tax payments processed through their platform.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <button class="accordion-btn" aria-expanded="false">
+                  What are the benefits of filing through eFPS?
+                  <span class="accordion-icon" aria-hidden="true">▼</span>
+                </button>
+                <div class="accordion-body">
+                  <div class="accordion-content">
+                    <ul>
+                      <li><strong>Convenience:</strong> File from anywhere with internet access, 24/7.</li>
+                      <li><strong>Accuracy:</strong> Built-in computations reduce manual errors.</li>
+                      <li><strong>Confirmation:</strong> Receive an official Filing Reference Number (FRN) instantly.</li>
+                      <li><strong>Extended deadlines:</strong> eFPS filers typically get 5 additional days for certain returns.</li>
+                      <li><strong>Records management:</strong> Access your complete filing history online.</li>
+                      <li><strong>Environmentally friendly:</strong> No paper forms needed.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- ═══ ENROLLMENT ═══ -->
+          <section class="faq-section" id="faq-enrollment" aria-labelledby="heading-enrollment">
+            <div class="mb-4">
+              <p class="section-label">Category</p>
+              <h2 class="section-title" id="heading-enrollment">Enrollment</h2>
+              <div class="divider-accent"></div>
+            </div>
+            <div class="accordion" data-multi="false">
+
+              <div class="accordion-item">
+                <button class="accordion-btn" aria-expanded="false">
+                  How do I enroll in eFPS?
+                  <span class="accordion-icon" aria-hidden="true">▼</span>
+                </button>
+                <div class="accordion-body">
+                  <div class="accordion-content">
+                    <p>To enroll in eFPS, follow these steps:</p>
+                    <ul>
+                      <li>Click <strong>"Register"</strong> on the eFPS login page.</li>
+                      <li>Enter your valid TIN, full name, email address, and create a password.</li>
+                      <li>Submit the application form.</li>
+                      <li>Wait for approval from your Revenue District Office (RDO). Approval typically takes 3–5 business days.</li>
+                      <li>Upon approval, you will receive an email notification with your access credentials.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <button class="accordion-btn" aria-expanded="false">
+                  What are the requirements for eFPS enrollment?
+                  <span class="accordion-icon" aria-hidden="true">▼</span>
+                </button>
+                <div class="accordion-body">
+                  <div class="accordion-content">
+                    <ul>
+                      <li>Valid and active Tax Identification Number (TIN)</li>
+                      <li>Complete and updated registration with the BIR (BIR Form 1901/1903)</li>
+                      <li>Active email address for system notifications</li>
+                      <li>Enrollment in at least one BIR-accredited Authorized Agent Bank (AAB) for payment</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <button class="accordion-btn" aria-expanded="false">
+                  How long does eFPS enrollment take?
+                  <span class="accordion-icon" aria-hidden="true">▼</span>
+                </button>
+                <div class="accordion-body">
+                  <div class="accordion-content">
+                    <p>eFPS enrollment typically takes <strong>3 to 5 business days</strong> from submission. The RDO reviews your application and either approves or requests additional information. You will be notified via email upon decision.</p>
+                    <p>For urgent enrollment, contact your RDO directly. Large Taxpayer Service (LTS) enrollments may be processed faster.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <button class="accordion-btn" aria-expanded="false">
+                  Can I enroll in eFPS without visiting my RDO?
+                  <span class="accordion-icon" aria-hidden="true">▼</span>
+                </button>
+                <div class="accordion-body">
+                  <div class="accordion-content">
+                    <p>Yes. Under the Ease of Paying Taxes Act (EOPT) and recent BIR circulars, the online application process allows fully remote enrollment. You submit your application through the eFPS portal and your RDO reviews it electronically. Physical visits are generally not required unless the RDO requests supporting documents.</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- ═══ FILING ═══ -->
+          <section class="faq-section" id="faq-filing" aria-labelledby="heading-filing">
+            <div class="mb-4">
+              <p class="section-label">Category</p>
+              <h2 class="section-title" id="heading-filing">Tax Filing</h2>
+              <div class="divider-accent"></div>
+            </div>
+            <div class="accordion" data-multi="false">
+
+              <div class="accordion-item">
+                <button class="accordion-btn" aria-expanded="false">
+                  How do I file a tax return using eFPS?
+                  <span class="accordion-icon" aria-hidden="true">▼</span>
+                </button>
+                <div class="accordion-body">
+                  <div class="accordion-content">
+                    <ul>
+                      <li>Log in to your eFPS account.</li>
+                      <li>Select <strong>"e-File"</strong> from the main menu.</li>
+                      <li>Choose the tax form type and the applicable period.</li>
+                      <li>Fill in the required fields or upload the completed form.</li>
+                      <li>Review all entries and click <strong>"Submit"</strong>.</li>
+                      <li>You will receive a <strong>Filing Reference Number (FRN)</strong> as proof of submission.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <button class="accordion-btn" aria-expanded="false">
+                  What is a Filing Reference Number (FRN)?
+                  <span class="accordion-icon" aria-hidden="true">▼</span>
+                </button>
+                <div class="accordion-body">
+                  <div class="accordion-content">
+                    <p>The Filing Reference Number (FRN) is a unique system-generated number that confirms your tax return has been successfully received by the BIR. It serves as your official proof of filing and should be kept for your records.</p>
+                    <p>The FRN is also required when making the corresponding tax payment through the eFPS e-Payment facility.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <button class="accordion-btn" aria-expanded="false">
+                  Can I amend a previously filed return?
+                  <span class="accordion-icon" aria-hidden="true">▼</span>
+                </button>
+                <div class="accordion-body">
+                  <div class="accordion-content">
+                    <p>Yes. You can file an amended return through eFPS by selecting <strong>"Amended Return"</strong> as the filing type. The amendment must be filed within three (3) years from the original filing date to avoid penalties.</p>
+                    <p>Note that if the amendment results in additional tax due, interest and penalties may apply on the deficiency amount. Voluntary amendments before BIR assessment generally result in lower penalties.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <button class="accordion-btn" aria-expanded="false">
+                  Do eFPS filers get a deadline extension?
+                  <span class="accordion-icon" aria-hidden="true">▼</span>
+                </button>
+                <div class="accordion-body">
+                  <div class="accordion-content">
+                    <p>Yes. eFPS filers are categorized into groups (Group A–E) based on industry, and each group is assigned a staggered filing deadline — typically extending 5 days beyond the standard deadline. Consult the BIR Tax Calendar for your specific group and deadline.</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- ═══ PAYMENT ═══ -->
+          <section class="faq-section" id="faq-payment" aria-labelledby="heading-payment">
+            <div class="mb-4">
+              <p class="section-label">Category</p>
+              <h2 class="section-title" id="heading-payment">Payment</h2>
+              <div class="divider-accent"></div>
+            </div>
+            <div class="accordion" data-multi="false">
+
+              <div class="accordion-item">
+                <button class="accordion-btn" aria-expanded="false">
+                  How do I pay taxes through eFPS?
+                  <span class="accordion-icon" aria-hidden="true">▼</span>
+                </button>
+                <div class="accordion-body">
+                  <div class="accordion-content">
+                    <ul>
+                      <li>After filing, click <strong>"e-Payment"</strong> from the eFPS dashboard.</li>
+                      <li>Enter your Filing Reference Number (FRN).</li>
+                      <li>Select your AAB (Authorized Agent Bank).</li>
+                      <li>Enter payment details (amount, account number).</li>
+                      <li>Confirm the payment — you will be redirected to your bank's payment portal.</li>
+                      <li>Upon successful payment, you receive a <strong>Payment Confirmation Number (PCN)</strong>.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <button class="accordion-btn" aria-expanded="false">
+                  Which banks are accredited for eFPS payments?
+                  <span class="accordion-icon" aria-hidden="true">▼</span>
+                </button>
+                <div class="accordion-body">
+                  <div class="accordion-content">
+                    <p>The following banks are accredited as AABs for eFPS payments: BDO Unibank, BPI, Metrobank, UnionBank, Landbank, Development Bank of the Philippines (DBP), Philippine National Bank (PNB), RCBC, China Banking Corporation, Security Bank, EastWest Bank, and others.</p>
+                    <p>You must have an existing account with the chosen AAB. Contact your bank to enroll your account for eFPS payment transactions.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <button class="accordion-btn" aria-expanded="false">
+                  What if my payment fails or is not confirmed?
+                  <span class="accordion-icon" aria-hidden="true">▼</span>
+                </button>
+                <div class="accordion-body">
+                  <div class="accordion-content">
+                    <p>If your payment fails or you do not receive a Payment Confirmation Number (PCN), follow these steps:</p>
+                    <ul>
+                      <li>Check your email for any bank confirmation or error message.</li>
+                      <li>Log in to eFPS and review your payment status under <strong>"Payment History"</strong>.</li>
+                      <li>Contact your bank to verify if the transaction was debited from your account.</li>
+                      <li>If debited but no PCN received, contact the eFPS helpdesk (8759-5400) with your bank transaction reference.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- ═══ TECHNICAL ═══ -->
+          <section class="faq-section" id="faq-technical" aria-labelledby="heading-technical">
+            <div class="mb-4">
+              <p class="section-label">Category</p>
+              <h2 class="section-title" id="heading-technical">Technical Issues</h2>
+              <div class="divider-accent"></div>
+            </div>
+            <div class="accordion" data-multi="false">
+
+              <div class="accordion-item">
+                <button class="accordion-btn" aria-expanded="false">
+                  I forgot my eFPS password. How do I reset it?
+                  <span class="accordion-icon" aria-hidden="true">▼</span>
+                </button>
+                <div class="accordion-body">
+                  <div class="accordion-content">
+                    <p>Click <strong>"Forgot Password"</strong> on the eFPS login page. Enter your registered email address or TIN and follow the instructions sent to your email. If your email address has changed, contact your RDO for manual password reset assistance.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <button class="accordion-btn" aria-expanded="false">
+                  What browsers are compatible with eFPS?
+                  <span class="accordion-icon" aria-hidden="true">▼</span>
+                </button>
+                <div class="accordion-body">
+                  <div class="accordion-content">
+                    <p>eFPS supports the latest versions of the following browsers:</p>
+                    <ul>
+                      <li>Google Chrome (recommended)</li>
+                      <li>Mozilla Firefox</li>
+                      <li>Microsoft Edge</li>
+                      <li>Apple Safari</li>
+                    </ul>
+                    <p>Ensure JavaScript is enabled and pop-up blockers are disabled for the eFPS domain. Clear your browser cache if you experience display issues.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <button class="accordion-btn" aria-expanded="false">
+                  My session keeps expiring while filing. What should I do?
+                  <span class="accordion-icon" aria-hidden="true">▼</span>
+                </button>
+                <div class="accordion-body">
+                  <div class="accordion-content">
+                    <p>eFPS sessions expire after <strong>20 minutes of inactivity</strong> for security purposes. To avoid losing your work:</p>
+                    <ul>
+                      <li>Prepare all data before starting the filing process.</li>
+                      <li>Save your work frequently using the "Save Draft" function if available.</li>
+                      <li>Ensure you have a stable internet connection.</li>
+                      <li>Avoid opening multiple eFPS tabs in the same browser.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <button class="accordion-btn" aria-expanded="false">
+                  The eFPS system is showing an error. Who should I contact?
+                  <span class="accordion-icon" aria-hidden="true">▼</span>
+                </button>
+                <div class="accordion-body">
+                  <div class="accordion-content">
+                    <p>Contact the BIR eFPS Helpdesk through any of these channels:</p>
+                    <ul>
+                      <li>📞 Phone: <strong>+63 2 8759-5400</strong> (available 24/7)</li>
+                      <li>✉ Email: <a href="mailto:contact_us@bir.gov.ph">contact_us@bir.gov.ph</a></li>
+                      <li>Provide your TIN, the error message or screenshot, and the time the error occurred.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- ═══ SECURITY ═══ -->
+          <section class="faq-section" id="faq-security" aria-labelledby="heading-security">
+            <div class="mb-4">
+              <p class="section-label">Category</p>
+              <h2 class="section-title" id="heading-security">Security &amp; Privacy</h2>
+              <div class="divider-accent"></div>
+            </div>
+            <div class="accordion" data-multi="false">
+
+              <div class="accordion-item">
+                <button class="accordion-btn" aria-expanded="false">
+                  Is eFPS secure for online tax payments?
+                  <span class="accordion-icon" aria-hidden="true">▼</span>
+                </button>
+                <div class="accordion-body">
+                  <div class="accordion-content">
+                    <p>Yes. eFPS uses <strong>TLS 1.3 encryption</strong> to protect all data transmitted between your browser and the BIR servers. Payment transactions are processed through accredited banks with their own security infrastructure. The system complies with the Data Privacy Act of 2012 (RA 10173).</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <button class="accordion-btn" aria-expanded="false">
+                  I received a suspicious email asking for my eFPS credentials. Is it legitimate?
+                  <span class="accordion-icon" aria-hidden="true">▼</span>
+                </button>
+                <div class="accordion-body">
+                  <div class="accordion-content">
+                    <p><strong>No.</strong> The BIR will NEVER ask for your password, OTP, or full TIN via email or text message. If you receive such communication, do NOT click any links or provide any information. Report phishing attempts to <a href="mailto:contact_us@bir.gov.ph">contact_us@bir.gov.ph</a> and change your eFPS password immediately.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <button class="accordion-btn" aria-expanded="false">
+                  How do I protect my eFPS account?
+                  <span class="accordion-icon" aria-hidden="true">▼</span>
+                </button>
+                <div class="accordion-body">
+                  <div class="accordion-content">
+                    <ul>
+                      <li>Use a strong, unique password (at least 8 characters with a mix of letters, numbers, and symbols).</li>
+                      <li>Never share your password with anyone, including BIR staff.</li>
+                      <li>Log out completely after every session.</li>
+                      <li>Do not access eFPS on public or shared computers.</li>
+                      <li>Change your password regularly (every 90 days recommended).</li>
+                      <li>Verify you are on the official eFPS site before entering credentials.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+        </div><!-- main faq content -->
+      </div><!-- .faq-layout -->
+
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script src="../assets/js/main.js"></script>
+  <script>
+    // Category sidebar switcher
+    const catBtns    = document.querySelectorAll('.faq-cat-btn');
+    const faqSections = document.querySelectorAll('.faq-section');
+
+    catBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        catBtns.forEach(b => b.classList.remove('active'));
+        faqSections.forEach(s => s.classList.remove('active'));
+        btn.classList.add('active');
+        const target = document.getElementById('faq-' + btn.dataset.faqCat);
+        if (target) target.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

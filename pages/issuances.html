@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Issuances &amp; Rulings — eFPS | Bureau of Internal Revenue</title>
+  <meta name="description" content="Browse BIR Revenue Regulations, Revenue Memorandum Circulars, Revenue Memorandum Orders, and Tax Rulings."/>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="../assets/css/style.css"/>
+  <style>
+    .filter-bar {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+    .filter-chip {
+      padding: .4rem .95rem;
+      border: 2px solid var(--gray-200);
+      border-radius: 99px;
+      background: var(--white);
+      font-family: var(--font-body);
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--gray-600);
+      cursor: pointer;
+      transition: border-color var(--dur-fast), background var(--dur-fast), color var(--dur-fast);
+    }
+    .filter-chip:hover, .filter-chip.active {
+      border-color: var(--navy);
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .issuance-table-wrap {
+      overflow-x: auto;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .issuance-row td:first-child { font-weight: 700; color: var(--navy); }
+    .issuance-link { color: var(--navy-light); font-weight: 600; }
+    .issuance-link:hover { color: var(--gold); text-decoration: underline; }
+
+    .type-tag {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .2rem .55rem;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .type-rr  { background:#e3f0ff; color:#1a4ac0; }
+    .type-rmc { background:#e8f8ef; color:#1a7a4a; }
+    .type-rmo { background:#fdf0ee; color:#c0392b; }
+    .type-birt{ background:#fef9e8; color:#b8860b; }
+    .type-rar { background:#f5e8fd; color:#7b2fb5; }
+  </style>
+</head>
+<body>
+  <div style="background-color: #dc2626; color: white; text-align: center; padding: 10px; font-weight: bold; position: sticky; top: 0; z-index: 9999; font-size: 14px; letter-spacing: 0.05em;">
+  ⚠️ ACADEMIC PROJECT ONLY: This is a student redesign mockup for an HCI class. This is NOT the official BIR eFPS website. Do not enter real personal information.
+  </div>
+  <div id="nav-placeholder"></div>
+
+  <div class="alert-banner" role="alert" aria-label="Filing deadline notice">
+    <div class="alert-banner-inner">
+      <svg class="alert-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M8 1.5L14.5 13H1.5L8 1.5z" stroke="#f59e0b" stroke-width="1.3" fill="none"/>
+        <path d="M8 6v3.5M8 11v.5" stroke="#f59e0b" stroke-width="1.3" stroke-linecap="round"/>
+      </svg>
+      <div>
+        <span class="alert-label">Filing Deadline</span>
+        <div class="alert-text">
+          <strong style="color:#e8bc6a">Annual ITR (1701/1702)</strong> — deadline extended to <strong style="color:#e8bc6a">April 30, 2025</strong>. No late-filing penalties for eFPS filers through <strong style="color:#e8bc6a">May 5, 2025</strong>.&nbsp; <a href="../pages/issuances.html">Read RMC 19-2025 →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../pages/efps-home.html">Home</a><span>›</span>
+        <span aria-current="page">Issuances &amp; Rulings</span>
+      </div>
+      <h1>Issuances &amp; Rulings</h1>
+      <p>Official BIR issuances including Revenue Regulations, Memorandum Circulars, Orders, and Tax Rulings.</p>
+    </div>
+  </div>
+
+  <main id="main-content">
+    <div class="page-content">
+
+      <!-- Search -->
+      <div class="search-bar" role="search">
+        <label for="issuances-search" class="sr-only">Search issuances</label>
+        <input class="form-input" type="search" id="issuances-search" placeholder="Search by number, title, or keyword…" aria-label="Search issuances"/>
+        <button class="btn btn-primary" type="button" onclick="filterIssuances()">Search</button>
+      </div>
+
+      <!-- Tabs for issuance types -->
+      <div class="tabs">
+        <div class="tab-bar" role="tablist" aria-label="Issuance types">
+          <button class="tab-btn active" role="tab" aria-selected="true"  aria-controls="tab-all">All Issuances</button>
+          <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-rr">Revenue Regulations</button>
+          <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-rmc">Revenue Memorandum Circulars</button>
+          <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-rmo">Revenue Memorandum Orders</button>
+          <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-rulings">Tax Rulings</button>
+        </div>
+
+        <!-- ALL -->
+        <div class="tab-panel active" id="tab-all" role="tabpanel">
+          <div class="filter-bar">
+            <button class="filter-chip active" data-year="all">All Years</button>
+            <button class="filter-chip" data-year="2025">2025</button>
+            <button class="filter-chip" data-year="2024">2024</button>
+            <button class="filter-chip" data-year="2023">2023</button>
+          </div>
+
+          <div class="issuance-table-wrap">
+            <table class="data-table" id="issuances-table">
+              <thead>
+                <tr>
+                  <th scope="col">Issuance No.</th>
+                  <th scope="col">Type</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Title / Subject</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="issuance-row">
+                  <td>RMC 35-2025</td>
+                  <td><span class="type-tag type-rmc">RMC</span></td>
+                  <td>Apr 10, 2025</td>
+                  <td>Guidelines on the Mandatory Use of Electronic Receipts and Invoices for All Taxpayers</td>
+                  <td><a href="../pages/downloads.html" class="issuance-link btn btn-sm btn-outline">View PDF</a></td>
+                </tr>
+                <tr class="issuance-row">
+                  <td>RR 6-2025</td>
+                  <td><span class="type-tag type-rr">RR</span></td>
+                  <td>Mar 28, 2025</td>
+                  <td>Revised Rules and Regulations on Creditable Withholding Tax on Income Payments</td>
+                  <td><a href="../pages/downloads.html" class="issuance-link btn btn-sm btn-outline">View PDF</a></td>
+                </tr>
+                <tr class="issuance-row">
+                  <td>RMO 12-2025</td>
+                  <td><span class="type-tag type-rmo">RMO</span></td>
+                  <td>Feb 20, 2025</td>
+                  <td>Mandatory Electronic Filing via eFPS for Top 5,000 Private Corporations</td>
+                  <td><a href="../pages/downloads.html" class="issuance-link btn btn-sm btn-outline">View PDF</a></td>
+                </tr>
+                <tr class="issuance-row">
+                  <td>BIR Ruling DA-032-25</td>
+                  <td><span class="type-tag type-birt">Ruling</span></td>
+                  <td>Feb 5, 2025</td>
+                  <td>Tax Treatment of Digital Services Under the VAT Framework</td>
+                  <td><a href="../pages/downloads.html" class="issuance-link btn btn-sm btn-outline">View PDF</a></td>
+                </tr>
+                <tr class="issuance-row">
+                  <td>RMC 18-2025</td>
+                  <td><span class="type-tag type-rmc">RMC</span></td>
+                  <td>Jan 30, 2025</td>
+                  <td>Clarification on the Coverage and Scope of the Ease of Paying Taxes Act (EOPT)</td>
+                  <td><a href="../pages/downloads.html" class="issuance-link btn btn-sm btn-outline">View PDF</a></td>
+                </tr>
+                <tr class="issuance-row">
+                  <td>RR 1-2025</td>
+                  <td><span class="type-tag type-rr">RR</span></td>
+                  <td>Jan 15, 2025</td>
+                  <td>Implementing Rules on the Reduced Corporate Income Tax Rate Under CREATE MORE Act</td>
+                  <td><a href="../pages/downloads.html" class="issuance-link btn btn-sm btn-outline">View PDF</a></td>
+                </tr>
+                <tr class="issuance-row">
+                  <td>RMO 45-2024</td>
+                  <td><span class="type-tag type-rmo">RMO</span></td>
+                  <td>Nov 22, 2024</td>
+                  <td>Revised Audit and Investigation Procedures for eFPS-enrolled Taxpayers</td>
+                  <td><a href="../pages/downloads.html" class="issuance-link btn btn-sm btn-outline">View PDF</a></td>
+                </tr>
+                <tr class="issuance-row">
+                  <td>RMC 98-2024</td>
+                  <td><span class="type-tag type-rmc">RMC</span></td>
+                  <td>Oct 8, 2024</td>
+                  <td>Extension of the Deadline for Filing of Annual Information Return (BIR Form 1604-CF)</td>
+                  <td><a href="../pages/downloads.html" class="issuance-link btn btn-sm btn-outline">View PDF</a></td>
+                </tr>
+                <tr class="issuance-row">
+                  <td>RR 14-2024</td>
+                  <td><span class="type-tag type-rr">RR</span></td>
+                  <td>Sep 12, 2024</td>
+                  <td>Implementing the Rationalization of the Documentary Stamp Tax Under the EOPT Act</td>
+                  <td><a href="../pages/downloads.html" class="issuance-link btn btn-sm btn-outline">View PDF</a></td>
+                </tr>
+                <tr class="issuance-row">
+                  <td>BIR Ruling DA-188-24</td>
+                  <td><span class="type-tag type-birt">Ruling</span></td>
+                  <td>Aug 20, 2024</td>
+                  <td>Clarification on VAT Exemption of Health Maintenance Organizations (HMOs)</td>
+                  <td><a href="../pages/downloads.html" class="issuance-link btn btn-sm btn-outline">View PDF</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="mt-3" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+            <p style="font-size:.85rem; color:var(--gray-400);">Showing 10 of 2,847 issuances</p>
+            <div style="display:flex; gap:.5rem;">
+              <button class="btn btn-outline btn-sm" disabled>← Previous</button>
+              <button class="btn btn-primary btn-sm">Next →</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- RR -->
+        <div class="tab-panel" id="tab-rr" role="tabpanel">
+          <div class="announcement-banner">
+            <span>📋</span>
+            <div>Showing <strong>Revenue Regulations (RR)</strong> — formal orders issued by the Secretary of Finance upon BIR recommendation.</div>
+          </div>
+          <div class="issuance-table-wrap">
+            <table class="data-table">
+              <thead><tr><th>No.</th><th>Date</th><th>Subject</th><th>Action</th></tr></thead>
+              <tbody>
+                <tr class="issuance-row"><td>RR 6-2025</td><td>Mar 28, 2025</td><td>Revised Rules on Creditable Withholding Tax</td><td><a href="../pages/downloads.html" class="btn btn-sm btn-outline issuance-link">PDF</a></td></tr>
+                <tr class="issuance-row"><td>RR 1-2025</td><td>Jan 15, 2025</td><td>Reduced CIT Rate Under CREATE MORE Act</td><td><a href="../pages/downloads.html" class="btn btn-sm btn-outline issuance-link">PDF</a></td></tr>
+                <tr class="issuance-row"><td>RR 14-2024</td><td>Sep 12, 2024</td><td>Rationalization of Documentary Stamp Tax</td><td><a href="../pages/downloads.html" class="btn btn-sm btn-outline issuance-link">PDF</a></td></tr>
+                <tr class="issuance-row"><td>RR 8-2024</td><td>May 3, 2024</td><td>Implementing the EOPT Act — VAT Provisions</td><td><a href="../pages/downloads.html" class="btn btn-sm btn-outline issuance-link">PDF</a></td></tr>
+                <tr class="issuance-row"><td>RR 3-2024</td><td>Feb 10, 2024</td><td>Tax Incentives for Registered Business Enterprises</td><td><a href="../pages/downloads.html" class="btn btn-sm btn-outline issuance-link">PDF</a></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- RMC -->
+        <div class="tab-panel" id="tab-rmc" role="tabpanel">
+          <div class="announcement-banner">
+            <span>📋</span>
+            <div>Showing <strong>Revenue Memorandum Circulars (RMC)</strong> — clarifications and guidelines from the Commissioner of Internal Revenue.</div>
+          </div>
+          <div class="issuance-table-wrap">
+            <table class="data-table">
+              <thead><tr><th>No.</th><th>Date</th><th>Subject</th><th>Action</th></tr></thead>
+              <tbody>
+                <tr class="issuance-row"><td>RMC 35-2025</td><td>Apr 10, 2025</td><td>Mandatory Use of Electronic Receipts and Invoices</td><td><a href="../pages/downloads.html" class="btn btn-sm btn-outline issuance-link">PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC 18-2025</td><td>Jan 30, 2025</td><td>Coverage and Scope of the EOPT Act</td><td><a href="../pages/downloads.html" class="btn btn-sm btn-outline issuance-link">PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC 98-2024</td><td>Oct 8, 2024</td><td>Extension — Annual Information Return Deadline</td><td><a href="../pages/downloads.html" class="btn btn-sm btn-outline issuance-link">PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC 65-2024</td><td>Jul 15, 2024</td><td>Guidelines on the Use of eFPS for MSME Taxpayers</td><td><a href="../pages/downloads.html" class="btn btn-sm btn-outline issuance-link">PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC 22-2024</td><td>Mar 20, 2024</td><td>Tax Filing Requirements for Online Sellers</td><td><a href="../pages/downloads.html" class="btn btn-sm btn-outline issuance-link">PDF</a></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- RMO -->
+        <div class="tab-panel" id="tab-rmo" role="tabpanel">
+          <div class="announcement-banner">
+            <span>📋</span>
+            <div>Showing <strong>Revenue Memorandum Orders (RMO)</strong> — internal management and procedural directives.</div>
+          </div>
+          <div class="issuance-table-wrap">
+            <table class="data-table">
+              <thead><tr><th>No.</th><th>Date</th><th>Subject</th><th>Action</th></tr></thead>
+              <tbody>
+                <tr class="issuance-row"><td>RMO 12-2025</td><td>Feb 20, 2025</td><td>Mandatory eFPS Filing — Top 5,000 Corporations</td><td><a href="../pages/downloads.html" class="btn btn-sm btn-outline issuance-link">PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMO 45-2024</td><td>Nov 22, 2024</td><td>Revised Audit Procedures for eFPS Taxpayers</td><td><a href="../pages/downloads.html" class="btn btn-sm btn-outline issuance-link">PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMO 30-2024</td><td>Aug 5, 2024</td><td>Guidelines for eAFS (Electronic Audited Financial Statements)</td><td><a href="../pages/downloads.html" class="btn btn-sm btn-outline issuance-link">PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMO 10-2024</td><td>Mar 1, 2024</td><td>Revised Procedures for Tax Clearance Applications</td><td><a href="../pages/downloads.html" class="btn btn-sm btn-outline issuance-link">PDF</a></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Rulings -->
+        <div class="tab-panel" id="tab-rulings" role="tabpanel">
+          <div class="announcement-banner">
+            <span>⚖️</span>
+            <div>Showing <strong>BIR Rulings</strong> — official positions on tax issues raised by taxpayers. Published rulings are publicly accessible.</div>
+          </div>
+          <div class="issuance-table-wrap">
+            <table class="data-table">
+              <thead><tr><th>Ruling No.</th><th>Date</th><th>Subject</th><th>Action</th></tr></thead>
+              <tbody>
+                <tr class="issuance-row"><td>DA-032-25</td><td>Feb 5, 2025</td><td>VAT Treatment of Digital Services</td><td><a href="../pages/downloads.html" class="btn btn-sm btn-outline issuance-link">PDF</a></td></tr>
+                <tr class="issuance-row"><td>DA-188-24</td><td>Aug 20, 2024</td><td>VAT Exemption of Health Maintenance Organizations</td><td><a href="../pages/downloads.html" class="btn btn-sm btn-outline issuance-link">PDF</a></td></tr>
+                <tr class="issuance-row"><td>DA-155-24</td><td>Jul 1, 2024</td><td>Income Tax Treatment of Government Retirement Benefits</td><td><a href="../pages/downloads.html" class="btn btn-sm btn-outline issuance-link">PDF</a></td></tr>
+                <tr class="issuance-row"><td>DA-088-24</td><td>Apr 12, 2024</td><td>DST on Electronic Certificates of Title</td><td><a href="../pages/downloads.html" class="btn btn-sm btn-outline issuance-link">PDF</a></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div><!-- .tabs -->
+
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script src="../assets/js/main.js"></script>
+  <script>
+    // Year filter chips
+    document.querySelectorAll('[data-year]').forEach(chip => {
+      chip.addEventListener('click', () => {
+        document.querySelectorAll('[data-year]').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        // In a real app, filter table rows by year attribute
+      });
+    });
+
+    // Issuance search
+    document.getElementById('issuances-search') && document.getElementById('issuances-search').addEventListener('input', function() {
+      const q = this.value.toLowerCase();
+      document.querySelectorAll('.issuance-row').forEach(row => {
+        row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>

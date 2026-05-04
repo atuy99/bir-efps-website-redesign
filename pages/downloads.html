@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Downloads — eFPS | Bureau of Internal Revenue</title>
+  <meta name="description" content="Download BIR tax forms, user manuals, guides, and official documents for the eFPS portal."/>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="../assets/css/style.css"/>
+  <style>
+    .filter-bar {
+      display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 1.75rem;
+    }
+    .filter-chip {
+      padding: .4rem .9rem;
+      border: 2px solid var(--gray-200);
+      border-radius: 99px;
+      background: var(--white);
+      font-family: var(--font-body);
+      font-size: .82rem; font-weight: 600;
+      color: var(--gray-600);
+      cursor: pointer;
+      transition: all var(--dur-fast);
+    }
+    .filter-chip:hover { border-color: var(--navy); color: var(--navy); }
+    .filter-chip.active { border-color: var(--navy); background: var(--navy); color: var(--white); }
+
+    .downloads-grid { display: flex; flex-direction: column; gap: .75rem; }
+
+    .download-item {
+      display: flex; align-items: center; gap: 1.1rem;
+      padding: 1rem 1.4rem;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-md);
+      transition: border-color var(--dur-fast), box-shadow var(--dur-fast), background var(--dur-fast);
+    }
+    .download-item:hover {
+      border-color: var(--gold);
+      background: var(--gold-pale);
+      box-shadow: var(--shadow-sm);
+    }
+    .download-icon {
+      width: 48px; height: 48px;
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; flex-shrink: 0;
+    }
+    .download-icon.pdf { background: #fde8e8; }
+    .download-icon.xls { background: #e8f8ef; }
+    .download-icon.doc { background: #e8effd; }
+    .download-icon.zip { background: #fef9e8; }
+
+    .download-meta { flex: 1; min-width: 0; }
+    .download-meta strong {
+      display: block; color: var(--navy);
+      font-size: .93rem; margin-bottom: .15rem;
+    }
+    .download-meta .meta-row {
+      display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;
+    }
+    .download-meta span { font-size: .78rem; color: var(--gray-400); }
+    .download-actions { display: flex; gap: .5rem; flex-shrink: 0; }
+
+    .section-header-row {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    @media (max-width: 600px) {
+      .download-item { flex-wrap: wrap; }
+      .download-actions { width: 100%; }
+      .download-actions .btn { flex: 1; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <div style="background-color: #dc2626; color: white; text-align: center; padding: 10px; font-weight: bold; position: sticky; top: 0; z-index: 9999; font-size: 14px; letter-spacing: 0.05em;">
+  ⚠️ ACADEMIC PROJECT ONLY: This is a student redesign mockup for an HCI class. This is NOT the official BIR eFPS website. Do not enter real personal information.
+  </div>
+  <div id="nav-placeholder"></div>
+
+  <div class="alert-banner" role="alert" aria-label="Filing deadline notice">
+    <div class="alert-banner-inner">
+      <svg class="alert-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M8 1.5L14.5 13H1.5L8 1.5z" stroke="#f59e0b" stroke-width="1.3" fill="none"/>
+        <path d="M8 6v3.5M8 11v.5" stroke="#f59e0b" stroke-width="1.3" stroke-linecap="round"/>
+      </svg>
+      <div>
+        <span class="alert-label">Filing Deadline</span>
+        <div class="alert-text">
+          <strong style="color:#e8bc6a">Annual ITR (1701/1702)</strong> — deadline extended to <strong style="color:#e8bc6a">April 30, 2025</strong>. No late-filing penalties for eFPS filers through <strong style="color:#e8bc6a">May 5, 2025</strong>.&nbsp; <a href="../pages/issuances.html">Read RMC 19-2025 →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../pages/efps-home.html">Home</a><span>›</span>
+        <span aria-current="page">Downloads</span>
+      </div>
+      <h1>Forms &amp; Downloads</h1>
+      <p>Official BIR tax forms, eFPS user manuals, templates, and reference documents — all in one place.</p>
+    </div>
+  </div>
+
+  <main id="main-content">
+    <div class="page-content">
+
+      <!-- Search + Filter -->
+      <div class="search-bar" style="max-width:600px;">
+        <label for="downloads-search" class="sr-only">Search downloads</label>
+        <input class="form-input" type="search" id="downloads-search" placeholder="Search by form name, number, or type…" aria-label="Search downloads"/>
+        <button class="btn btn-primary" type="button">Search</button>
+      </div>
+
+      <div class="filter-bar" role="group" aria-label="Filter by category">
+        <button class="filter-chip active" data-filter="all">All Files</button>
+        <button class="filter-chip" data-filter="income-tax">Income Tax</button>
+        <button class="filter-chip" data-filter="vat">VAT</button>
+        <button class="filter-chip" data-filter="withholding">Withholding Tax</button>
+        <button class="filter-chip" data-filter="percentage-tax">Percentage Tax</button>
+        <button class="filter-chip" data-filter="guides">User Guides</button>
+        <button class="filter-chip" data-filter="templates">Templates</button>
+      </div>
+
+      <!-- ── INCOME TAX FORMS ── -->
+      <div class="section-header-row">
+        <div>
+          <p class="section-label">Tax Returns</p>
+          <h2 class="section-title" style="font-size:1.4rem; margin-bottom:0;">Income Tax Forms</h2>
+        </div>
+        <span class="badge badge-navy">6 Forms</span>
+      </div>
+      <div class="downloads-grid mb-4">
+
+        <div class="download-item" data-category="income-tax">
+          <div class="download-icon pdf">📄</div>
+          <div class="download-meta">
+            <strong>BIR Form 1702-RT — Annual ITR (Regular Corporation)</strong>
+            <div class="meta-row">
+              <span class="badge badge-gray">PDF</span>
+              <span>Last updated: Jan 2025</span>
+              <span>Size: 412 KB</span>
+            </div>
+          </div>
+          <div class="download-actions">
+            <a href="#" class="btn btn-outline btn-sm" download>Download</a>
+            <a href="#" class="btn btn-primary btn-sm">Preview</a>
+          </div>
+        </div>
+
+        <div class="download-item" data-category="income-tax">
+          <div class="download-icon pdf">📄</div>
+          <div class="download-meta">
+            <strong>BIR Form 1701A — Annual ITR (Mixed Income / Purely Business)</strong>
+            <div class="meta-row">
+              <span class="badge badge-gray">PDF</span>
+              <span>Last updated: Jan 2025</span>
+              <span>Size: 388 KB</span>
+            </div>
+          </div>
+          <div class="download-actions">
+            <a href="#" class="btn btn-outline btn-sm" download>Download</a>
+            <a href="#" class="btn btn-primary btn-sm">Preview</a>
+          </div>
+        </div>
+
+        <div class="download-item" data-category="income-tax">
+          <div class="download-icon pdf">📄</div>
+          <div class="download-meta">
+            <strong>BIR Form 1701 — Annual ITR (Individuals with Business / Profession)</strong>
+            <div class="meta-row">
+              <span class="badge badge-gray">PDF</span>
+              <span>Last updated: Jan 2025</span>
+              <span>Size: 440 KB</span>
+            </div>
+          </div>
+          <div class="download-actions">
+            <a href="#" class="btn btn-outline btn-sm" download>Download</a>
+            <a href="#" class="btn btn-primary btn-sm">Preview</a>
+          </div>
+        </div>
+
+        <div class="download-item" data-category="income-tax">
+          <div class="download-icon pdf">📄</div>
+          <div class="download-meta">
+            <strong>BIR Form 1700 — Annual ITR (Purely Compensation Income)</strong>
+            <div class="meta-row">
+              <span class="badge badge-gray">PDF</span>
+              <span>Last updated: Jan 2025</span>
+              <span>Size: 310 KB</span>
+            </div>
+          </div>
+          <div class="download-actions">
+            <a href="#" class="btn btn-outline btn-sm" download>Download</a>
+            <a href="#" class="btn btn-primary btn-sm">Preview</a>
+          </div>
+        </div>
+
+        <div class="download-item" data-category="income-tax">
+          <div class="download-icon xls">📊</div>
+          <div class="download-meta">
+            <strong>BIR Form 1702-RT — Excel Template with Built-in Computations</strong>
+            <div class="meta-row">
+              <span class="badge badge-green">XLSX</span>
+              <span>Last updated: Mar 2025</span>
+              <span>Size: 1.2 MB</span>
+            </div>
+          </div>
+          <div class="download-actions">
+            <a href="#" class="btn btn-outline btn-sm" download>Download</a>
+          </div>
+        </div>
+
+        <div class="download-item" data-category="income-tax">
+          <div class="download-icon pdf">📄</div>
+          <div class="download-meta">
+            <strong>BIR Form 0605 — Payment Form for No Existing Tax Type</strong>
+            <div class="meta-row">
+              <span class="badge badge-gray">PDF</span>
+              <span>Last updated: Dec 2024</span>
+              <span>Size: 220 KB</span>
+            </div>
+          </div>
+          <div class="download-actions">
+            <a href="#" class="btn btn-outline btn-sm" download>Download</a>
+            <a href="#" class="btn btn-primary btn-sm">Preview</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ── VAT FORMS ── -->
+      <div class="section-header-row">
+        <div>
+          <p class="section-label">Value Added Tax</p>
+          <h2 class="section-title" style="font-size:1.4rem; margin-bottom:0;">VAT Forms</h2>
+        </div>
+        <span class="badge badge-green">4 Forms</span>
+      </div>
+      <div class="downloads-grid mb-4">
+
+        <div class="download-item" data-category="vat">
+          <div class="download-icon pdf">📄</div>
+          <div class="download-meta">
+            <strong>BIR Form 2550M — Monthly VAT Declaration</strong>
+            <div class="meta-row">
+              <span class="badge badge-gray">PDF</span>
+              <span>Last updated: Jan 2025</span>
+              <span>Size: 280 KB</span>
+            </div>
+          </div>
+          <div class="download-actions">
+            <a href="#" class="btn btn-outline btn-sm" download>Download</a>
+            <a href="#" class="btn btn-primary btn-sm">Preview</a>
+          </div>
+        </div>
+
+        <div class="download-item" data-category="vat">
+          <div class="download-icon pdf">📄</div>
+          <div class="download-meta">
+            <strong>BIR Form 2550Q — Quarterly VAT Return</strong>
+            <div class="meta-row">
+              <span class="badge badge-gray">PDF</span>
+              <span>Last updated: Jan 2025</span>
+              <span>Size: 295 KB</span>
+            </div>
+          </div>
+          <div class="download-actions">
+            <a href="#" class="btn btn-outline btn-sm" download>Download</a>
+            <a href="#" class="btn btn-primary btn-sm">Preview</a>
+          </div>
+        </div>
+
+        <div class="download-item" data-category="vat">
+          <div class="download-icon xls">📊</div>
+          <div class="download-meta">
+            <strong>Summary List of Sales (SLS) — Excel Template</strong>
+            <div class="meta-row">
+              <span class="badge badge-green">XLSX</span>
+              <span>Last updated: Feb 2025</span>
+              <span>Size: 750 KB</span>
+            </div>
+          </div>
+          <div class="download-actions">
+            <a href="#" class="btn btn-outline btn-sm" download>Download</a>
+          </div>
+        </div>
+
+        <div class="download-item" data-category="vat">
+          <div class="download-icon xls">📊</div>
+          <div class="download-meta">
+            <strong>Summary List of Purchases (SLP) — Excel Template</strong>
+            <div class="meta-row">
+              <span class="badge badge-green">XLSX</span>
+              <span>Last updated: Feb 2025</span>
+              <span>Size: 720 KB</span>
+            </div>
+          </div>
+          <div class="download-actions">
+            <a href="#" class="btn btn-outline btn-sm" download>Download</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ── WITHHOLDING TAX ── -->
+      <div class="section-header-row">
+        <div>
+          <p class="section-label">Withholding Tax</p>
+          <h2 class="section-title" style="font-size:1.4rem; margin-bottom:0;">Withholding Tax Forms</h2>
+        </div>
+        <span class="badge badge-navy">5 Forms</span>
+      </div>
+      <div class="downloads-grid mb-4">
+
+        <div class="download-item" data-category="withholding">
+          <div class="download-icon pdf">📄</div>
+          <div class="download-meta">
+            <strong>BIR Form 1601-C — Monthly Withholding Tax on Compensation</strong>
+            <div class="meta-row">
+              <span class="badge badge-gray">PDF</span>
+              <span>Last updated: Jan 2025</span>
+              <span>Size: 260 KB</span>
+            </div>
+          </div>
+          <div class="download-actions">
+            <a href="#" class="btn btn-outline btn-sm" download>Download</a>
+            <a href="#" class="btn btn-primary btn-sm">Preview</a>
+          </div>
+        </div>
+
+        <div class="download-item" data-category="withholding">
+          <div class="download-icon pdf">📄</div>
+          <div class="download-meta">
+            <strong>BIR Form 1601-EQ — Quarterly Expanded Withholding Tax</strong>
+            <div class="meta-row">
+              <span class="badge badge-gray">PDF</span>
+              <span>Last updated: Jan 2025</span>
+              <span>Size: 275 KB</span>
+            </div>
+          </div>
+          <div class="download-actions">
+            <a href="#" class="btn btn-outline btn-sm" download>Download</a>
+            <a href="#" class="btn btn-primary btn-sm">Preview</a>
+          </div>
+        </div>
+
+        <div class="download-item" data-category="withholding">
+          <div class="download-icon pdf">📄</div>
+          <div class="download-meta">
+            <strong>BIR Form 2307 — Certificate of Creditable Tax Withheld</strong>
+            <div class="meta-row">
+              <span class="badge badge-gray">PDF</span>
+              <span>Last updated: Nov 2024</span>
+              <span>Size: 190 KB</span>
+            </div>
+          </div>
+          <div class="download-actions">
+            <a href="#" class="btn btn-outline btn-sm" download>Download</a>
+            <a href="#" class="btn btn-primary btn-sm">Preview</a>
+          </div>
+        </div>
+
+        <div class="download-item" data-category="withholding">
+          <div class="download-icon pdf">📄</div>
+          <div class="download-meta">
+            <strong>BIR Form 2316 — Certificate of Compensation Payment / Tax Withheld</strong>
+            <div class="meta-row">
+              <span class="badge badge-gray">PDF</span>
+              <span>Last updated: Jan 2025</span>
+              <span>Size: 200 KB</span>
+            </div>
+          </div>
+          <div class="download-actions">
+            <a href="#" class="btn btn-outline btn-sm" download>Download</a>
+            <a href="#" class="btn btn-primary btn-sm">Preview</a>
+          </div>
+        </div>
+
+        <div class="download-item" data-category="withholding">
+          <div class="download-icon pdf">📄</div>
+          <div class="download-meta">
+            <strong>BIR Form 1604-CF — Annual Information Return of Income Tax Withheld</strong>
+            <div class="meta-row">
+              <span class="badge badge-gray">PDF</span>
+              <span>Last updated: Jan 2025</span>
+              <span>Size: 310 KB</span>
+            </div>
+          </div>
+          <div class="download-actions">
+            <a href="#" class="btn btn-outline btn-sm" download>Download</a>
+            <a href="#" class="btn btn-primary btn-sm">Preview</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ── USER GUIDES ── -->
+      <div class="section-header-row">
+        <div>
+          <p class="section-label">Help Resources</p>
+          <h2 class="section-title" style="font-size:1.4rem; margin-bottom:0;">eFPS User Guides &amp; Manuals</h2>
+        </div>
+        <span class="badge badge-gold">4 Documents</span>
+      </div>
+      <div class="downloads-grid">
+
+        <div class="download-item" data-category="guides">
+          <div class="download-icon pdf">📘</div>
+          <div class="download-meta">
+            <strong>eFPS Taxpayer User Manual (2025 Edition)</strong>
+            <div class="meta-row">
+              <span class="badge badge-gray">PDF</span>
+              <span>Updated: Apr 2025</span>
+              <span>Size: 5.8 MB</span>
+              <span class="badge badge-green">New</span>
+            </div>
+          </div>
+          <div class="download-actions">
+            <a href="#" class="btn btn-gold btn-sm" download>Download</a>
+            <a href="#" class="btn btn-outline btn-sm">Preview</a>
+          </div>
+        </div>
+
+        <div class="download-item" data-category="guides">
+          <div class="download-icon pdf">📘</div>
+          <div class="download-meta">
+            <strong>eFPS e-Payment Guide — Step-by-Step for All AABs</strong>
+            <div class="meta-row">
+              <span class="badge badge-gray">PDF</span>
+              <span>Updated: Feb 2025</span>
+              <span>Size: 2.4 MB</span>
+            </div>
+          </div>
+          <div class="download-actions">
+            <a href="#" class="btn btn-outline btn-sm" download>Download</a>
+            <a href="#" class="btn btn-primary btn-sm">Preview</a>
+          </div>
+        </div>
+
+        <div class="download-item" data-category="guides">
+          <div class="download-icon pdf">📘</div>
+          <div class="download-meta">
+            <strong>eFPS Enrollment Quick Start Guide</strong>
+            <div class="meta-row">
+              <span class="badge badge-gray">PDF</span>
+              <span>Updated: Jan 2025</span>
+              <span>Size: 1.1 MB</span>
+            </div>
+          </div>
+          <div class="download-actions">
+            <a href="#" class="btn btn-outline btn-sm" download>Download</a>
+            <a href="#" class="btn btn-primary btn-sm">Preview</a>
+          </div>
+        </div>
+
+        <div class="download-item" data-category="guides">
+          <div class="download-icon zip">🗜</div>
+          <div class="download-meta">
+            <strong>eFPS Complete Resource Pack (All Forms + Guides)</strong>
+            <div class="meta-row">
+              <span class="badge badge-gray">ZIP</span>
+              <span>Updated: Apr 2025</span>
+              <span>Size: 18.3 MB</span>
+              <span class="badge badge-navy">Bundle</span>
+            </div>
+          </div>
+          <div class="download-actions">
+            <a href="#" class="btn btn-gold btn-sm" download>Download All</a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
