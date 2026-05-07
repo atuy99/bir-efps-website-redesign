@@ -9,60 +9,22 @@
   <link rel="stylesheet" href="../assets/css/style.css"/>
   <style>
     .faq-layout { display: grid; grid-template-columns: 220px 1fr; gap: 2.5rem; align-items: start; }
-    .faq-sidebar {
-      position: sticky; top: calc(var(--nav-h) + 1.5rem);
-      background: var(--white);
-      border: 1px solid var(--gray-200);
-      border-radius: var(--radius-md);
-      padding: 1.25rem;
-      box-shadow: var(--shadow-sm);
-    }
-    .faq-sidebar h3 {
-      font-size: .8rem;
-      font-weight: 700;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: .85rem;
-    }
-    .faq-cat-btn {
-      display: block; width: 100%;
-      text-align: left;
-      background: none; border: none;
-      padding: .5rem .7rem;
-      border-radius: var(--radius-sm);
-      font-family: var(--font-body);
-      font-size: .88rem;
-      color: var(--gray-600);
-      cursor: pointer;
-      transition: background var(--dur-fast), color var(--dur-fast);
-      margin-bottom: .15rem;
-    }
-    .faq-cat-btn:hover, .faq-cat-btn.active {
-      background: var(--gold-pale);
-      color: var(--navy);
-      font-weight: 700;
-    }
-
+    
+    .faq-sidebar { position: sticky; top: calc(var(--nav-h) + 1.5rem); background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-md); padding: 1.25rem; box-shadow: var(--shadow-sm); }
+    .faq-sidebar h3 { font-size: .8rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin-bottom: .85rem; }
+    
+    .faq-cat-btn { display: block; width: 100%; text-align: left; background: none; border: none; padding: .5rem .7rem; border-radius: var(--radius-sm); font-family: var(--font-body); font-size: .88rem; color: var(--gray-600); cursor: pointer; transition: background var(--dur-fast), color var(--dur-fast); margin-bottom: .15rem; }
+    .faq-cat-btn:hover, .faq-cat-btn.active { background: var(--gold-pale); color: var(--navy); font-weight: 700; }
+    
     .faq-section { display: none; }
     .faq-section.active { display: block; }
-
-    .contact-card {
-      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
-      border-radius: var(--radius-md);
-      padding: 1.5rem;
-      color: var(--white);
-      margin-top: 1.5rem;
-      text-align: center;
-    }
+    
+    .contact-card { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%); border-radius: var(--radius-md); padding: 1.5rem; color: var(--white); margin-top: 1.5rem; text-align: center; }
     .contact-card h4 { color: var(--gold-light); margin-bottom: .5rem; font-family: var(--font-display); }
     .contact-card p { font-size: .85rem; color: rgba(255,255,255,.75); margin-bottom: .75rem; }
     .contact-card a { color: var(--gold-light); font-weight: 700; }
-
-    @media (max-width: 768px) {
-      .faq-layout { grid-template-columns: 1fr; }
-      .faq-sidebar { position: static; }
-    }
+    
+    @media (max-width: 768px) { .faq-layout { grid-template-columns: 1fr; } .faq-sidebar { position: static; } }
   </style>
 </head>
 <body>
@@ -100,7 +62,6 @@
   <main id="main-content">
     <div class="page-content">
 
-      <!-- Search -->
       <div class="search-bar" role="search" style="max-width:600px; margin-bottom:2rem;">
         <label for="faq-search" class="sr-only">Search FAQs</label>
         <input class="form-input" type="search" id="faq-search" placeholder="Type a keyword to search FAQs…" aria-label="Search FAQs"/>
@@ -109,7 +70,6 @@
 
       <div class="faq-layout">
 
-        <!-- Sidebar -->
         <aside class="faq-sidebar" aria-label="FAQ categories">
           <h3>Categories</h3>
           <button class="faq-cat-btn active" data-faq-cat="general">📋 General Info</button>
@@ -128,10 +88,8 @@
           </div>
         </aside>
 
-        <!-- FAQ Content -->
         <div>
 
-          <!-- ═══ GENERAL ═══ -->
           <section class="faq-section active" id="faq-general" aria-labelledby="heading-general">
             <div class="mb-4">
               <p class="section-label">Category</p>
@@ -228,7 +186,6 @@
             </div>
           </section>
 
-          <!-- ═══ ENROLLMENT ═══ -->
           <section class="faq-section" id="faq-enrollment" aria-labelledby="heading-enrollment">
             <div class="mb-4">
               <p class="section-label">Category</p>
@@ -301,7 +258,6 @@
             </div>
           </section>
 
-          <!-- ═══ FILING ═══ -->
           <section class="faq-section" id="faq-filing" aria-labelledby="heading-filing">
             <div class="mb-4">
               <p class="section-label">Category</p>
@@ -370,7 +326,6 @@
             </div>
           </section>
 
-          <!-- ═══ PAYMENT ═══ -->
           <section class="faq-section" id="faq-payment" aria-labelledby="heading-payment">
             <div class="mb-4">
               <p class="section-label">Category</p>
@@ -432,7 +387,6 @@
             </div>
           </section>
 
-          <!-- ═══ TECHNICAL ═══ -->
           <section class="faq-section" id="faq-technical" aria-labelledby="heading-technical">
             <div class="mb-4">
               <p class="section-label">Category</p>
@@ -510,7 +464,6 @@
             </div>
           </section>
 
-          <!-- ═══ SECURITY ═══ -->
           <section class="faq-section" id="faq-security" aria-labelledby="heading-security">
             <div class="mb-4">
               <p class="section-label">Category</p>
@@ -565,8 +518,8 @@
             </div>
           </section>
 
-        </div><!-- main faq content -->
-      </div><!-- .faq-layout -->
+        </div>
+      </div>
 
     </div>
   </main>
@@ -574,7 +527,6 @@
   <div id="footer-placeholder"></div>
   <script src="../assets/js/main.js"></script>
   <script>
-    // Category sidebar switcher
     const catBtns    = document.querySelectorAll('.faq-cat-btn');
     const faqSections = document.querySelectorAll('.faq-section');
 

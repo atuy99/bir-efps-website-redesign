@@ -8,13 +8,13 @@
   <meta name="robots" content="noindex, nofollow">
   <link rel="stylesheet" href="../assets/css/style.css"/>
   <style>
-    /* ── Homepage Specific Styles ── */
-    .home-hero { background-color: #0B2C5D; background-image: linear-gradient(to right, #0B2C5D 35%, rgba(11, 44, 93, 0.85) 65%, rgba(11, 44, 93, 0.1) 100%), url('../assets/img/kelly-sikkema-kA50vHmCxbk-unsplash.webp'); background-size: cover; background-position: center right; background-repeat: no-repeat; min-height: 400px; display: flex; align-items: center; padding: 4rem 1.5rem; }
-    .home-hero-inner { max-width: 1280px; width: 100%; margin: 0 auto; }
-    .hero-content { max-width: 680px;}
+    .home-hero { background-image: linear-gradient(135deg, rgba(11, 37, 69, 0.95) 0%, rgba(22, 58, 107, 0.85) 60%, rgba(30, 79, 142, 0.3) 100%), url('../assets/img/kelly-sikkema-kA50vHmCxbk-unsplash.webp'); background-size: cover; background-position: center; background-repeat: no-repeat; padding: 3.5rem 1.5rem 3rem; position: relative; overflow: hidden; }
 
-    .hero-h1 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: var(--white); line-height: 1.15; margin-bottom: 1.25rem; }
-    .hero-sub { font-family: var(--font-body); font-size: 1.05rem; color: rgba(255, 255, 255, 0.9); line-height: 1.6; margin-bottom: 1.5rem; }
+    .home-hero::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(-45deg, transparent, transparent 60px, rgba(255,255,255,.02) 60px, rgba(255,255,255,.02) 62px); pointer-events: none; }
+    .home-hero-inner { max-width: 1280px;  margin: 0 auto; position: relative; z-index: 1;}
+
+    .hero-h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 4.5vw, 3.2rem); font-weight: 700;color: var(--white); line-height: 1.2; margin-bottom: 0.5rem; }
+    .hero-sub { font-family: var(--font-body); font-size: 1.05rem; color: rgba(255, 255, 255, 0.75); line-height: 1.6; margin-bottom: 2.5rem; max-width: 580px; }
 
     .quicklinks { background: #f0f3f7; border-top: 4px solid var(--gold); border-bottom: 1px solid #d4dae2; }
     .ql-grid { max-width: 1280px; margin: 0 auto; display: flex; }
@@ -61,28 +61,17 @@
     .maint-title { font-size: 1.05rem; font-weight: 500; color: #1a2f4a; margin-bottom: 6px; }
     .maint-desc { font-size: .95rem; color: #4a6480; line-height: 1.6; }
 
-    @media (max-width: 900px) {
-      .home-hero { background-image: linear-gradient(to bottom, #0B2C5D 40%, rgba(11, 44, 93, 0.8) 100%), url('../assets/img/kelly-sikkema-kA50vHmCxbk-unsplash.webp'); min-height: 500px; padding: 3rem 1.5rem; }
-      .hero-content { max-width: 100%; }
-      .home-hero-inner { grid-template-columns: 1fr; gap: 2rem; }
-      .content-area { grid-template-columns: 1fr; }
-      .ql-grid { flex-wrap: wrap; }
-      .ql-item { min-width: 33.33%; border-bottom: 1px solid #d4dae2; }
-    }
-    @media (max-width: 600px) {
-      .ql-item { min-width: 50%; }
-      .maintenance-card { flex-direction: column; align-items: flex-start; }
-    }
+    @media (max-width: 900px) { .home-hero { background-image: linear-gradient(to bottom, rgba(11, 37, 69, 0.95) 10%, rgba(22, 58, 107, 0.8) 60%, rgba(30, 79, 142, 0.1) 100%), url('../assets/img/kelly-sikkema-kA50vHmCxbk-unsplash.webp'); padding: 2.5rem 1.25rem 2rem; } .hero-content { max-width: 100%; }.home-hero-inner { grid-template-columns: 1fr; gap: 2rem; display: block; }.content-area { grid-template-columns: 1fr; }.ql-grid { flex-wrap: wrap; }.ql-item { min-width: 33.33%; border-bottom: 1px solid #d4dae2; }}
+    @media (max-width: 600px) { .ql-item { min-width: 50%; } .maintenance-card { flex-direction: column; align-items: flex-start; }}
+  
   </style>
 </head>
 <body>
   <div style="background-color: #dc2626; color: white; text-align: center; padding: 10px; font-weight: bold; position: sticky; top: 0; z-index: 9999; font-size: 14px; letter-spacing: 0.05em;">
   ⚠️ ACADEMIC PROJECT ONLY: This is a student redesign mockup for an HCI class. This is NOT the official BIR eFPS website. Do not enter real personal information.
   </div>
-  <!-- Dynamic Nav placeholder -->
   <div id="nav-placeholder"></div>
 
-  <!-- Top Alert Banner -->
   <div class="alert-banner" role="alert" aria-label="Filing deadline notice">
     <div class="alert-banner-inner">
       <svg class="alert-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -98,13 +87,12 @@
     </div>
   </div>
 
-  <!-- Hero Section -->
   <header class="home-hero" role="banner">
     <div class="home-hero-inner">
       
       <div class="hero-content">
         
-        <h1 class="hero-h1">Electronic Filing and<br>Payment System</h1>
+        <h1 class="hero-h1">Electronic Filing &amp;<br>Payment System</h1>
         
         <p class="hero-sub">File tax returns and pay national internal revenue taxes online securely using your registered TIN and eFPS account.</p>
         
@@ -113,7 +101,6 @@
     </div>
   </header>
 
-  <!-- Quick Links Row -->
   <nav class="quicklinks" aria-label="Quick links — frequent tasks">
     <div class="ql-grid">
       <a class="ql-item" href="../index.html" aria-label="File a tax return">
@@ -167,7 +154,6 @@
     </div>
   </nav>
 
-  <!-- Secondary Staggered Deadline Notice -->
   <div class="notice-bar" aria-label="eFPS enrollment groups notice">
     <div class="notice-bar-inner">
       <svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true" style="flex-shrink:0">
@@ -178,10 +164,8 @@
     </div>
   </div>
 
-  <!-- Main Content Grid -->
   <main class="content-area" id="main-content">
 
-    <!-- Deadlines Card -->
     <div class="util-card" aria-labelledby="deadlines-heading">
       <div class="card-header">
         <span class="card-title" id="deadlines-heading">Upcoming Deadlines</span>
@@ -231,7 +215,6 @@
       </div>
     </div>
 
-    <!-- Issuances Card -->
     <div class="util-card" aria-labelledby="issuances-heading">
       <div class="card-header">
         <span class="card-title" id="issuances-heading">Recent Issuances</span>
@@ -276,7 +259,6 @@
       </div>
     </div>
 
-    <!-- Maintenance Notice spanning full width below cards -->
     <div class="maintenance-card" role="note" aria-label="Maintenance schedule">
       <div class="maint-icon-wrap" aria-hidden="true">
         <svg width="24" height="24" viewBox="0 0 18 18" fill="none">
@@ -292,7 +274,6 @@
 
   </main>
 
-  <!-- Dynamic Footer placeholder -->
   <div id="footer-placeholder"></div>
 
   <script src="../assets/js/main.js"></script>

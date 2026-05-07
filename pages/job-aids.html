@@ -8,144 +8,30 @@
   <meta name="robots" content="noindex, nofollow">
   <link rel="stylesheet" href="../assets/css/style.css"/>
   <style>
-    .guide-card {
-      background: var(--white);
-      border: 1px solid var(--gray-200);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      transition: box-shadow var(--dur-mid), transform var(--dur-mid);
-      display: flex;
-      flex-direction: column;
-    }
-    .guide-card:hover {
-      box-shadow: var(--shadow-md);
-      transform: translateY(-3px);
-    }
-    .guide-card-header {
-      padding: 1.5rem;
-      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    .guide-icon {
-      width: 50px; height: 50px;
-      border-radius: var(--radius-sm);
-      background: rgba(255,255,255,.12);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.6rem;
-      flex-shrink: 0;
-    }
-    .guide-card-header h3 {
-      font-family: var(--font-display);
-      font-size: 1.05rem;
-      color: var(--white);
-      line-height: 1.25;
-    }
-    .guide-card-header p {
-      font-size: .78rem;
-      color: rgba(255,255,255,.65);
-      margin-top: .2rem;
-    }
+    .guide-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-md); overflow: hidden; transition: box-shadow var(--dur-mid), transform var(--dur-mid); display: flex; flex-direction: column; }
+    .guide-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    .guide-card-header { padding: 1.5rem; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%); display: flex; align-items: center; gap: 1rem; }
+    
+    .guide-icon { width: 50px; height: 50px; border-radius: var(--radius-sm); background: rgba(255,255,255,.12); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; flex-shrink: 0; }
+    
+    .guide-card-header h3 { font-family: var(--font-display); font-size: 1.05rem; color: var(--white); line-height: 1.25; }
+    .guide-card-header p { font-size: .78rem; color: rgba(255,255,255,.65); margin-top: .2rem; }
     .guide-card-body { padding: 1.25rem 1.5rem; flex: 1; }
-    .guide-steps {
-      list-style: none;
-      counter-reset: step-counter;
-      display: flex;
-      flex-direction: column;
-      gap: .6rem;
-      margin-bottom: 1.25rem;
-    }
-    .guide-steps li {
-      counter-increment: step-counter;
-      display: flex;
-      gap: .75rem;
-      align-items: flex-start;
-      font-size: .88rem;
-      color: var(--gray-600);
-    }
-    .guide-steps li::before {
-      content: counter(step-counter);
-      width: 22px; height: 22px;
-      border-radius: 50%;
-      background: var(--navy);
-      color: var(--white);
-      font-size: .72rem;
-      font-weight: 700;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-
-    /* Video placeholder */
-    .video-thumb {
-      position: relative;
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      background: var(--navy);
-      aspect-ratio: 16 / 9;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-    }
-    .video-thumb::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, var(--navy-mid), var(--navy-light));
-      opacity: .9;
-    }
-    .play-btn {
-      position: relative;
-      width: 64px; height: 64px;
-      border-radius: 50%;
-      background: var(--gold);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.6rem;
-      transition: transform var(--dur-fast), background var(--dur-fast);
-    }
-    .video-thumb:hover .play-btn {
-      transform: scale(1.08);
-      background: var(--gold-light);
-    }
-    .video-label {
-      position: absolute;
-      bottom: 1rem; left: 1rem;
-      color: var(--white);
-      font-size: .82rem;
-      font-weight: 600;
-    }
-    .video-duration {
-      position: absolute;
-      bottom: 1rem; right: 1rem;
-      background: rgba(0,0,0,.6);
-      color: var(--white);
-      font-size: .75rem;
-      padding: .15rem .45rem;
-      border-radius: 3px;
-    }
-
-    /* Checklist */
-    .checklist {
-      display: flex;
-      flex-direction: column;
-      gap: .5rem;
-    }
-    .checklist-item {
-      display: flex;
-      gap: .65rem;
-      align-items: flex-start;
-      padding: .55rem .8rem;
-      border-radius: var(--radius-sm);
-      background: var(--gray-100);
-      font-size: .88rem;
-      color: var(--gray-600);
-    }
-    .checklist-item .check {
-      color: var(--green-ok);
-      font-size: 1rem;
-      flex-shrink: 0;
-    }
+    
+    .guide-steps { list-style: none; counter-reset: step-counter; display: flex; flex-direction: column; gap: .6rem; margin-bottom: 1.25rem; }
+    .guide-steps li { counter-increment: step-counter; display: flex; gap: .75rem; align-items: flex-start; font-size: .88rem; color: var(--gray-600); }
+    .guide-steps li::before { content: counter(step-counter); width: 22px; height: 22px; border-radius: 50%; background: var(--navy); color: var(--white); font-size: .72rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+    
+    .video-thumb { position: relative; border-radius: var(--radius-md); overflow: hidden; background: var(--navy); aspect-ratio: 16 / 9; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+    .video-thumb::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, var(--navy-mid), var(--navy-light)); opacity: .9; }
+    .play-btn { position: relative; width: 64px; height: 64px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; transition: transform var(--dur-fast), background var(--dur-fast); }
+    .video-thumb:hover .play-btn { transform: scale(1.08); background: var(--gold-light); }
+    .video-label { position: absolute; bottom: 1rem; left: 1rem; color: var(--white); font-size: .82rem; font-weight: 600; }
+    .video-duration { position: absolute; bottom: 1rem; right: 1rem; background: rgba(0,0,0,.6); color: var(--white); font-size: .75rem; padding: .15rem .45rem; border-radius: 3px; }
+    
+    .checklist { display: flex; flex-direction: column; gap: .5rem; }
+    .checklist-item { display: flex; gap: .65rem; align-items: flex-start; padding: .55rem .8rem; border-radius: var(--radius-sm); background: var(--gray-100); font-size: .88rem; color: var(--gray-600); }
+    .checklist-item .check { color: var(--green-ok); font-size: 1rem; flex-shrink: 0; }
   </style>
 </head>
 <body>
@@ -183,7 +69,6 @@
   <main id="main-content">
     <div class="page-content">
 
-      <!-- Tab bar -->
       <div class="tabs">
         <div class="tab-bar" role="tablist" aria-label="Job Aid categories">
           <button class="tab-btn active" role="tab" aria-selected="true"  aria-controls="ja-guides">📋 Step-by-Step Guides</button>
@@ -192,7 +77,6 @@
           <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="ja-glossary">📖 Glossary</button>
         </div>
 
-        <!-- ══ GUIDES ══ -->
         <div class="tab-panel active" id="ja-guides" role="tabpanel">
           <div class="grid-3" style="gap:1.5rem;">
 
@@ -322,10 +206,9 @@
               </div>
             </div>
 
-          </div><!-- .grid-3 -->
+          </div>
         </div>
 
-        <!-- ══ VIDEOS ══ -->
         <div class="tab-panel" id="ja-videos" role="tabpanel">
           <div class="announcement-banner mb-4">
             <span>🎥</span>
@@ -408,7 +291,6 @@
           </div>
         </div>
 
-        <!-- ══ CHECKLISTS ══ -->
         <div class="tab-panel" id="ja-checklists" role="tabpanel">
           <div class="grid-2" style="gap:2rem;">
 
@@ -484,7 +366,6 @@
           </div>
         </div>
 
-        <!-- ══ GLOSSARY ══ -->
         <div class="tab-panel" id="ja-glossary" role="tabpanel">
           <div class="card">
             <div class="card-body">
@@ -535,7 +416,7 @@
           </div>
         </div>
 
-      </div><!-- .tabs -->
+      </div>
     </div>
   </main>
 

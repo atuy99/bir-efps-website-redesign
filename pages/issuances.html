@@ -8,53 +8,20 @@
   <meta name="robots" content="noindex, nofollow">
   <link rel="stylesheet" href="../assets/css/style.css"/>
   <style>
-    .filter-bar {
-      display: flex;
-      gap: .5rem;
-      flex-wrap: wrap;
-      margin-bottom: 1.5rem;
-    }
-    .filter-chip {
-      padding: .4rem .95rem;
-      border: 2px solid var(--gray-200);
-      border-radius: 99px;
-      background: var(--white);
-      font-family: var(--font-body);
-      font-size: .82rem;
-      font-weight: 600;
-      color: var(--gray-600);
-      cursor: pointer;
-      transition: border-color var(--dur-fast), background var(--dur-fast), color var(--dur-fast);
-    }
-    .filter-chip:hover, .filter-chip.active {
-      border-color: var(--navy);
-      background: var(--navy);
-      color: var(--white);
-    }
-
-    .issuance-table-wrap {
-      overflow-x: auto;
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-sm);
-    }
-
+    .filter-bar { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .filter-chip { padding: .4rem .95rem; border: 2px solid var(--gray-200); border-radius: 99px; background: var(--white); font-family: var(--font-body); font-size: .82rem; font-weight: 600; color: var(--gray-600); cursor: pointer; transition: border-color var(--dur-fast), background var(--dur-fast), color var(--dur-fast); }
+    .filter-chip:hover, .filter-chip.active { border-color: var(--navy); background: var(--navy); color: var(--white); }
+    
+    .issuance-table-wrap { overflow-x: auto; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); }
     .issuance-row td:first-child { font-weight: 700; color: var(--navy); }
     .issuance-link { color: var(--navy-light); font-weight: 600; }
     .issuance-link:hover { color: var(--gold); text-decoration: underline; }
-
-    .type-tag {
-      font-size: .7rem;
-      font-weight: 700;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      padding: .2rem .55rem;
-      border-radius: 4px;
-      white-space: nowrap;
-    }
-    .type-rr  { background:#e3f0ff; color:#1a4ac0; }
+    
+    .type-tag { font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: .2rem .55rem; border-radius: 4px; white-space: nowrap; }
+    .type-rr { background:#e3f0ff; color:#1a4ac0; }
     .type-rmc { background:#e8f8ef; color:#1a7a4a; }
     .type-rmo { background:#fdf0ee; color:#c0392b; }
-    .type-birt{ background:#fef9e8; color:#b8860b; }
+    .type-birt { background:#fef9e8; color:#b8860b; }
     .type-rar { background:#f5e8fd; color:#7b2fb5; }
   </style>
 </head>
@@ -93,14 +60,12 @@
   <main id="main-content">
     <div class="page-content">
 
-      <!-- Search -->
       <div class="search-bar" role="search">
         <label for="issuances-search" class="sr-only">Search issuances</label>
         <input class="form-input" type="search" id="issuances-search" placeholder="Search by number, title, or keyword…" aria-label="Search issuances"/>
         <button class="btn btn-primary" type="button" onclick="filterIssuances()">Search</button>
       </div>
 
-      <!-- Tabs for issuance types -->
       <div class="tabs">
         <div class="tab-bar" role="tablist" aria-label="Issuance types">
           <button class="tab-btn active" role="tab" aria-selected="true"  aria-controls="tab-all">All Issuances</button>
@@ -110,7 +75,6 @@
           <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-rulings">Tax Rulings</button>
         </div>
 
-        <!-- ALL -->
         <div class="tab-panel active" id="tab-all" role="tabpanel">
           <div class="filter-bar">
             <button class="filter-chip active" data-year="all">All Years</button>
@@ -214,7 +178,6 @@
           </div>
         </div>
 
-        <!-- RR -->
         <div class="tab-panel" id="tab-rr" role="tabpanel">
           <div class="announcement-banner">
             <span>📋</span>
@@ -234,7 +197,6 @@
           </div>
         </div>
 
-        <!-- RMC -->
         <div class="tab-panel" id="tab-rmc" role="tabpanel">
           <div class="announcement-banner">
             <span>📋</span>
@@ -254,7 +216,6 @@
           </div>
         </div>
 
-        <!-- RMO -->
         <div class="tab-panel" id="tab-rmo" role="tabpanel">
           <div class="announcement-banner">
             <span>📋</span>
@@ -273,7 +234,6 @@
           </div>
         </div>
 
-        <!-- Rulings -->
         <div class="tab-panel" id="tab-rulings" role="tabpanel">
           <div class="announcement-banner">
             <span>⚖️</span>
@@ -292,7 +252,7 @@
           </div>
         </div>
 
-      </div><!-- .tabs -->
+      </div>
 
     </div>
   </main>
@@ -300,16 +260,13 @@
   <div id="footer-placeholder"></div>
   <script src="../assets/js/main.js"></script>
   <script>
-    // Year filter chips
     document.querySelectorAll('[data-year]').forEach(chip => {
       chip.addEventListener('click', () => {
         document.querySelectorAll('[data-year]').forEach(c => c.classList.remove('active'));
         chip.classList.add('active');
-        // In a real app, filter table rows by year attribute
       });
     });
 
-    // Issuance search
     document.getElementById('issuances-search') && document.getElementById('issuances-search').addEventListener('input', function() {
       const q = this.value.toLowerCase();
       document.querySelectorAll('.issuance-row').forEach(row => {

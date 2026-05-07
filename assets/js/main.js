@@ -1,22 +1,15 @@
-/**
- * eFPS Portal — main.js
- * Shared Vanilla JS — Navigation, Accordions, Tabs, Scroll-reveal
- * Philippine Bureau of Internal Revenue
- */
-
-/* ═══════════════════════════════════════════════════
-   1. DYNAMIC NAVIGATION INJECTION
-   Injects the shared nav into every page via
-   #nav-placeholder to avoid code duplication.
-   ═══════════════════════════════════════════════════ */
 (function injectNav() {
   const placeholder = document.getElementById('nav-placeholder');
   if (!placeholder) return;
 
-  // Detect current page for active state
   const page = location.pathname.split('/').pop() || 'index.html';
+  const inPagesFolder = location.pathname.includes('/pages/');
+  
+  const assetPath = inPagesFolder ? '../assets/' : 'assets/';
+  const pagePath  = inPagesFolder ? '' : 'pages/';
+  const rootPath  = inPagesFolder ? '../' : '';
 
-  const navHTML = /* html */`
+  const navHTML = `
   <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="topbar" role="banner">
     <div class="topbar-inner">
@@ -27,7 +20,7 @@
   <nav class="nav-wrapper" role="navigation" aria-label="Main navigation">
     <div class="nav-inner">
       <a href="https://www.bir.gov.ph/home" class="brand" aria-label="BIR Main Website" target="_blank" rel="noopener noreferrer">
-        <img src="../assets/img/Logo_of_the_Bureau_of_Internal_Revenue.webp" alt="BIR Seal" class="brand-seal">
+        <img src="${assetPath}img/Logo_of_the_Bureau_of_Internal_Revenue.webp" alt="BIR Seal" class="brand-seal">
         <div class="brand-text">
           <span class="agency">BIR Philippines</span>
           <span class="portal">eFPS Portal</span>
@@ -35,12 +28,12 @@
       </a>
 
       <ul class="nav-links" role="list">
-        <li><a href="../pages/efps-home.html" class="${page === 'efps-home.html' ? 'active' : ''}">eFPS Home</a></li>
-        <li><a href="../pages/issuances.html" class="${page === 'issuances.html' ? 'active' : ''}">Issuances &amp; Rulings</a></li>
-        <li><a href="../pages/faqs.html"      class="${page === 'faqs.html'      ? 'active' : ''}">FAQs</a></li>
-        <li><a href="../pages/job-aids.html"  class="${page === 'job-aids.html'  ? 'active' : ''}">Job Aids</a></li>
-        <li><a href="../pages/downloads.html" class="${page === 'downloads.html' ? 'active' : ''}">Downloads</a></li>
-        <li><a href="../index.html"     class="nav-cta ${page === 'index.html' ? 'active' : ''}">Login / Register</a></li>
+        <li><a href="${pagePath}efps-home.html" class="${page === 'efps-home.html' ? 'active' : ''}">eFPS Home</a></li>
+        <li><a href="${pagePath}issuances.html" class="${page === 'issuances.html' ? 'active' : ''}">Issuances &amp; Rulings</a></li>
+        <li><a href="${pagePath}faqs.html"      class="${page === 'faqs.html'      ? 'active' : ''}">FAQs</a></li>
+        <li><a href="${pagePath}job-aids.html"  class="${page === 'job-aids.html'  ? 'active' : ''}">Job Aids</a></li>
+        <li><a href="${pagePath}downloads.html" class="${page === 'downloads.html' ? 'active' : ''}">Downloads</a></li>
+        <li><a href="${rootPath}index.html"     class="nav-cta ${page === 'index.html' ? 'active' : ''}">Login / Register</a></li>
       </ul>
 
       <button class="hamburger" id="hamburger-btn" aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle mobile menu">
@@ -48,18 +41,17 @@
       </button>
     </div>
     <div class="mobile-nav" id="mobile-nav" role="list">
-      <a href="../pages/efps-home.html" class="${page === 'efps-home.html' ? 'active' : ''}">eFPS Home</a>
-      <a href="../pages/issuances.html" class="${page === 'issuances.html' ? 'active' : ''}">Issuances &amp; Rulings</a>
-      <a href="../pages/faqs.html"      class="${page === 'faqs.html'      ? 'active' : ''}">FAQs</a>
-      <a href="../pages/job-aids.html"  class="${page === 'job-aids.html'  ? 'active' : ''}">Job Aids</a>
-      <a href="../pages/downloads.html" class="${page === 'downloads.html' ? 'active' : ''}">Downloads</a>
-      <a href="../index.html"     class="nav-cta ${page === 'index.html' ? 'active' : ''}">Login / Register</a>
+      <a href="${pagePath}efps-home.html" class="${page === 'efps-home.html' ? 'active' : ''}">eFPS Home</a>
+      <a href="${pagePath}issuances.html" class="${page === 'issuances.html' ? 'active' : ''}">Issuances &amp; Rulings</a>
+      <a href="${pagePath}faqs.html"      class="${page === 'faqs.html'      ? 'active' : ''}">FAQs</a>
+      <a href="${pagePath}job-aids.html"  class="${page === 'job-aids.html'  ? 'active' : ''}">Job Aids</a>
+      <a href="${pagePath}downloads.html" class="${page === 'downloads.html' ? 'active' : ''}">Downloads</a>
+      <a href="${rootPath}index.html"     class="nav-cta ${page === 'index.html' ? 'active' : ''}">Login / Register</a>
     </div>
   </nav>`;
 
   placeholder.innerHTML = navHTML;
 
-  // Mobile hamburger toggle
   const btn    = document.getElementById('hamburger-btn');
   const mobileNav = document.getElementById('mobile-nav');
   if (btn && mobileNav) {
@@ -67,16 +59,12 @@
       const isOpen = mobileNav.classList.toggle('open');
       btn.setAttribute('aria-expanded', String(isOpen));
     });
-
-    // Close on outside click
     document.addEventListener('click', (e) => {
       if (!btn.contains(e.target) && !mobileNav.contains(e.target)) {
         mobileNav.classList.remove('open');
         btn.setAttribute('aria-expanded', 'false');
       }
     });
-
-    // Close on Escape
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && mobileNav.classList.contains('open')) {
         mobileNav.classList.remove('open');
@@ -87,32 +75,32 @@
   }
 })();
 
-
-/* ═══════════════════════════════════════════════════
-   2. FOOTER INJECTION
-   ═══════════════════════════════════════════════════ */
 (function injectFooter() {
   const placeholder = document.getElementById('footer-placeholder');
   if (!placeholder) return;
 
+  const inPagesFolder = location.pathname.includes('/pages/');
+  const assetPath = inPagesFolder ? '../assets/' : 'assets/';
+  const pagePath  = inPagesFolder ? '' : 'pages/';
+
   const year = new Date().getFullYear();
 
-  placeholder.innerHTML = /* html */`
+  placeholder.innerHTML = `
   <footer role="contentinfo">
     <div class="footer-top">
       <div class="footer-about footer-col">
-        <img src="../assets/img/Logo_of_the_Bureau_of_Internal_Revenue.webp" alt="BIR Seal" class="footer-brand-seal">
+        <img src="${assetPath}img/Logo_of_the_Bureau_of_Internal_Revenue.webp" alt="BIR Seal" class="footer-brand-seal">
         <strong style="color:#fff; font-family:var(--font-display); font-size:1.05rem;">Bureau of Internal Revenue</strong>
         <p>The eFPS (Electronic Filing and Payment System) is the official online platform for filing tax returns and paying taxes in the Philippines.</p>
       </div>
       <div class="footer-col">
         <h4>Quick Links</h4>
         <ul>
-          <li><a href="../pages/efps-home.html">eFPS Home</a></li>
-          <li><a href="../pages/issuances.html">Issuances &amp; Rulings</a></li>
-          <li><a href="../pages/faqs.html">FAQs</a></li>
-          <li><a href="../pages/job-aids.html">Job Aids</a></li>
-          <li><a href="../pages/downloads.html">Downloads</a></li>
+          <li><a href="${pagePath}efps-home.html">eFPS Home</a></li>
+          <li><a href="${pagePath}issuances.html">Issuances &amp; Rulings</a></li>
+          <li><a href="${pagePath}faqs.html">FAQs</a></li>
+          <li><a href="${pagePath}job-aids.html">Job Aids</a></li>
+          <li><a href="${pagePath}downloads.html">Downloads</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -145,10 +133,6 @@
   </footer>`;
 })();
 
-
-/* ═══════════════════════════════════════════════════
-   3. ACCORDION COMPONENT
-   ═══════════════════════════════════════════════════ */
 function initAccordions(containerSelector = '.accordion') {
   document.querySelectorAll(containerSelector).forEach(acc => {
     acc.querySelectorAll('.accordion-btn').forEach(btn => {
@@ -174,10 +158,6 @@ function initAccordions(containerSelector = '.accordion') {
   });
 }
 
-
-/* ═══════════════════════════════════════════════════
-   4. TAB COMPONENT
-   ═══════════════════════════════════════════════════ */
 function initTabs(containerSelector = '.tabs') {
   document.querySelectorAll(containerSelector).forEach(tabGroup => {
     const buttons = tabGroup.querySelectorAll('.tab-btn');
@@ -195,10 +175,6 @@ function initTabs(containerSelector = '.tabs') {
   });
 }
 
-
-/* ═══════════════════════════════════════════════════
-   5. SCROLL REVEAL
-   ═══════════════════════════════════════════════════ */
 function initReveal() {
   const els = document.querySelectorAll('.reveal');
   if (!els.length) return;
@@ -213,12 +189,7 @@ function initReveal() {
   els.forEach(el => observer.observe(el));
 }
 
-
-/* ═══════════════════════════════════════════════════
-   6. CLIENT-SIDE FORM VALIDATION (Login / Register)
-   ═══════════════════════════════════════════════════ */
 function initFormValidation() {
-  /* ── Shared helpers ── */
   const $ = id => document.getElementById(id);
 
   function showError(inputId, msg) {
@@ -255,7 +226,6 @@ function initFormValidation() {
   const isTin     = v => /^\d{3}-\d{3}-\d{3}-\d{0,5}$/.test(v) || /^\d{9,12}$/.test(v.replace(/-/g, ''));
   const minLen    = (v, n) => v.trim().length >= n;
 
-  /* ── Login Form ── */
   const loginForm = $('login-form');
   if (loginForm) {
     const pwToggle = loginForm.querySelector('.toggle-pw');
@@ -298,7 +268,6 @@ function initFormValidation() {
         return;
       }
 
-      // Simulate submit
       const btn = loginForm.querySelector('[type="submit"]');
       btn.textContent = 'Signing in…';
       btn.disabled = true;
@@ -310,13 +279,11 @@ function initFormValidation() {
       }, 1800);
     });
 
-    // Live clear on change
     loginForm.querySelectorAll('.form-input').forEach(inp => {
       inp.addEventListener('input', () => clearError(inp.id));
     });
   }
 
-  /* ── Register Form ── */
   const regForm = $('register-form');
   if (regForm) {
     const pwToggle  = regForm.querySelector('.toggle-pw');
@@ -392,7 +359,6 @@ function initFormValidation() {
   }
 }
 
-/* ── Password strength meter ── */
 function initPasswordStrength() {
   const pw = document.getElementById('reg-password');
   const bar = document.getElementById('pw-strength-bar');
@@ -417,8 +383,6 @@ function initPasswordStrength() {
   });
 }
 
-
-/* ── Download filter ── */
 function initDownloadFilter() {
   const filterBtns = document.querySelectorAll('[data-filter]');
   const items       = document.querySelectorAll('[data-category]');
@@ -436,8 +400,6 @@ function initDownloadFilter() {
   });
 }
 
-
-/* ── Search filter ── */
 function initSearch(inputId, targetSelector) {
   const input = document.getElementById(inputId);
   if (!input) return;
@@ -449,10 +411,6 @@ function initSearch(inputId, targetSelector) {
   });
 }
 
-
-/* ═══════════════════════════════════════════════════
-   BOOT — run after DOM ready
-   ═══════════════════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded', () => {
   initAccordions();
   initTabs();

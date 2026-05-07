@@ -8,71 +8,31 @@
   <meta name="robots" content="noindex, nofollow">
   <link rel="stylesheet" href="../assets/css/style.css"/>
   <style>
-    .filter-bar {
-      display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 1.75rem;
-    }
-    .filter-chip {
-      padding: .4rem .9rem;
-      border: 2px solid var(--gray-200);
-      border-radius: 99px;
-      background: var(--white);
-      font-family: var(--font-body);
-      font-size: .82rem; font-weight: 600;
-      color: var(--gray-600);
-      cursor: pointer;
-      transition: all var(--dur-fast);
-    }
+    .filter-bar { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 1.75rem; }
+    .filter-chip { padding: .4rem .9rem; border: 2px solid var(--gray-200); border-radius: 99px; background: var(--white); font-family: var(--font-body); font-size: .82rem; font-weight: 600; color: var(--gray-600); cursor: pointer; transition: all var(--dur-fast); }
     .filter-chip:hover { border-color: var(--navy); color: var(--navy); }
     .filter-chip.active { border-color: var(--navy); background: var(--navy); color: var(--white); }
-
+    
     .downloads-grid { display: flex; flex-direction: column; gap: .75rem; }
-
-    .download-item {
-      display: flex; align-items: center; gap: 1.1rem;
-      padding: 1rem 1.4rem;
-      background: var(--white);
-      border: 1px solid var(--gray-200);
-      border-radius: var(--radius-md);
-      transition: border-color var(--dur-fast), box-shadow var(--dur-fast), background var(--dur-fast);
-    }
-    .download-item:hover {
-      border-color: var(--gold);
-      background: var(--gold-pale);
-      box-shadow: var(--shadow-sm);
-    }
-    .download-icon {
-      width: 48px; height: 48px;
-      border-radius: var(--radius-sm);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem; flex-shrink: 0;
-    }
+    .download-item { display: flex; align-items: center; gap: 1.1rem; padding: 1rem 1.4rem; background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-md); transition: border-color var(--dur-fast), box-shadow var(--dur-fast), background var(--dur-fast); }
+    .download-item:hover { border-color: var(--gold); background: var(--gold-pale); box-shadow: var(--shadow-sm); }
+    
+    .download-icon { width: 48px; height: 48px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; }
     .download-icon.pdf { background: #fde8e8; }
     .download-icon.xls { background: #e8f8ef; }
     .download-icon.doc { background: #e8effd; }
     .download-icon.zip { background: #fef9e8; }
-
+    
     .download-meta { flex: 1; min-width: 0; }
-    .download-meta strong {
-      display: block; color: var(--navy);
-      font-size: .93rem; margin-bottom: .15rem;
-    }
-    .download-meta .meta-row {
-      display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;
-    }
+    .download-meta strong { display: block; color: var(--navy); font-size: .93rem; margin-bottom: .15rem; }
+    .download-meta .meta-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
     .download-meta span { font-size: .78rem; color: var(--gray-400); }
+    
     .download-actions { display: flex; gap: .5rem; flex-shrink: 0; }
-
-    .section-header-row {
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 1rem;
-      margin-bottom: 1.25rem;
-    }
-
-    @media (max-width: 600px) {
-      .download-item { flex-wrap: wrap; }
-      .download-actions { width: 100%; }
-      .download-actions .btn { flex: 1; justify-content: center; }
-    }
+    
+    .section-header-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem; }
+    
+    @media (max-width: 600px) { .download-item { flex-wrap: wrap; } .download-actions { width: 100%; } .download-actions .btn { flex: 1; justify-content: center; } }
   </style>
 </head>
 <body>
@@ -110,7 +70,6 @@
   <main id="main-content">
     <div class="page-content">
 
-      <!-- Search + Filter -->
       <div class="search-bar" style="max-width:600px;">
         <label for="downloads-search" class="sr-only">Search downloads</label>
         <input class="form-input" type="search" id="downloads-search" placeholder="Search by form name, number, or type…" aria-label="Search downloads"/>
@@ -127,7 +86,6 @@
         <button class="filter-chip" data-filter="templates">Templates</button>
       </div>
 
-      <!-- ── INCOME TAX FORMS ── -->
       <div class="section-header-row">
         <div>
           <p class="section-label">Tax Returns</p>
@@ -234,7 +192,6 @@
 
       </div>
 
-      <!-- ── VAT FORMS ── -->
       <div class="section-header-row">
         <div>
           <p class="section-label">Value Added Tax</p>
@@ -308,7 +265,6 @@
 
       </div>
 
-      <!-- ── WITHHOLDING TAX ── -->
       <div class="section-header-row">
         <div>
           <p class="section-label">Withholding Tax</p>
@@ -400,7 +356,6 @@
 
       </div>
 
-      <!-- ── USER GUIDES ── -->
       <div class="section-header-row">
         <div>
           <p class="section-label">Help Resources</p>
