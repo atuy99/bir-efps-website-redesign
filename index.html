@@ -9,9 +9,40 @@
   <link rel="stylesheet" href="assets/css/style.css"/>
   <style>
     .efps-hub-page { flex: 1; display: flex; flex-direction: column; background: var(--off-white); }
-    .hub-hero { background: linear-gradient(160deg, var(--navy) 0%, #0d2d5a 55%, #0f3068 100%); padding: 3.5rem 1.5rem 4rem; position: relative; overflow: hidden; }
-    .hub-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 50% 40%, rgba(30,79,142,.35) 0%, transparent 70%), repeating-linear-gradient(-45deg, transparent, transparent 60px, rgba(255,255,255,.015) 60px, rgba(255,255,255,.015) 62px); pointer-events: none; }
-    .hub-inner { max-width: 480px; margin: 0 auto; position: relative; }
+    
+    /* ADJUSTMENTS added to hub-hero, ::before, and inner*/
+    /* added an image bg to the login/register part */
+    .hub-hero {
+    background: linear-gradient(160deg, var(--navy) 0%, #0d2d5a 55%, #0f3068 100%);
+    padding: 3.5rem 1.5rem 4rem;
+    position: relative;
+    overflow: hidden;
+    background-image: url(assets/img/bg-index.png);
+    background-size: contain;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    }
+
+    .hub-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, 
+        rgba(11, 37, 69, 0.88) 0%, 
+        rgba(13, 45, 90, 0.85) 55%, 
+        rgba(15, 48, 104, 0.82) 100%
+    );
+    z-index: 0;
+    pointer-events: none;
+    }
+
+    .hub-inner {
+    max-width: 480px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    }
     
     .login-card { background: #fff; border-radius: 20px; box-shadow: 0 24px 64px rgba(0,0,0,.28), 0 4px 16px rgba(0,0,0,.12); overflow: hidden; position: relative; }
     .login-card-top { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%); padding: 2rem 2rem 1.5rem; text-align: center; position: relative; }
