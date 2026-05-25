@@ -7,62 +7,58 @@
   <meta name="description" content="Step-by-step guides, user manuals, and video tutorials for the BIR eFPS portal."/>
   <meta name="robots" content="noindex, nofollow">
   <link rel="stylesheet" href="../assets/css/style.css"/>
+  <link rel="stylesheet" href="../assets/css/job-aids-extra.css"/>
   <style>
     .guide-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-md); overflow: hidden; transition: box-shadow var(--dur-mid), transform var(--dur-mid); display: flex; flex-direction: column; }
     .guide-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
     .guide-card-header { padding: 1.5rem; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%); display: flex; align-items: center; gap: 1rem; }
-    
     .guide-icon { width: 50px; height: 50px; border-radius: var(--radius-sm); background: rgba(255,255,255,.12); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; flex-shrink: 0; }
-    
     .guide-card-header h3 { font-family: var(--font-display); font-size: 1.05rem; color: var(--white); line-height: 1.25; }
     .guide-card-header p { font-size: .78rem; color: rgba(255,255,255,.65); margin-top: .2rem; }
     .guide-card-body { padding: 1.25rem 1.5rem; flex: 1; }
-    
     .guide-steps { list-style: none; counter-reset: step-counter; display: flex; flex-direction: column; gap: .6rem; margin-bottom: 1.25rem; }
     .guide-steps li { counter-increment: step-counter; display: flex; gap: .75rem; align-items: flex-start; font-size: .88rem; color: var(--gray-600); }
     .guide-steps li::before { content: counter(step-counter); width: 22px; height: 22px; border-radius: 50%; background: var(--navy); color: var(--white); font-size: .72rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
-    
     .video-thumb { position: relative; border-radius: var(--radius-md); overflow: hidden; background: var(--navy); aspect-ratio: 16 / 9; display: flex; align-items: center; justify-content: center; cursor: pointer; }
     .video-thumb::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, var(--navy-mid), var(--navy-light)); opacity: .9; }
     .play-btn { position: relative; width: 64px; height: 64px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; transition: transform var(--dur-fast), background var(--dur-fast); }
     .video-thumb:hover .play-btn { transform: scale(1.08); background: var(--gold-light); }
     .video-label { position: absolute; bottom: 1rem; left: 1rem; color: var(--white); font-size: .82rem; font-weight: 600; }
     .video-duration { position: absolute; bottom: 1rem; right: 1rem; background: rgba(0,0,0,.6); color: var(--white); font-size: .75rem; padding: .15rem .45rem; border-radius: 3px; }
-    
     .checklist { display: flex; flex-direction: column; gap: .5rem; }
     .checklist-item { display: flex; gap: .65rem; align-items: flex-start; padding: .55rem .8rem; border-radius: var(--radius-sm); background: var(--gray-100); font-size: .88rem; color: var(--gray-600); }
     .checklist-item .check { color: var(--green-ok); font-size: 1rem; flex-shrink: 0; }
   </style>
 </head>
 <body>
-  <div style="background-color: #dc2626; color: white; text-align: center; padding: 10px; font-weight: bold; position: sticky; top: 0; z-index: 9999; font-size: 14px; letter-spacing: 0.05em;">
-  ⚠️ ACADEMIC PROJECT ONLY: This is a student redesign mockup for an HCI class. This is NOT the official BIR eFPS website. Do not enter real personal information.
+
+  <div style="background-color:#dc2626;color:white;text-align:center;padding:10px;font-weight:bold;position:sticky;top:0;z-index:9999;font-size:14px;letter-spacing:0.05em;">
+    ⚠️ ACADEMIC PROJECT ONLY: This is a student redesign mockup for an HCI class. This is NOT the official BIR eFPS website. Do not enter real personal information.
   </div>
+
   <div id="nav-placeholder"></div>
 
-  <div class="alert-banner" role="alert" aria-label="Filing deadline notice">
-    <div class="alert-banner-inner">
-      <svg class="alert-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-        <path d="M8 1.5L14.5 13H1.5L8 1.5z" stroke="#f59e0b" stroke-width="1.3" fill="none"/>
-        <path d="M8 6v3.5M8 11v.5" stroke="#f59e0b" stroke-width="1.3" stroke-linecap="round"/>
-      </svg>
-      <div>
-        <span class="alert-label">Filing Deadline</span>
-        <div class="alert-text">
-          <strong style="color:#e8bc6a">Annual ITR (1701/1702)</strong> — deadline extended to <strong style="color:#e8bc6a">April 30, 2025</strong>. No late-filing penalties for eFPS filers through <strong style="color:#e8bc6a">May 5, 2025</strong>.&nbsp; <a href="../pages/issuances.html">Read RMC 19-2025 →</a>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div class="page-hero">
-    <div class="page-hero-inner">
-      <div class="breadcrumb" aria-label="Breadcrumb">
-        <a href="../pages/efps-home.html">Home</a><span>›</span>
+    <div class="hero-deco-ring hero-deco-ring-1"></div>
+    <div class="hero-deco-ring hero-deco-ring-2"></div>
+    <div class="hero-deco-ring hero-deco-ring-3"></div>
+    <div class="page-hero-inner hero-pad-bottom">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../pages/efps-home.html">Home</a>
+        <span aria-hidden="true">›</span>
         <span aria-current="page">Job Aids</span>
+      </nav>
+      <div class="hero-body">
+        <div>
+          <div class="hero-label">
+            <span class="hero-label-dot" aria-hidden="true"></span>
+            Learning Resources
+          </div>
+          <h1>Job Aids &amp; <em>User Guides</em></h1>
+          <p>Step-by-step guides, video tutorials, compliance checklists, Job Aids, and a glossary to help you use eFPS efficiently.</p>
+        </div>
       </div>
-      <h1>Job Aids &amp; User Guides</h1>
-      <p>Step-by-step guides, tutorials, and reference materials to help you use eFPS efficiently.</p>
     </div>
   </div>
 
@@ -74,40 +70,36 @@
           <button class="tab-btn active" role="tab" aria-selected="true"  aria-controls="ja-guides">📋 Step-by-Step Guides</button>
           <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="ja-videos">🎥 Video Tutorials</button>
           <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="ja-checklists">✅ Compliance Checklists</button>
+          <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="ja-forms">📂 eFPS Job Aids</button>
           <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="ja-glossary">📖 Glossary</button>
         </div>
 
+        <!-- ══ TAB 1: Step-by-Step Guides ══ -->
         <div class="tab-panel active" id="ja-guides" role="tabpanel">
           <div class="grid-3" style="gap:1.5rem;">
 
             <div class="guide-card reveal">
               <div class="guide-card-header">
                 <div class="guide-icon">🔐</div>
-                <div>
-                  <h3>How to Enroll in eFPS</h3>
-                  <p>Beginner · 5 minutes</p>
-                </div>
+                <div><h3>How to Enroll in eFPS</h3><p>Beginner · 5 minutes</p></div>
               </div>
               <div class="guide-card-body">
                 <ol class="guide-steps">
                   <li>Visit the eFPS Login page and click "Register"</li>
                   <li>Enter your TIN, full name, and email address</li>
                   <li>Create a strong password (min. 8 characters)</li>
-                  <li>Agree to the Terms & Conditions</li>
+                  <li>Agree to the Terms &amp; Conditions</li>
                   <li>Submit and await RDO approval (3–5 days)</li>
                   <li>Activate your account via email link</li>
                 </ol>
-                <a href="../pages/downloads.html" class="btn btn-primary btn-sm">Download PDF Guide →</a>
+                <a href="#" class="btn btn-outline btn-sm" download>Download PDF Guide →</a>
               </div>
             </div>
 
             <div class="guide-card reveal">
               <div class="guide-card-header">
                 <div class="guide-icon">📄</div>
-                <div>
-                  <h3>Filing an Income Tax Return</h3>
-                  <p>Intermediate · 8 minutes</p>
-                </div>
+                <div><h3>Filing an Income Tax Return</h3><p>Intermediate · 8 minutes</p></div>
               </div>
               <div class="guide-card-body">
                 <ol class="guide-steps">
@@ -118,17 +110,14 @@
                   <li>Complete all required fields in the form</li>
                   <li>Review, submit, and save the FRN</li>
                 </ol>
-                <a href="../pages/downloads.html" class="btn btn-primary btn-sm">Download PDF Guide →</a>
+                <a href="#" class="btn btn-outline btn-sm" download>Download PDF Guide →</a>
               </div>
             </div>
 
             <div class="guide-card reveal">
               <div class="guide-card-header">
                 <div class="guide-icon">💳</div>
-                <div>
-                  <h3>Paying Taxes via eFPS</h3>
-                  <p>Intermediate · 6 minutes</p>
-                </div>
+                <div><h3>Paying Taxes via eFPS</h3><p>Intermediate · 6 minutes</p></div>
               </div>
               <div class="guide-card-body">
                 <ol class="guide-steps">
@@ -139,17 +128,14 @@
                   <li>Log in to your bank and authorize payment</li>
                   <li>Save your Payment Confirmation Number (PCN)</li>
                 </ol>
-                <a href="../pages/downloads.html" class="btn btn-primary btn-sm">Download PDF Guide →</a>
+                <a href="#" class="btn btn-outline btn-sm" download>Download PDF Guide →</a>
               </div>
             </div>
 
             <div class="guide-card reveal">
               <div class="guide-card-header">
                 <div class="guide-icon">📊</div>
-                <div>
-                  <h3>Filing Monthly VAT Return (2550M)</h3>
-                  <p>Intermediate · 7 minutes</p>
-                </div>
+                <div><h3>Filing Monthly VAT Return (2550M)</h3><p>Intermediate · 7 minutes</p></div>
               </div>
               <div class="guide-card-body">
                 <ol class="guide-steps">
@@ -160,17 +146,14 @@
                   <li>Compute net VAT payable or excess input VAT</li>
                   <li>Submit and proceed to e-Payment if VAT is due</li>
                 </ol>
-                <a href="../pages/downloads.html" class="btn btn-primary btn-sm">Download PDF Guide →</a>
+                <a href="#" class="btn btn-outline btn-sm" download>Download PDF Guide →</a>
               </div>
             </div>
 
             <div class="guide-card reveal">
               <div class="guide-card-header">
                 <div class="guide-icon">✏️</div>
-                <div>
-                  <h3>Amending a Filed Return</h3>
-                  <p>Advanced · 5 minutes</p>
-                </div>
+                <div><h3>Amending a Filed Return</h3><p>Advanced · 5 minutes</p></div>
               </div>
               <div class="guide-card-body">
                 <ol class="guide-steps">
@@ -181,17 +164,14 @@
                   <li>Submit the amended return</li>
                   <li>Pay any additional tax due via e-Payment</li>
                 </ol>
-                <a href="../pages/downloads.html" class="btn btn-primary btn-sm">Download PDF Guide →</a>
+                <a href="#" class="btn btn-outline btn-sm" download>Download PDF Guide →</a>
               </div>
             </div>
 
             <div class="guide-card reveal">
               <div class="guide-card-header">
                 <div class="guide-icon">🔑</div>
-                <div>
-                  <h3>Password Reset &amp; Account Recovery</h3>
-                  <p>Beginner · 3 minutes</p>
-                </div>
+                <div><h3>Password Reset &amp; Account Recovery</h3><p>Beginner · 3 minutes</p></div>
               </div>
               <div class="guide-card-body">
                 <ol class="guide-steps">
@@ -202,98 +182,59 @@
                   <li>Set a new strong password</li>
                   <li>Log in with your new credentials</li>
                 </ol>
-                <a href="../pages/downloads.html" class="btn btn-primary btn-sm">Download PDF Guide →</a>
+                <a href="#" class="btn btn-outline btn-sm" download>Download PDF Guide →</a>
               </div>
             </div>
 
           </div>
         </div>
 
+        <!-- ══ TAB 2: Video Tutorials ══ -->
         <div class="tab-panel" id="ja-videos" role="tabpanel">
           <div class="announcement-banner mb-4">
             <span>🎥</span>
-            <div>These tutorials are produced by the BIR Public Information and Education Division. Videos open in a new tab on the BIR YouTube channel.</div>
+            <div>These tutorials are produced by the BIR Public Information and Education Division. They are made to aid users on showing the step-by-step process using eFPS.</div>
           </div>
           <div class="grid-3" style="gap:1.5rem;">
-
             <article class="card reveal">
               <div class="video-thumb" role="button" tabindex="0" aria-label="Watch: eFPS Overview and Enrollment Tutorial">
                 <div class="play-btn" aria-hidden="true">▶</div>
                 <span class="video-label">eFPS Overview &amp; Enrollment</span>
-                <span class="video-duration">4:32</span>
+                <span class="video-duration">1:15</span>
               </div>
               <div class="card-body">
-                <p style="font-size:.88rem; color:var(--gray-600);">Introduction to the eFPS portal — who it's for, its features, and how to enroll.</p>
-                <a href="#" target="_blank" rel="noopener" class="btn btn-outline btn-sm mt-2">Watch on YouTube ↗</a>
+                <p style="font-size:.88rem;color:var(--gray-600);">Introduction to the eFPS portal — who it's for, its features, and how to enroll.</p>
+                <a href="https://youtu.be/cT86tSy3Aaw?si=5xB8FS2ZjdS597tk" target="_blank" rel="noopener" class="btn btn-outline btn-sm mt-2">Watch on YouTube ↗</a>
               </div>
             </article>
-
             <article class="card reveal">
               <div class="video-thumb" role="button" tabindex="0" aria-label="Watch: Filing Income Tax Return Tutorial">
                 <div class="play-btn" aria-hidden="true">▶</div>
                 <span class="video-label">Filing Your Income Tax Return</span>
-                <span class="video-duration">7:15</span>
+                <span class="video-duration">1:19</span>
               </div>
               <div class="card-body">
-                <p style="font-size:.88rem; color:var(--gray-600);">Full walkthrough of filing BIR Form 1702-RT for corporations using eFPS.</p>
-                <a href="#" target="_blank" rel="noopener" class="btn btn-outline btn-sm mt-2">Watch on YouTube ↗</a>
+                <p style="font-size:.88rem;color:var(--gray-600);">Full walkthrough of filing Income Tax Returns for corporations using eFPS.</p>
+                <a href="https://youtu.be/92g_vVla6CM?si=6bEViEOkjeW5c_pw" target="_blank" rel="noopener" class="btn btn-outline btn-sm mt-2">Watch on YouTube ↗</a>
               </div>
             </article>
-
             <article class="card reveal">
               <div class="video-thumb" role="button" tabindex="0" aria-label="Watch: Online Tax Payment Tutorial">
                 <div class="play-btn" aria-hidden="true">▶</div>
-                <span class="video-label">How to Pay Taxes Online via AAB</span>
-                <span class="video-duration">5:48</span>
+                <span class="video-label">Knowing when to use Online and Offline Forms</span>
+                <span class="video-duration">18:32</span>
               </div>
               <div class="card-body">
-                <p style="font-size:.88rem; color:var(--gray-600);">Step-by-step guide on the eFPS e-Payment process with an authorized agent bank.</p>
-                <a href="#" target="_blank" rel="noopener" class="btn btn-outline btn-sm mt-2">Watch on YouTube ↗</a>
+                <p style="font-size:.88rem;color:var(--gray-600);">Explains when to file using EFPS (Electronic Filing and Payment System), Offline eBIR forms and Online eBIR Forms.</p>
+                <a href="https://youtu.be/gH1zMrZYuh8?si=eE2NMs3f1NknWLWq" target="_blank" rel="noopener" class="btn btn-outline btn-sm mt-2">Watch on YouTube ↗</a>
               </div>
             </article>
-
-            <article class="card reveal">
-              <div class="video-thumb" role="button" tabindex="0" aria-label="Watch: VAT Return Filing Tutorial">
-                <div class="play-btn" aria-hidden="true">▶</div>
-                <span class="video-label">Monthly VAT Return (Form 2550M)</span>
-                <span class="video-duration">6:22</span>
-              </div>
-              <div class="card-body">
-                <p style="font-size:.88rem; color:var(--gray-600);">How to prepare and file BIR Form 2550M — the Monthly VAT Declaration.</p>
-                <a href="#" target="_blank" rel="noopener" class="btn btn-outline btn-sm mt-2">Watch on YouTube ↗</a>
-              </div>
-            </article>
-
-            <article class="card reveal">
-              <div class="video-thumb" role="button" tabindex="0" aria-label="Watch: Withholding Tax Filing Tutorial">
-                <div class="play-btn" aria-hidden="true">▶</div>
-                <span class="video-label">Withholding Tax Filing (1601-C)</span>
-                <span class="video-duration">5:05</span>
-              </div>
-              <div class="card-body">
-                <p style="font-size:.88rem; color:var(--gray-600);">Employer's guide to filing monthly withholding tax on compensation.</p>
-                <a href="#" target="_blank" rel="noopener" class="btn btn-outline btn-sm mt-2">Watch on YouTube ↗</a>
-              </div>
-            </article>
-
-            <article class="card reveal">
-              <div class="video-thumb" role="button" tabindex="0" aria-label="Watch: Troubleshooting eFPS Tutorial">
-                <div class="play-btn" aria-hidden="true">▶</div>
-                <span class="video-label">eFPS Troubleshooting Tips</span>
-                <span class="video-duration">3:55</span>
-              </div>
-              <div class="card-body">
-                <p style="font-size:.88rem; color:var(--gray-600);">Common eFPS errors and how to resolve them — browser settings, session issues, and more.</p>
-                <a href="#" target="_blank" rel="noopener" class="btn btn-outline btn-sm mt-2">Watch on YouTube ↗</a>
-              </div>
-            </article>
-
           </div>
         </div>
 
+        <!-- ══ TAB 3: Compliance Checklists ══ -->
         <div class="tab-panel" id="ja-checklists" role="tabpanel">
           <div class="grid-2" style="gap:2rem;">
-
             <div class="card reveal">
               <div class="card-body">
                 <p class="section-label">For Corporations</p>
@@ -308,10 +249,9 @@
                   <div class="checklist-item"><span class="check">☑</span> Board Resolution (for authorized representative)</div>
                   <div class="checklist-item"><span class="check">☑</span> Payment Reference — BIR Form 0605 or bank confirmation</div>
                 </div>
-                <a href="../pages/downloads.html" class="btn btn-outline btn-sm mt-3">Download Checklist PDF</a>
+                <a href="#" class="btn btn-outline btn-sm mt-3" download">Download Checklist PDF</a>
               </div>
             </div>
-
             <div class="card reveal">
               <div class="card-body">
                 <p class="section-label">For Individuals</p>
@@ -325,10 +265,9 @@
                   <div class="checklist-item"><span class="check">☑</span> Certificates of Tax Withheld (BIR Form 2307)</div>
                   <div class="checklist-item"><span class="check">☑</span> Proof of deductions (if itemized)</div>
                 </div>
-                <a href="../pages/downloads.html" class="btn btn-outline btn-sm mt-3">Download Checklist PDF</a>
+                <a href="#" class="btn btn-outline btn-sm mt-3" download>Download Checklist PDF</a>
               </div>
             </div>
-
             <div class="card reveal">
               <div class="card-body">
                 <p class="section-label">Monthly</p>
@@ -342,10 +281,9 @@
                   <div class="checklist-item"><span class="check">☑</span> BIR Form 2550M completed and filed</div>
                   <div class="checklist-item"><span class="check">☑</span> VAT payment confirmed (PCN obtained)</div>
                 </div>
-                <a href="../pages/downloads.html" class="btn btn-outline btn-sm mt-3">Download Checklist PDF</a>
+                <a href="#" class="btn btn-outline btn-sm mt-3" download>Download Checklist PDF</a>
               </div>
             </div>
-
             <div class="card reveal">
               <div class="card-body">
                 <p class="section-label">New Enrollees</p>
@@ -359,13 +297,263 @@
                   <div class="checklist-item"><span class="check">☑</span> Online application submitted via eFPS portal</div>
                   <div class="checklist-item"><span class="check">☑</span> Awaiting RDO approval (3–5 business days)</div>
                 </div>
-                <a href="../pages/downloads.html" class="btn btn-outline btn-sm mt-3">Download Checklist PDF</a>
+                <a href="#" class="btn btn-outline btn-sm mt-3" download>Download Checklist PDF</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══ TAB 4: BIR Forms & Guides ══ -->
+        <div class="tab-panel" id="ja-forms" role="tabpanel">
+
+          <div class="announcement-banner mb-4">
+            <span>📂</span>
+            <div>These includes Job Aids that will help and guide you on the usage of eFPS. Click <strong>Download PDF</strong> to download. <i>Content mirrors the original BIR eFPS Job Aids page.</i></div>
+          </div>
+
+          <!-- Search -->
+          <div class="forms-search-wrap">
+            <input class="form-input" type="search" id="forms-search" placeholder="Search form number or title…" aria-label="Search BIR forms"/>
+          </div>
+
+          <!-- Sub-tab bar -->
+          <div class="forms-sub-bar" role="tablist" aria-label="Form categories">
+            <button class="forms-sub-btn active" role="tab" aria-selected="false" data-sub="app">
+              <span class="sub-icon">🖥️</span> eFPS Application
+            </button>
+            <button class="forms-sub-btn" role="tab" aria-selected="false" data-sub="online">
+              <span class="sub-icon">🌐</span> Online Form Job Aids
+            </button>
+            <button class="forms-sub-btn" role="tab" aria-selected="false" data-sub="offline">
+              <span class="sub-icon">💾</span> Offline Form Job Aids
+            </button>
+            <button class="forms-sub-btn" role="tab" aria-selected="false" data-sub="tp">
+              <span class="sub-icon">📘</span> TPs Guide for eFPS
+            </button>
+          </div>
+
+       <!-- ── Sub-panel 1: eFPS Application ── -->
+<div class="forms-sub-panel" id="sub-app">
+
+  <div class="forms-section">
+    <div class="forms-section-header">
+      <h3>eFPS Application Guides</h3>
+      <span class="section-count">2 guides</span>
+    </div>
+    <div class="app-guide-grid">
+
+      <div class="app-guide-card form-aid-row">
+        <div class="app-guide-icon">🔐</div>
+        <div class="app-guide-info">
+          <strong>Enrollment Guide</strong>
+          <span>Step-by-step eFPS enrollment walkthrough</span>
+        </div>
+        <a href="#" class="btn btn-outline btn-sm" download>Download PDF</a>
+      </div>
+
+      <div class="app-guide-card form-aid-row">
+        <div class="app-guide-icon">💳</div>
+        <div class="app-guide-info">
+          <strong>ePayment Guide</strong>
+          <span>How to pay taxes via AAB through eFPS</span>
+        </div>
+        <a href="#" class="btn btn-outline btn-sm" download>Download PDF</a>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+          <!-- ── Sub-panel 2: Online Form Job Aids ── -->
+          <div class="forms-sub-panel" id="sub-online">
+
+            <div class="forms-section">
+              <div class="forms-section-header">
+                <h3>Online Form Job Aids</h3>
+                <span class="section-count">30 forms</span>
+              </div>
+              <div class="forms-grid">
+                <div class="form-aid-row"><span class="form-aid-name">Form 0605</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 1600</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 1600WP</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 1601C</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 1702 (Nov 2011)</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 1601E (Jan 2004)</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 1601E (Feb 2007)</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 1601F</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 1602</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 1700 (June 2013)</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 1603</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 1604CF</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 1604E</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 1700</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 1701 (June 2013)</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 1701</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 1701Q</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 1702 (Oct 2002)</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 1702 (Sept 2005)</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 1702-EX (June 2013)</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 1702Q (Aug 2002)</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 1702Q (Sep 2005)</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 1702Q (Oct 2007)</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 1704</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 1702-MX (June 2013)</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 2000</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 2200A</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 2200AN</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 2200M</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 1702-RT (June 2013)</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 2200P</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 2200T</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 2550M (Oct 2002)</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 2550M (Sep 2005)</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 2550M (Feb 2007)</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 2550Q (Oct 2002)</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 2550Q (Sep 2005)</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 2550Q (Feb 2007)</span><a class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 2551</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 2551M</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 2552</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 2553</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
               </div>
             </div>
 
           </div>
-        </div>
 
+          <!-- ── Sub-panel 3: Offline Form Job Aids ── -->
+          <div class="forms-sub-panel" id="sub-offline">
+
+            <div class="forms-section">
+              <div class="forms-section-header">
+                <h3>How to Use the eFPS Offline Form Application</h3>
+                <span class="section-count">1 guide</span>
+              </div>
+              <div class="forms-grid" style="margin-bottom:1.5rem;">
+                <div class="form-aid-row" style="grid-column:1/-1; max-width:360px;">
+                  <span class="form-aid-name">How to Use the eFPS Offline Form Application</span>
+                  <a href="#" class="form-aid-dl" data-pdf-download="eFPS-Offline-Guide.pdf">PDF</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="forms-section">
+              <div class="forms-section-header">
+                <h3>Offline Form Job Aids</h3>
+                <span class="section-count">28 forms</span>
+              </div>
+              <div class="forms-grid">
+                <div class="form-aid-row"><span class="form-aid-name">Form 0605</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-0605.pdf">PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 1600</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-1600.pdf">PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 1600WP</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-1600WP.pdf">PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 1601C</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-1601C.pdf">PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 1601E</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-1601E.pdf">PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 1601F</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-1601F.pdf">PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 1602</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-1602.pdf">PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 1603</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-1603.pdf">PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 1604CF</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-1604CF.pdf">PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 1604E</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-1604E.pdf">PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 1700</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-1700.pdf">PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 1701</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-1701.pdf">PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 1701Q</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-1701Q.pdf">PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 1702</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-1702.pdf">PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 170Q</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-170Q.pdf">PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 1704</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-1704.pdf">PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 2000</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-2000.pdf">PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 2200A</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-2200A.pdf">PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 2200AN</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-2200AN.pdf">PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 2200M</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-2200M.pdf">PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 2200P</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-2200P.pdf">PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 2200T</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-2200T.pdf">PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 2550M</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-2550M.pdf">PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 2550Q</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-2550Q.pdf">PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 2551</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-2551.pdf">PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 2551M</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-2551M.pdf">PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 2552</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-2552.pdf">PDF</a></div>
+                <div class="form-aid-row"><span class="form-aid-name">Form 2553</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-2553.pdf">PDF</a></div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ── Sub-panel 4: TPs Guide for eFPS ── -->
+          <div class="forms-sub-panel" id="sub-tp">
+
+            <div class="forms-section">
+              <div class="forms-section-header">
+                <h3>TPs Guide for eFPS</h3>
+                <span class="section-count">15 documents</span>
+              </div>
+              <div class="tp-guide-list">
+                <div class="tp-guide-item form-aid-row">
+                  <span class="tp-guide-title">BIR Job Aid TP Guide — eFiling &amp; ePayment</span>
+                  <a href="#" class="form-aid-dl" data-pdf-download="TP-Guide-eFiling-ePayment.pdf">PDF</a>
+                </div>
+                <div class="tp-guide-item form-aid-row">
+                  <span class="tp-guide-title">BIR Job Aid TP Guide — eFiling</span>
+                  <a href="#" class="form-aid-dl" data-pdf-download="TP-Guide-eFiling.pdf">PDF</a>
+                </div>
+                <div class="tp-guide-item form-aid-row">
+                  <span class="tp-guide-title">BIR Job Aid TP Guide — Enrollment, Login, Change User Info</span>
+                  <a href="#" class="form-aid-dl" data-pdf-download="TP-Guide-Enrollment-Login.pdf">PDF</a>
+                </div>
+                <div class="tp-guide-item form-aid-row">
+                  <span class="tp-guide-title">BIR Job Aid TP Guide — ePayment thru Inquiry</span>
+                  <a href="#" class="form-aid-dl" data-pdf-download="TP-Guide-ePayment-Inquiry.pdf">PDF</a>
+                </div>
+                <div class="tp-guide-item form-aid-row">
+                  <span class="tp-guide-title">BIR Job Aid TP Guide — eFPS Inquiry</span>
+                  <a href="#" class="form-aid-dl" data-pdf-download="TP-Guide-eFPS-Inquiry.pdf">PDF</a>
+                </div>
+                <div class="tp-guide-item form-aid-row">
+                  <span class="tp-guide-title">Chapter 1: System Overview</span>
+                  <a href="#" class="form-aid-dl" data-pdf-download="TP-Chapter-1-System-Overview.pdf">PDF</a>
+                </div>
+                <div class="tp-guide-item form-aid-row">
+                  <span class="tp-guide-title">Chapter 2: Accessing the eFPS</span>
+                  <a href="#" class="form-aid-dl" data-pdf-download="TP-Chapter-2-Accessing-eFPS.pdf">PDF</a>
+                </div>
+                <div class="tp-guide-item form-aid-row">
+                  <span class="tp-guide-title">Chapter 3: Enrollment</span>
+                  <a href="#" class="form-aid-dl" data-pdf-download="TP-Chapter-3-Enrollment.pdf">PDF</a>
+                </div>
+                <div class="tp-guide-item form-aid-row">
+                  <span class="tp-guide-title">Chapter 4: Logging-in to eFPS</span>
+                  <a href="#" class="form-aid-dl" data-pdf-download="TP-Chapter-4-Login.pdf">PDF</a>
+                </div>
+                <div class="tp-guide-item form-aid-row">
+                  <span class="tp-guide-title">Chapter 5: Change User Information</span>
+                  <a href="#" class="form-aid-dl" data-pdf-download="TP-Chapter-5-User-Info.pdf">PDF</a>
+                </div>
+                <div class="tp-guide-item form-aid-row">
+                  <span class="tp-guide-title">Chapter 6: E-Filing</span>
+                  <a href="#" class="form-aid-dl" data-pdf-download="TP-Chapter-6-eFiling.pdf">PDF</a>
+                </div>
+                <div class="tp-guide-item form-aid-row">
+                  <span class="tp-guide-title">Chapter 7: E-Payment</span>
+                  <a href="#" class="form-aid-dl" data-pdf-download="TP-Chapter-7-ePayment.pdf">PDF</a>
+                </div>
+                <div class="tp-guide-item form-aid-row">
+                  <span class="tp-guide-title">Chapter 8: Tax Return Inquiry</span>
+                  <a href="#" class="form-aid-dl" data-pdf-download="TP-Chapter-8-Tax-Inquiry.pdf">PDF</a>
+                </div>
+                <div class="tp-guide-item form-aid-row">
+                  <span class="tp-guide-title">Chapter 9: Filing Out Tax Return Forms</span>
+                  <a href="#" class="form-aid-dl" data-pdf-download="TP-Chapter-9-Filing-Forms.pdf">PDF</a>
+                </div>
+                <div class="tp-guide-item form-aid-row">
+                  <span class="tp-guide-title">Chapter 10: Validation Modules Download</span>
+                  <a href="#" class="form-aid-dl" data-pdf-download="TP-Chapter-10-Validation.pdf">PDF</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+        <!-- ══ END TAB 4 ══ -->
+
+        <!-- ══ TAB 5: Glossary ══ -->
         <div class="tab-panel" id="ja-glossary" role="tabpanel">
           <div class="card">
             <div class="card-body">
@@ -373,7 +561,6 @@
               <h2 class="section-title">eFPS Glossary of Terms</h2>
               <div class="divider-accent"></div>
               <div class="accordion" data-multi="true">
-
                 <div class="accordion-item">
                   <button class="accordion-btn" aria-expanded="false">AAB — Authorized Agent Bank <span class="accordion-icon" aria-hidden="true">▼</span></button>
                   <div class="accordion-body"><div class="accordion-content"><p>A bank authorized by the BIR to collect taxes on its behalf. eFPS users select an AAB to process their online tax payments. Examples include BDO, BPI, Metrobank, and Landbank.</p></div></div>
@@ -392,7 +579,7 @@
                 </div>
                 <div class="accordion-item">
                   <button class="accordion-btn" aria-expanded="false">ITR — Income Tax Return <span class="accordion-icon" aria-hidden="true">▼</span></button>
-                  <div class="accordion-body"><div class="accordion-content"><p>A tax return filed by individuals or corporations reporting their income, deductions, and tax liability for a given period. Filed using BIR Form 1700, 1701, 1701A, 1702-RT, 1702-EX, or 1702-MX depending on the taxpayer type.</p></div></div>
+                  <div class="accordion-body"><div class="accordion-content"><p>A tax return filed by individuals or corporations reporting their income, deductions, and tax liability for a given period.</p></div></div>
                 </div>
                 <div class="accordion-item">
                   <button class="accordion-btn" aria-expanded="false">PCN — Payment Confirmation Number <span class="accordion-icon" aria-hidden="true">▼</span></button>
@@ -404,23 +591,23 @@
                 </div>
                 <div class="accordion-item">
                   <button class="accordion-btn" aria-expanded="false">TIN — Tax Identification Number <span class="accordion-icon" aria-hidden="true">▼</span></button>
-                  <div class="accordion-body"><div class="accordion-content"><p>A unique 9- or 12-digit number assigned by the BIR to each taxpayer. Required for eFPS enrollment, filing, and all BIR transactions. The TIN is permanent and must not be shared with third parties.</p></div></div>
+                  <div class="accordion-body"><div class="accordion-content"><p>A unique 9- or 12-digit number assigned by the BIR to each taxpayer. Required for eFPS enrollment, filing, and all BIR transactions.</p></div></div>
                 </div>
                 <div class="accordion-item">
                   <button class="accordion-btn" aria-expanded="false">VAT — Value Added Tax <span class="accordion-icon" aria-hidden="true">▼</span></button>
                   <div class="accordion-body"><div class="accordion-content"><p>A 12% tax on the sale of goods, properties, and services in the Philippines. VAT-registered taxpayers file monthly (Form 2550M) and quarterly (Form 2550Q) VAT returns via eFPS.</p></div></div>
                 </div>
-
               </div>
             </div>
           </div>
         </div>
 
-      </div>
-    </div>
+      </div><!-- /.tabs -->
+    </div><!-- /.page-content -->
   </main>
 
   <div id="footer-placeholder"></div>
   <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/job-aids.js"></script>
 </body>
 </html>
