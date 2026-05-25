@@ -1,5 +1,5 @@
 /* --- Fonts & Root Variables --- */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=DM+Sans:wght@300;400;500&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
 
 :root {
   /* Colors */
@@ -21,7 +21,7 @@
 
   /* Typography */
   --font-display: 'Playfair Display', Georgia, serif;
-  --font-body: 'Source Sans 3', 'Segoe UI', sans-serif;
+  --font-body: 'DM Sans', 'Source Sans 3', 'Segoe UI', sans-serif;
 
   /* Layout & Spacing */
   --nav-h: 68px;
@@ -303,40 +303,65 @@ ol {
   color: var(--navy);
 }
 
-/* --- Hero Section --- */
+/* --- Hero Section (base — overridden by faq-hero styles below) --- */
 .page-hero {
-  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, var(--navy-light) 100%);
-  padding: 3.5rem 1.5rem 3rem;
-  color: var(--white);
+  background: linear-gradient(135deg, #0a1f44 0%, #0d2d6e 50%, #1a4480 100%);
+  padding: 0;
   position: relative;
   overflow: hidden;
+  color: var(--white);
 }
 
 .page-hero::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: repeating-linear-gradient(-45deg, transparent, transparent 60px, rgba(255, 255, 255, 0.02) 60px, rgba(255, 255, 255, 0.02) 62px);
+  background-image:
+    radial-gradient(circle at 12% 55%, rgba(255,255,255,0.04) 0%, transparent 45%),
+    radial-gradient(circle at 88% 18%, rgba(255,197,61,0.07) 0%, transparent 42%),
+    repeating-linear-gradient(
+      -45deg,
+      transparent, transparent 28px,
+      rgba(255,255,255,0.022) 28px, rgba(255,255,255,0.022) 29px
+    );
+  pointer-events: none;
+  z-index: 0;
 }
 
 .page-hero-inner {
   max-width: 1280px;
   margin: 0 auto;
+  padding: 3.5rem 1.5rem 0;
   position: relative;
+  z-index: 1;
 }
 
 .page-hero h1 {
   font-family: var(--font-display);
-  font-size: clamp(1.7rem, 4vw, 2.8rem);
-  margin-bottom: 0.5rem;
+  font-size: clamp(1.9rem, 4vw, 2.85rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.15;
+  margin-bottom: 0.85rem;
+  text-align: left;
+  letter-spacing: -0.01em;
+}
+
+.page-hero h1 em {
+  font-style: italic;
+  color: #ffc53d;
 }
 
 .page-hero p {
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 1.05rem;
-  max-width: 580px;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 1rem;
+  max-width: 480px;
+  font-weight: 300;
+  margin: 0;
+  text-align: left;
 }
 
+/* --- Breadcrumb --- */
 .breadcrumb {
   display: flex;
   gap: 0.5rem;
@@ -356,6 +381,169 @@ ol {
 
 .breadcrumb span {
   color: rgba(255, 255, 255, 0.35);
+}
+
+.page-hero-inner .breadcrumb {
+  margin-bottom: 2.25rem;
+}
+
+.page-hero-inner .breadcrumb a {
+  color: #e8ae45;
+}
+
+.page-hero-inner .breadcrumb [aria-current="page"] {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* --- Hero Decorative Rings --- */
+.hero-deco-ring {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-deco-ring-1 { width: 340px; height: 340px; top: -90px;  left: -90px;  border: 1px   solid rgba(255,255,255,0.04); }
+.hero-deco-ring-2 { width: 210px; height: 210px; top: -45px;  left: -45px;  border: 1px   solid rgba(255,255,255,0.065); }
+.hero-deco-ring-3 { width: 300px; height: 300px; bottom: -70px; right: -70px; border: 1.5px solid rgba(255,197,61,0.12); }
+
+/* --- Hero Body Layout --- */
+.hero-body {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: flex-end;
+}
+
+/* --- Hero Label Pill --- */
+.hero-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 197, 61, 0.13);
+  border: 1px solid rgba(255, 197, 61, 0.32);
+  color: #ffc53d;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 100px;
+  margin-bottom: 1.15rem;
+  font-family: var(--font-body);
+}
+
+.hero-label-dot {
+  width: 6px;
+  height: 6px;
+  background: #ffc53d;
+  border-radius: 50%;
+  animation: hero-pulse 2.2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes hero-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.45; transform: scale(0.65); }
+}
+
+/* --- Hero Search Section --- */
+.hero-search-section {
+  position: relative;
+  z-index: 1;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+}
+
+.hero-search-bar {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 0 1rem 0 1.25rem;
+  gap: 10px;
+  max-width: 580px;
+  transition: border-color 0.2s;
+}
+
+.hero-search-bar:focus-within {
+  border-color: rgba(255, 197, 61, 0.55);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.hero-search-bar svg {
+  flex-shrink: 0;
+  opacity: 0.38;
+}
+
+.hero-search-bar input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.93rem;
+  padding: 0.82rem 0;
+}
+
+.hero-search-bar input::placeholder {
+  color: rgba(255, 255, 255, 0.32);
+}
+
+.hero-search-btn {
+  background: #ffc53d;
+  color: #0a1f44;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1.15rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+
+.hero-search-btn:hover {
+  background: #e8ae45;
+}
+
+/* --- Hero Topic Chips --- */
+.hero-topic-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 1rem;
+  align-items: center;
+}
+
+.hero-chips-label {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.33);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-family: var(--font-body);
+}
+
+.hero-chip {
+  background: rgba(255, 255, 255, 0.07);
+  border: 0.5px solid rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 12px;
+  padding: 4px 13px;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: var(--font-body);
+}
+
+.hero-chip:hover {
+  background: rgba(255, 197, 61, 0.16);
+  border-color: rgba(255, 197, 61, 0.42);
+  color: #ffc53d;
 }
 
 /* --- Main Layout --- */
@@ -470,8 +658,8 @@ ol {
   color: var(--white);
 }
 
-.btn-sm { padding: 0.45rem 1rem; font-size: 0.82rem; }
-.btn-lg { padding: 0.9rem 2rem; font-size: 1rem; }
+.btn-sm  { padding: 0.45rem 1rem;  font-size: 0.82rem; }
+.btn-lg  { padding: 0.9rem 2rem;   font-size: 1rem; }
 .btn-full { width: 100%; justify-content: center; }
 
 /* --- Components: Forms --- */
@@ -845,10 +1033,10 @@ ol {
   text-transform: uppercase;
 }
 
-.badge-navy { background: var(--navy); color: var(--white); }
-.badge-gold { background: var(--gold); color: var(--navy); }
-.badge-gray { background: var(--gray-200); color: var(--gray-600); }
-.badge-green { background: #d4edda; color: #155724; }
+.badge-navy  { background: var(--navy);     color: var(--white); }
+.badge-gold  { background: var(--gold);     color: var(--navy); }
+.badge-gray  { background: var(--gray-200); color: var(--gray-600); }
+.badge-green { background: #d4edda;         color: #155724; }
 
 /* --- Components: Downloads & Search --- */
 .download-item {
@@ -923,6 +1111,85 @@ ol {
   flex-shrink: 0;
 }
 
+/* --- FAQ Page Layout --- */
+.faq-layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.faq-sidebar {
+  position: sticky;
+  top: calc(var(--nav-h) + 1.5rem);
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.faq-sidebar h3 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.85rem;
+}
+
+.faq-cat-btn {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 0.5rem 0.7rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--gray-600);
+  cursor: pointer;
+  transition: background var(--dur-fast), color var(--dur-fast);
+  margin-bottom: 0.15rem;
+}
+
+.faq-cat-btn:hover,
+.faq-cat-btn.active {
+  background: var(--gold-pale);
+  color: var(--navy);
+  font-weight: 700;
+}
+
+.faq-section         { display: none; }
+.faq-section.active  { display: block; }
+
+.contact-card {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  color: var(--white);
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.contact-card h4 {
+  color: var(--gold-light);
+  margin-bottom: 0.5rem;
+  font-family: var(--font-display);
+}
+
+.contact-card p {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 0.75rem;
+}
+
+.contact-card a {
+  color: var(--gold-light);
+  font-weight: 700;
+}
+
 /* --- Footer --- */
 footer {
   background: var(--navy);
@@ -985,7 +1252,7 @@ footer {
 
 /* --- Utilities --- */
 .text-center { text-align: center; }
-.text-right { text-align: right; }
+.text-right  { text-align: right; }
 .mt-1 { margin-top: 0.5rem; }
 .mt-2 { margin-top: 1rem; }
 .mt-3 { margin-top: 1.5rem; }
@@ -998,7 +1265,7 @@ footer {
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
 .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
 
-.flex { display: flex; }
+.flex        { display: flex; }
 .flex-center { display: flex; align-items: center; justify-content: center; }
 .gap-1 { gap: 0.5rem; }
 .gap-2 { gap: 1rem; }
@@ -1022,75 +1289,446 @@ footer {
 
 /* --- Media Queries --- */
 @media (max-width: 1024px) {
-  .footer-top {
-    grid-template-columns: 1fr 1fr;
-  }
-  .grid-4 {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  .footer-top    { grid-template-columns: 1fr 1fr; }
+  .grid-4        { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
-  .nav-links {
-    display: none;
-  }
-  .hamburger {
-    display: flex;
-  }
-  .footer-top {
-    grid-template-columns: 1fr;
-  }
+  .nav-links     { display: none; }
+  .hamburger     { display: flex; }
+  .footer-top    { grid-template-columns: 1fr; }
   .grid-2,
   .grid-3,
-  .grid-4 {
-    grid-template-columns: 1fr;
-  }
-  .page-hero {
-    padding: 2.5rem 1.25rem 2rem;
-  }
-  .page-content {
-    padding: 2rem 1.25rem;
-  }
-  .data-table {
-    font-size: 0.82rem;
-  }
+  .grid-4        { grid-template-columns: 1fr; }
+  .page-hero     { padding: 2.5rem 1.25rem 2rem; }
+  .page-content  { padding: 2rem 1.25rem; }
+  .data-table    { font-size: 0.82rem; }
   .data-table th,
-  .data-table td {
-    padding: 0.65rem 0.75rem;
-  }
+  .data-table td { padding: 0.65rem 0.75rem; }
+
+  /* FAQ */
+  .faq-layout    { grid-template-columns: 1fr; }
+  .faq-sidebar   { position: static; }
+
+  /* Hero */
+  .hero-body     { grid-template-columns: 1fr; }
+  .hero-search-section { padding: 1.5rem 1.25rem 2.5rem; }
 }
 
 @media (max-width: 480px) {
-  .brand-text .agency {
-    font-size: 0.95rem;
-  }
-  .download-item {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .search-bar {
-    flex-direction: column;
-  }
+  .brand-text .agency { font-size: 0.95rem; }
+  .download-item      { flex-direction: column; align-items: flex-start; }
+  .search-bar         { flex-direction: column; }
+  .page-hero-inner    { padding: 2.5rem 1.25rem 0; }
 }
 
-/* ---- ADJUSTMENTS -----*/
-/* centered main text*/
-.page-hero h1,
-.hero-h1 {
-    text-align: center;
+/* ============================================================
+   issuances-extra.css
+   Page-specific additions for issuances.html.
+   Import AFTER style.css — do not duplicate shared rules here.
+   ============================================================ */
+
+/* ── Issuance type tags ── */
+.type-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.type-rr   { background: #e3f0ff; color: #1a4ac0; }
+.type-rmc  { background: #e8f8ef; color: #1a7a4a; }
+.type-rmo  { background: #fdf0ee; color: #c0392b; }
+.type-birt { background: #fef9e8; color: #b8860b; }
+.type-rar  { background: #f5e8fd; color: #7b2fb5; }
+
+/* ── Table wrapper ── */
+.issuance-table-wrap {
+  overflow-x: auto;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
 }
 
-/* centered subtext for home page*/
-.hero-content p,
-.hero-sub {
-    text-align: center;
-    max-width: 100%;
+.issuance-row td:first-child { font-weight: 700; color: var(--navy); }
+
+.issuance-link { color: var(--navy-light); font-weight: 600; }
+.issuance-link:hover { color: var(--gold); text-decoration: underline; }
+
+/* ── Issuances-specific tab bar ── */
+.issuances-tab-bar {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid var(--gray-200);
+  margin-bottom: 2rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex-wrap: nowrap;
+}
+.issuances-tab-bar::-webkit-scrollbar { display: none; }
+
+.issuances-tab-btn {
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  padding: 0.8rem 1.4rem;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--gray-400);
+  cursor: pointer;
+  white-space: nowrap;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  transition: color var(--dur-fast) var(--ease),
+              border-color var(--dur-fast) var(--ease),
+              background var(--dur-fast) var(--ease);
+  position: relative;
 }
 
-/* centered subtexts for all */
-.page-hero p {
-    text-align: center;
-    max-width: 580px;
-    margin: 0 auto;
+.issuances-tab-btn:hover {
+  color: var(--navy);
+  background: var(--gray-100);
 }
 
+.issuances-tab-btn.active {
+  color: var(--navy);
+  border-bottom-color: var(--gold);
+  background: var(--white);
+}
+
+/* Active tab underline accent */
+.issuances-tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gold);
+  border-radius: 2px 2px 0 0;
+}
+
+/* ── Tab panels ── */
+.issuances-panel         { display: none; }
+.issuances-panel.active  { display: block; }
+
+/* ── Issuances section wrapper (scroll target) ── */
+.issuances-tabs-section {
+  scroll-margin-top: calc(var(--nav-h) + 1rem);
+}
+
+/* ── Hero search section for issuances ── */
+/* Reuses .hero-search-bar, .hero-search-btn, .hero-topic-chips, .hero-chip
+   from style.css — only override label text color if needed */
+
+/* ── Chip active state for issuance type chips ── */
+.issuance-chip {
+  background: rgba(255, 255, 255, 0.07);
+  border: 0.5px solid rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 12px;
+  padding: 4px 13px;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: var(--font-body);
+}
+
+.issuance-chip:hover {
+  background: rgba(255, 197, 61, 0.16);
+  border-color: rgba(255, 197, 61, 0.42);
+  color: #ffc53d;
+}
+
+/* ── Count badge inside tab button ── */
+.tab-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gray-200);
+  color: var(--gray-600);
+  font-size: 0.7rem;
+  font-weight: 700;
+  border-radius: 99px;
+  padding: 1px 7px;
+  margin-left: 6px;
+  transition: background var(--dur-fast), color var(--dur-fast);
+}
+
+.issuances-tab-btn.active .tab-count {
+  background: var(--gold-pale);
+  color: var(--gold);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .issuances-tab-btn { padding: 0.65rem 0.9rem; font-size: 0.8rem; }
+}
+
+@media (max-width: 480px) {
+  .issuances-tab-bar { gap: 0; }
+  .issuances-tab-btn { padding: 0.6rem 0.75rem; font-size: 0.75rem; }
+}
+
+/* Pages without a hero search section need bottom padding */
+.page-hero-inner.hero-pad-bottom {
+  padding-bottom: 3.5rem;
+}
+
+/* ============================================================
+   job-aids-extra.css
+   Page-specific additions for job-aids.html.
+   Link AFTER style.css.
+   ============================================================ */
+
+/* ── Forms sub-tab bar ── */
+.forms-sub-bar {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--gray-200);
+}
+
+.forms-sub-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--white);
+  border: 2px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 1.1rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gray-600);
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease);
+  white-space: nowrap;
+}
+
+.forms-sub-btn:hover {
+  border-color: var(--navy);
+  color: var(--navy);
+  background: var(--gray-100);
+}
+
+.forms-sub-btn.active {
+  border-color: var(--navy);
+  background: var(--navy);
+  color: var(--white);
+}
+
+.forms-sub-btn .sub-icon {
+  font-size: 1rem;
+}
+
+/* ── Sub-panels ── */
+.forms-sub-panel         { display: none; }
+.forms-sub-panel.active  { display: block; }
+
+/* ── Section headers inside each sub-panel ── */
+.forms-section {
+  margin-bottom: 2.5rem;
+}
+
+.forms-section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid var(--gray-100);
+}
+
+.forms-section-header h3 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--navy);
+}
+
+.forms-section-header .section-count {
+  background: var(--gold-pale);
+  color: var(--gold);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 9px;
+  border-radius: 99px;
+  letter-spacing: 0.04em;
+}
+
+/* ── Form aid rows (grid of download cards) ── */
+.forms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.6rem;
+}
+
+.form-aid-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.85rem;
+  transition: border-color var(--dur-fast), box-shadow var(--dur-fast), background var(--dur-fast);
+}
+
+.form-aid-row:hover {
+  border-color: var(--gold);
+  background: var(--gold-pale);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-aid-name {
+  font-size: 0.83rem;
+  font-weight: 600;
+  color: var(--navy);
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.form-aid-dl {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: transparent;
+  border: 1.5px solid var(--navy);
+  border-radius: var(--radius-sm);
+  padding: 3px 10px;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--navy);
+  cursor: pointer;
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: background var(--dur-fast), color var(--dur-fast);
+}
+
+.form-aid-dl:hover {
+  background: var(--navy);
+  color: var(--white);
+}
+
+/* ── TP Guide list ── */
+.tp-guide-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tp-guide-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+  transition: border-color var(--dur-fast), background var(--dur-fast);
+}
+
+.tp-guide-item:hover {
+  border-color: var(--gold);
+  background: var(--gold-pale);
+}
+
+.tp-guide-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--navy);
+  flex: 1;
+}
+
+/* ── Search bar inside forms tab ── */
+.forms-search-wrap {
+  margin-bottom: 1.75rem;
+  max-width: 480px;
+}
+
+.forms-search-wrap .form-input {
+  font-size: 0.88rem;
+}
+
+/* ── Application guide cards (Enrollment / ePayment) ── */
+.app-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.app-guide-card {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-md);
+  padding: 1.75rem 1.5rem;
+  transition: border-color var(--dur-fast), box-shadow var(--dur-fast), background var(--dur-fast);
+}
+
+.app-guide-card:hover {
+  border-color: var(--gold);
+  background: var(--gold-pale);
+  box-shadow: var(--shadow-sm);
+}
+
+.app-guide-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  background: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.app-guide-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.app-guide-info strong {
+  display: block;
+  font-size: 1rem;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+
+.app-guide-info span {
+  font-size: 0.85rem;
+  color: var(--gray-400);
+}
+
+.form-aid-dl {
+  padding: 0.5rem 1.1rem;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 600px) {
+  .app-guide-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .forms-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+  .app-guide-grid { grid-template-columns: 1fr; }
+  .forms-sub-btn { font-size: 0.8rem; padding: 0.45rem 0.85rem; }
+}
+
+@media (max-width: 480px) {
+  .forms-grid { grid-template-columns: 1fr 1fr; }
+}

@@ -7,272 +7,217 @@
   <meta name="description" content="Browse BIR Revenue Regulations, Revenue Memorandum Circulars, Revenue Memorandum Orders, and Tax Rulings."/>
   <meta name="robots" content="noindex, nofollow">
   <link rel="stylesheet" href="../assets/css/style.css"/>
-  <style>
-    .filter-bar { display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
-    .filter-chip { padding: .4rem .95rem; border: 2px solid var(--gray-200); border-radius: 99px; background: var(--white); font-family: var(--font-body); font-size: .82rem; font-weight: 600; color: var(--gray-600); cursor: pointer; transition: border-color var(--dur-fast), background var(--dur-fast), color var(--dur-fast); }
-    .filter-chip:hover, .filter-chip.active { border-color: var(--navy); background: var(--navy); color: var(--white); }
-    
-    .issuance-table-wrap { overflow-x: auto; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); }
-    .issuance-row td:first-child { font-weight: 700; color: var(--navy); }
-    .issuance-link { color: var(--navy-light); font-weight: 600; }
-    .issuance-link:hover { color: var(--gold); text-decoration: underline; }
-    
-    .type-tag { font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: .2rem .55rem; border-radius: 4px; white-space: nowrap; }
-    .type-rr { background:#e3f0ff; color:#1a4ac0; }
-    .type-rmc { background:#e8f8ef; color:#1a7a4a; }
-    .type-rmo { background:#fdf0ee; color:#c0392b; }
-    .type-birt { background:#fef9e8; color:#b8860b; }
-    .type-rar { background:#f5e8fd; color:#7b2fb5; }
-  </style>
+  <link rel="stylesheet" href="../assets/css/issuances-extra.css"/>
 </head>
 <body>
-  <div style="background-color: #dc2626; color: white; text-align: center; padding: 10px; font-weight: bold; position: sticky; top: 0; z-index: 9999; font-size: 14px; letter-spacing: 0.05em;">
-  ⚠️ ACADEMIC PROJECT ONLY: This is a student redesign mockup for an HCI class. This is NOT the official BIR eFPS website. Do not enter real personal information.
+
+  <div style="background-color:#dc2626;color:white;text-align:center;padding:10px;font-weight:bold;position:sticky;top:0;z-index:9999;font-size:14px;letter-spacing:0.05em;">
+    ⚠️ ACADEMIC PROJECT ONLY: This is a student redesign mockup for an HCI class. This is NOT the official BIR eFPS website. Do not enter real personal information.
   </div>
+
   <div id="nav-placeholder"></div>
 
-  <div class="alert-banner" role="alert" aria-label="Filing deadline notice">
-    <div class="alert-banner-inner">
-      <svg class="alert-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-        <path d="M8 1.5L14.5 13H1.5L8 1.5z" stroke="#f59e0b" stroke-width="1.3" fill="none"/>
-        <path d="M8 6v3.5M8 11v.5" stroke="#f59e0b" stroke-width="1.3" stroke-linecap="round"/>
-      </svg>
-      <div>
-        <span class="alert-label">Filing Deadline</span>
-        <div class="alert-text">
-          <strong style="color:#e8bc6a">Annual ITR (1701/1702)</strong> — deadline extended to <strong style="color:#e8bc6a">April 30, 2025</strong>. No late-filing penalties for eFPS filers through <strong style="color:#e8bc6a">May 5, 2025</strong>.&nbsp; <a href="../pages/issuances.html">Read RMC 19-2025 →</a>
+  <!-- ══ REDESIGNED HERO ══ -->
+  <div class="page-hero">
+    <div class="hero-deco-ring hero-deco-ring-1"></div>
+    <div class="hero-deco-ring hero-deco-ring-2"></div>
+    <div class="hero-deco-ring hero-deco-ring-3"></div>
+
+    <div class="page-hero-inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../pages/efps-home.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <span aria-current="page">Revenue Issuances</span>
+      </nav>
+
+      <div class="hero-body">
+        <div>
+          <div class="hero-label">
+            <span class="hero-label-dot" aria-hidden="true"></span>
+            Official eFPS Documents
+          </div>
+          <h1>Revenue <em>Issuances</em></h1>
+          <p>Official BIR issuances including Revenue Regulations, Memorandum Circulars, Orders, and Tax Rulings.</p>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="page-hero">
-    <div class="page-hero-inner">
-      <div class="breadcrumb" aria-label="Breadcrumb">
-        <a href="../pages/efps-home.html">Home</a><span>›</span>
-        <span aria-current="page">Issuances &amp; Rulings</span>
+    <!-- Search + quick-type chips -->
+    <div class="hero-search-section" role="search">
+      <div class="hero-search-bar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <label for="issuances-search" class="sr-only">Search issuances</label>
+        <input type="search" id="issuances-search"
+               placeholder="Search by number, title, or keyword…"
+               aria-label="Search issuances"/>
+        <button class="hero-search-btn" id="issuances-search-btn" type="button">Search</button>
       </div>
-      <h1>Issuances &amp; Rulings</h1>
-      <p>Official BIR issuances including Revenue Regulations, Memorandum Circulars, Orders, and Tax Rulings.</p>
+
+      <div class="hero-topic-chips" aria-label="Jump to issuance type">
+        <span class="hero-chips-label">Jump to:</span>
+        <button class="issuance-chip" data-tab="0">Revenue Regulations</button>
+        <button class="issuance-chip" data-tab="1">Memorandum Circulars</button>
+        <button class="issuance-chip" data-tab="2">Memorandum Orders</button>
+      </div>
     </div>
   </div>
+  <!-- ══ END HERO ══ -->
 
   <main id="main-content">
     <div class="page-content">
 
-      <div class="search-bar" role="search">
-        <label for="issuances-search" class="sr-only">Search issuances</label>
-        <input class="form-input" type="search" id="issuances-search" placeholder="Search by number, title, or keyword…" aria-label="Search issuances"/>
-        <button class="btn btn-primary" type="button" onclick="filterIssuances()">Search</button>
-      </div>
-
-      <div class="tabs">
-        <div class="tab-bar" role="tablist" aria-label="Issuance types">
-          <button class="tab-btn active" role="tab" aria-selected="true"  aria-controls="tab-all">All Issuances</button>
-          <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-rr">Revenue Regulations</button>
-          <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-rmc">Revenue Memorandum Circulars</button>
-          <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-rmo">Revenue Memorandum Orders</button>
-          <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-rulings">Tax Rulings</button>
+      <!-- Tab bar -->
+      <div class="issuances-tabs-section">
+        <div class="issuances-tab-bar" role="tablist" aria-label="Issuance types">
+          <button class="issuances-tab-btn" role="tab" aria-selected="false"
+                  aria-controls="panel-rr" id="tab-rr">
+            Revenue Regulations
+            <span class="tab-count">3</span>
+          </button>
+          <button class="issuances-tab-btn" role="tab" aria-selected="false"
+                  aria-controls="panel-rmc" id="tab-rmc">
+            Revenue Memorandum Circulars
+            <span class="tab-count">52</span>
+          </button>
+          <button class="issuances-tab-btn" role="tab" aria-selected="false"
+                  aria-controls="panel-rmo" id="tab-rmo">
+            Revenue Memorandum Orders
+            <span class="tab-count">11</span>
+          </button>
         </div>
 
-        <div class="tab-panel active" id="tab-all" role="tabpanel">
-          <div class="filter-bar">
-            <button class="filter-chip active" data-year="all">All Years</button>
-            <button class="filter-chip" data-year="2025">2025</button>
-            <button class="filter-chip" data-year="2024">2024</button>
-            <button class="filter-chip" data-year="2023">2023</button>
-          </div>
-
-          <div class="issuance-table-wrap">
-            <table class="data-table" id="issuances-table">
-              <thead>
-                <tr>
-                  <th scope="col">Issuance No.</th>
-                  <th scope="col">Type</th>
-                  <th scope="col">Date</th>
-                  <th scope="col">Title / Subject</th>
-                  <th scope="col">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="issuance-row">
-                  <td>RMC 35-2025</td>
-                  <td><span class="type-tag type-rmc">RMC</span></td>
-                  <td>Apr 10, 2025</td>
-                  <td>Guidelines on the Mandatory Use of Electronic Receipts and Invoices for All Taxpayers</td>
-                  <td><a href="../pages/downloads.html" class="issuance-link btn btn-sm btn-outline">View PDF</a></td>
-                </tr>
-                <tr class="issuance-row">
-                  <td>RR 6-2025</td>
-                  <td><span class="type-tag type-rr">RR</span></td>
-                  <td>Mar 28, 2025</td>
-                  <td>Revised Rules and Regulations on Creditable Withholding Tax on Income Payments</td>
-                  <td><a href="../pages/downloads.html" class="issuance-link btn btn-sm btn-outline">View PDF</a></td>
-                </tr>
-                <tr class="issuance-row">
-                  <td>RMO 12-2025</td>
-                  <td><span class="type-tag type-rmo">RMO</span></td>
-                  <td>Feb 20, 2025</td>
-                  <td>Mandatory Electronic Filing via eFPS for Top 5,000 Private Corporations</td>
-                  <td><a href="../pages/downloads.html" class="issuance-link btn btn-sm btn-outline">View PDF</a></td>
-                </tr>
-                <tr class="issuance-row">
-                  <td>BIR Ruling DA-032-25</td>
-                  <td><span class="type-tag type-birt">Ruling</span></td>
-                  <td>Feb 5, 2025</td>
-                  <td>Tax Treatment of Digital Services Under the VAT Framework</td>
-                  <td><a href="../pages/downloads.html" class="issuance-link btn btn-sm btn-outline">View PDF</a></td>
-                </tr>
-                <tr class="issuance-row">
-                  <td>RMC 18-2025</td>
-                  <td><span class="type-tag type-rmc">RMC</span></td>
-                  <td>Jan 30, 2025</td>
-                  <td>Clarification on the Coverage and Scope of the Ease of Paying Taxes Act (EOPT)</td>
-                  <td><a href="../pages/downloads.html" class="issuance-link btn btn-sm btn-outline">View PDF</a></td>
-                </tr>
-                <tr class="issuance-row">
-                  <td>RR 1-2025</td>
-                  <td><span class="type-tag type-rr">RR</span></td>
-                  <td>Jan 15, 2025</td>
-                  <td>Implementing Rules on the Reduced Corporate Income Tax Rate Under CREATE MORE Act</td>
-                  <td><a href="../pages/downloads.html" class="issuance-link btn btn-sm btn-outline">View PDF</a></td>
-                </tr>
-                <tr class="issuance-row">
-                  <td>RMO 45-2024</td>
-                  <td><span class="type-tag type-rmo">RMO</span></td>
-                  <td>Nov 22, 2024</td>
-                  <td>Revised Audit and Investigation Procedures for eFPS-enrolled Taxpayers</td>
-                  <td><a href="../pages/downloads.html" class="issuance-link btn btn-sm btn-outline">View PDF</a></td>
-                </tr>
-                <tr class="issuance-row">
-                  <td>RMC 98-2024</td>
-                  <td><span class="type-tag type-rmc">RMC</span></td>
-                  <td>Oct 8, 2024</td>
-                  <td>Extension of the Deadline for Filing of Annual Information Return (BIR Form 1604-CF)</td>
-                  <td><a href="../pages/downloads.html" class="issuance-link btn btn-sm btn-outline">View PDF</a></td>
-                </tr>
-                <tr class="issuance-row">
-                  <td>RR 14-2024</td>
-                  <td><span class="type-tag type-rr">RR</span></td>
-                  <td>Sep 12, 2024</td>
-                  <td>Implementing the Rationalization of the Documentary Stamp Tax Under the EOPT Act</td>
-                  <td><a href="../pages/downloads.html" class="issuance-link btn btn-sm btn-outline">View PDF</a></td>
-                </tr>
-                <tr class="issuance-row">
-                  <td>BIR Ruling DA-188-24</td>
-                  <td><span class="type-tag type-birt">Ruling</span></td>
-                  <td>Aug 20, 2024</td>
-                  <td>Clarification on VAT Exemption of Health Maintenance Organizations (HMOs)</td>
-                  <td><a href="../pages/downloads.html" class="issuance-link btn btn-sm btn-outline">View PDF</a></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="mt-3" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
-            <p style="font-size:.85rem; color:var(--gray-400);">Showing 10 of 2,847 issuances</p>
-            <div style="display:flex; gap:.5rem;">
-              <button class="btn btn-outline btn-sm" disabled>← Previous</button>
-              <button class="btn btn-primary btn-sm">Next →</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="tab-panel" id="tab-rr" role="tabpanel">
+        <!-- ── Panel: Revenue Regulations ── -->
+        <div class="issuances-panel" id="panel-rr" role="tabpanel" aria-labelledby="tab-rr">
           <div class="announcement-banner">
             <span>📋</span>
-            <div>Showing <strong>Revenue Regulations (RR)</strong> — formal orders issued by the Secretary of Finance upon BIR recommendation.</div>
+            <div>Showing <strong>Revenue Regulations (RR)</strong> — formal orders issued by the Secretary of Finance upon BIR recommendation. Latest (2026)</div>
           </div>
           <div class="issuance-table-wrap">
             <table class="data-table">
-              <thead><tr><th>No.</th><th>Date</th><th>Subject</th><th>Action</th></tr></thead>
+              <thead>
+                <tr>
+                  <th>No.</th>
+                  <th>Subject</th>
+                  <th>Date of Issue</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
               <tbody>
-                <tr class="issuance-row"><td>RR 6-2025</td><td>Mar 28, 2025</td><td>Revised Rules on Creditable Withholding Tax</td><td><a href="../pages/downloads.html" class="btn btn-sm btn-outline issuance-link">PDF</a></td></tr>
-                <tr class="issuance-row"><td>RR 1-2025</td><td>Jan 15, 2025</td><td>Reduced CIT Rate Under CREATE MORE Act</td><td><a href="../pages/downloads.html" class="btn btn-sm btn-outline issuance-link">PDF</a></td></tr>
-                <tr class="issuance-row"><td>RR 14-2024</td><td>Sep 12, 2024</td><td>Rationalization of Documentary Stamp Tax</td><td><a href="../pages/downloads.html" class="btn btn-sm btn-outline issuance-link">PDF</a></td></tr>
-                <tr class="issuance-row"><td>RR 8-2024</td><td>May 3, 2024</td><td>Implementing the EOPT Act — VAT Provisions</td><td><a href="../pages/downloads.html" class="btn btn-sm btn-outline issuance-link">PDF</a></td></tr>
-                <tr class="issuance-row"><td>RR 3-2024</td><td>Feb 10, 2024</td><td>Tax Incentives for Registered Business Enterprises</td><td><a href="../pages/downloads.html" class="btn btn-sm btn-outline issuance-link">PDF</a></td></tr>
+                <tr class="issuance-row"><td>RR No. 3-2026</td><td>Implementing Executive Order No. 114, Series of 2026 "Temporarily Suspending the Excise Taxes on Specific Petroleum Products</td><td>April 17, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RR No. 2-2026</td><td>Guidelines in the Availment of the Fiscal Incentives Under the "Philippine Natural Gas Industry Development Act"</td><td>March 17, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RR No. 1-2026</td><td>To provide optional value-added tax (VAT) registration for certain Registered Business Enterprises (RBEs), extend the deadline for system reconfiguration</td><td>February 16, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
               </tbody>
             </table>
           </div>
         </div>
 
-        <div class="tab-panel" id="tab-rmc" role="tabpanel">
+        <!-- ── Panel: Revenue Memorandum Circulars ── -->
+        <div class="issuances-panel" id="panel-rmc" role="tabpanel" aria-labelledby="tab-rmc">
           <div class="announcement-banner">
             <span>📋</span>
             <div>Showing <strong>Revenue Memorandum Circulars (RMC)</strong> — clarifications and guidelines from the Commissioner of Internal Revenue.</div>
           </div>
           <div class="issuance-table-wrap">
             <table class="data-table">
-              <thead><tr><th>No.</th><th>Date</th><th>Subject</th><th>Action</th></tr></thead>
+              <thead>
+                <tr><th>No.</th><th>Subject</th><th>Date of Issue</th><th>Action</th></tr>
+              </thead>
               <tbody>
-                <tr class="issuance-row"><td>RMC 35-2025</td><td>Apr 10, 2025</td><td>Mandatory Use of Electronic Receipts and Invoices</td><td><a href="../pages/downloads.html" class="btn btn-sm btn-outline issuance-link">PDF</a></td></tr>
-                <tr class="issuance-row"><td>RMC 18-2025</td><td>Jan 30, 2025</td><td>Coverage and Scope of the EOPT Act</td><td><a href="../pages/downloads.html" class="btn btn-sm btn-outline issuance-link">PDF</a></td></tr>
-                <tr class="issuance-row"><td>RMC 98-2024</td><td>Oct 8, 2024</td><td>Extension — Annual Information Return Deadline</td><td><a href="../pages/downloads.html" class="btn btn-sm btn-outline issuance-link">PDF</a></td></tr>
-                <tr class="issuance-row"><td>RMC 65-2024</td><td>Jul 15, 2024</td><td>Guidelines on the Use of eFPS for MSME Taxpayers</td><td><a href="../pages/downloads.html" class="btn btn-sm btn-outline issuance-link">PDF</a></td></tr>
-                <tr class="issuance-row"><td>RMC 22-2024</td><td>Mar 20, 2024</td><td>Tax Filing Requirements for Online Sellers</td><td><a href="../pages/downloads.html" class="btn btn-sm btn-outline issuance-link">PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 52-2026</td><td>Circularizing Republic Act No. 12021, Entitled "An Act Providing for the Magna Carta of Filipino Seafarers"</td><td>May 21, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 51-2026</td><td>Guidelines on the Development of Agency Competency-Based Human Resource Management System </td><td>May 21, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 50-2026</td><td>Guidelines on the Conduct of Mid-Term and Full Term Review of Awardees of the Program to Institutionalize Meritocracy and Excellence in Human Resource Management</td><td>May 21, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 49-2026</td><td>Circularizing Republic Act No. 12231, entitled "An Act Optimizing the National Government for Efficient Public Service Delivery"</td><td>May 21, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 48-2026</td><td>Lost Two (2) Pads of Used/Filled-Up but Unissued BIR Form No. 2302 - Tax Subsidy Availment Certificate</td><td>May 21, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 47-2026</td><td>Simplified and Streamlined Guidelines and Procedures in the Closure and/or Cancellation of Business Registration</td><td>May 19, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 46-2026</td><td>Prescribes the Procedures and Deadline on the Submission of 2025 Audited Financial Statements and Other Attachments</td><td>May 18, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 45-2026</td><td>"Directing all Government Agencies and Local Government Units and the Private Sector, to Participate in the Celebration of the 128th Anniversary of the Proclamation of Philippine Independence".</td><td>May 13, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 44-2026</td><td>Guidelines for Accreditation of Value Added Tax (VAT) Refund System Operators Pursuant</td><td>May 13, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 43-2026</td><td>Repealing for the Purpose Republic Act No. 10845 or the 'Anti-Agricultural Smuggling Act of 2016'</td><td>May 13, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 42-2026</td><td>Clarification on the Submission of the Certificate of Entitlement to Tax Incentives</td><td>May 7, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 41-2026</td><td>Updated List of Registered Manufacturers/Importers/ Exporters with the Corresponding Product Brands/Variants</td><td>April 30, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 40-2026</td><td>The Memorandum of Agreement (MOA) between the Commission on Elections (COMELEC) and Bureau of Internal Revenue (BIR) </td><td>April 30, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 39-2026</td><td>Clarification on the Deadline for the Submission of Required Attachments to 2025 Annual Income Tax Returns</td><td>April 30, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 38-2026</td><td>Prescribing the Issuance and Posting of the BIR Registration Seal Badge on Online Websites</td><td>April 29, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 37-2026</td><td>Amending Pertinent Provisions of Revenue Memorandum Circular No. 20-2026 to Include Electronic Filing of BIR Form No. 1701-MS Through the BIR Offline eBIRForms Package 7.9.6</td><td>April 28, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 36-2026</td><td>Availability of Offline Electronic Bureau of Internal Revenue Forms (eBIRForms) Package Version 7.9.6.0 Digest</td><td>April 28, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 35-2026</td><td>Clarifying the Deadline of Filing of Request for Reconsideration of the Full or Partial Denial of the Claim for VAT/Excise Tax Refund </td><td>April 28, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 34-2026</td><td>Availability of the BIR Digital TIN ID through the Department of Information and Communications Technology (DICT)</td><td>April 28, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 33-2026</td><td>Provides clarification on the filing and payment of Estate Tax under the Estate Tax Amnesty Digest</td><td>April 27, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 32-2026</td><td>Circularizing Joint Administrative Order No. 001-2025 entitled "GUIDELINES ON THE TREATMENT OF DONATIONS TO THE NATIONAL DAIRY AUTHORITY (NDA)"</td><td>April 20, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 31-2026</td><td>Circularizing Executive Order No. 114, Series of 2026, Entitled "Temporarily Suspending the Excise Taxes on Specific Petroleum Products"</td><td>April 17, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 30-2026</td><td>Extension of the deadline for the Filing of 2025 Annual Income Tax Returns and Payment of the Corresponding Taxes Due Thereon Including Submission of Required Attachments</td><td>April 14, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 29-2026</td><td>"Directing All Government Agencies and Instrumentalities to Strictly Adopt Energy Conservation Protocols"</td><td>April 13, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 28-2026</td><td>Guidelines on Energy Efficiency and Conservation in the Department of Finance</td><td>April 13, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 27-2026</td><td>The updated full list of VAT-exempt drugs under Republic Act (R.A.) No. 10963 (TRAIN Law) and R.A. No. 11534 (CREATE Act)</td><td>April 8, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 26-2026</td><td>Circularizing Anti-Red Tape Authority (ARTA) Advisory No. 2026-007, Series of 2026, entitled "Reiteration on the Deadline of Submission of the Compliances under R.A. 11032</td><td>April 6, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 25-2026</td><td>Circularizing Memorandum Circular No. 116 Dated 31 March 2026 of the Office of the President Relative to the Prescribed Work Arrangements on 01 April 2026</td><td>March 31, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 24-2026</td><td>Clarifying the Application of Revenue Memorandum Circular Nos. 5- 2024 and 38-2024 on the Tax Treatment of Cross-Border Services</td><td>March 30, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 23-2026</td><td>Consolidated Provisions to Simplify and Streamline the Procedures and Requirements Relative to the Availment of the Tax Exemptions</td><td>March 30, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 22-2026</td><td>Circularizing the Frequently Asked Questions on the 2026 Omnibus Rules on the Statement of Assets, Liabilities and Net Work (SALN)</td><td>March 30, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 21-2026</td><td>Tax Treatment of Development Assistance Activities Carried Out by the Foreign Assistance Section of the United States Embassy in the Philippines</td><td>March 19, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 20-2026</td><td>Guidelines in the Filing of Annual Income Tax Returns and Payment of Corresponding Taxes Due Thereon for Calendar Year 2025</td><td>March 16, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 19-2026</td><td>Circularizing the Implementing Rules and Regulations of the "Instituting a Policy of Inclusion and Services for Learners with Disabilities in Support of Inclusive Education Act"</td><td>March 11, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 18-2026</td><td>Damaged Various Copies of Used/Issued Accountable Forms</td><td>March 9, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 17-2026</td><td>Lost Five (5) Pads of Unused/Unissued BIR Form No. AF51 - Accountable Form No. 51</td><td>March 9, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 16-2026</td><td>Lost Thirty-Two (32) Sets of Unused/Unissued BIR Form No. 0423 - Apprehension Slip</td><td>March 9, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 15-2026</td><td>Lost Original and Duplicate Copies of Used/Filled-Up but Unissued BIR Form No. 1966 - Electronic Letter of Authority</td><td>March 9, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 14-2026</td><td>Clarifying Revenue Memorandum Circular No. 8-2026 on the Lifting of the Suspension of Tax Audit and Field Operations, Revenue Memorandum Order (RMO) No. 1-2026, and RMO No. 6-2026</td><td>March 4, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 13-2026</td><td>Circularizing Republic Act No. 12312, titled "An Act Banning and Declaring Illegal Offshore Gaming Operations in the Philippines and Other Operations Related</td><td>February 27, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 12-2026</td><td>Provides extension of deadlines for the filing of tax returns and payment of the corresponding taxes due thereon, including submission of required documents for taxpayers under the jurisdiction of Revenue District Office No. 101 </td><td>February 13, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 11-2026</td><td>Missing triplicate copy of unused/unissued BIR Form No. AF51 — Accountable Form No. 51.</td><td>February 9, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 10-2026</td><td>Clarifying the Tax Treatment, Documentation Requirements, and Filing of Return and Payment of Donor's Tax for Donations Consisting Purely of Cash</td><td>February 4, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 9-2026</td><td>Observance of the Month of February as "Tax Awareness Month" Per Proclamation No. 486 S. 2024</td><td>February 2, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 8-2026</td><td>Resumption of All Tax Audit and Field Operations of the Bureau of Internal Revenue that were Suspended Under Revenue Memorandum Circular No. 107-2025</td><td>January 27, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 7-2026</td><td>Revised People's Freedom of Information (FOI) Manual of the Bureau of Internal Revenue and Updated List of FOI Receiving Officers</td><td>January 27, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 6-2026</td><td>Providing Extension of Deadlines for Filing of Tax Return and Payment of VAT due of Nonresident Digital Service Providers</td><td>January 26, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 5-2026</td><td>Letter of Authority (LOA) Verifier through REVIE</td><td>January 23, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 4-2026</td><td>Clarification on the Mandatory Registration of Permanently Bound Loose-Leaf Books of Accounts and Computerized Books of Accounts</td><td>January 15, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 3-2026</td><td>Circularizing Additional List of Personal Equity Retirement Account (PERA) Unit Investment Trust Funds (UITFs) Duly Approved by the Bangko Sentral ng Pilipinas (BSP)</td><td>January 12, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 2-2026</td><td>Circularizing Memorandum Circular (MC) No. 111 dated December 18, 2025 of the Office of the President, Malacañang Palace</td><td>January 12, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMC No. 1-2026</td><td>Publishing the Full Text of the Data Sharing Agreement between the Bureau of Internal Revenue and the Fiscal Incentives Review Board</td><td>January 5, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
               </tbody>
             </table>
           </div>
         </div>
 
-        <div class="tab-panel" id="tab-rmo" role="tabpanel">
+        <!-- ── Panel: Revenue Memorandum Orders ── -->
+        <div class="issuances-panel" id="panel-rmo" role="tabpanel" aria-labelledby="tab-rmo">
           <div class="announcement-banner">
             <span>📋</span>
             <div>Showing <strong>Revenue Memorandum Orders (RMO)</strong> — internal management and procedural directives.</div>
           </div>
           <div class="issuance-table-wrap">
             <table class="data-table">
-              <thead><tr><th>No.</th><th>Date</th><th>Subject</th><th>Action</th></tr></thead>
+              <thead>
+                <tr><th>No.</th><th>Subject</th><th>Date of Issue</th><th>Action</th></tr>
+              </thead>
               <tbody>
-                <tr class="issuance-row"><td>RMO 12-2025</td><td>Feb 20, 2025</td><td>Mandatory eFPS Filing — Top 5,000 Corporations</td><td><a href="../pages/downloads.html" class="btn btn-sm btn-outline issuance-link">PDF</a></td></tr>
-                <tr class="issuance-row"><td>RMO 45-2024</td><td>Nov 22, 2024</td><td>Revised Audit Procedures for eFPS Taxpayers</td><td><a href="../pages/downloads.html" class="btn btn-sm btn-outline issuance-link">PDF</a></td></tr>
-                <tr class="issuance-row"><td>RMO 30-2024</td><td>Aug 5, 2024</td><td>Guidelines for eAFS (Electronic Audited Financial Statements)</td><td><a href="../pages/downloads.html" class="btn btn-sm btn-outline issuance-link">PDF</a></td></tr>
-                <tr class="issuance-row"><td>RMO 10-2024</td><td>Mar 1, 2024</td><td>Revised Procedures for Tax Clearance Applications</td><td><a href="../pages/downloads.html" class="btn btn-sm btn-outline issuance-link">PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMO No. 11-2026</td><td>Updated Cost to Collect Threshold for Accounts Receivable/Delinquent Accounts (AR/DA) for Collection Enforcement Prioritization</td><td>May 12, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMO No. 10-2026</td><td>Amending pertinent provision of Revenue Memorandum Order (RMO) No. 14-2013 to include Office Code for the Office of the Deputy Commissioner, Strategic Reforms Group.</td><td>April 20, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMO No. 9-2026</td><td>Prescribing the Allocation of the CY 2026 BIR Collection Goal by Implementing Office</td><td>March 31, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMO No. 8-2026</td><td>Amending Revenue Memorandum Order No. 37-2023 on the Guidelines and Procedures in the Processing of Customer Satisfaction Survey for Frontline Services</td><td>March 12, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMO No. 7-2026</td><td>Adoption of Energy Efficiency and Conservation Measures Pursuant to Memorandum Circular No. 114 Dated March 6, 2026 of the Office of the President (OP), Malacañang Palace</td><td>March 9, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMO No. 6-2026</td><td>Amendments and Supplemental Guidelines Governing the Implementation of Revenue Memorandum Order (RMO) No. 1-2026</td><td>March 4, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMO No. 5-2026</td><td>Revised Policies, Guidelines and Procedures in the Filing and Submission of Statement of Assets, Liabilities and Net Worth (SALN)</td><td>March 2, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMO No. 4-2026</td><td>Implementing Guidelines on the Availment of Wellness Leave for BIR Officials and Employees Pursuant to Civil Service Commission (CSC)</td><td>February 19, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMO No. 3-2026</td><td>Further Amending Revenue Memorandum Order No. 14-2025, as Amended, Prescribing the Revised Allocation of the CY 2025 BIR Collection Goal by Implementing Office</td><td>February 4, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMO No. 2-2026</td><td>Designation of Official Spokesperson</td><td>January 28, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+                <tr class="issuance-row"><td>RMO No. 1-2026</td><td>Prescribing Revised Policies, Controls, and Procedures for Tax Audit and Assessment Following the Lifting of the Suspension Imposed Under Revenue Memorandum Circular No. 107-2025</td><td>January 27, 2026</td><td><a href="#" class="btn btn-outline btn-sm" download>PDF</a></td></tr>
+
               </tbody>
             </table>
           </div>
         </div>
 
-        <div class="tab-panel" id="tab-rulings" role="tabpanel">
-          <div class="announcement-banner">
-            <span>⚖️</span>
-            <div>Showing <strong>BIR Rulings</strong> — official positions on tax issues raised by taxpayers. Published rulings are publicly accessible.</div>
-          </div>
-          <div class="issuance-table-wrap">
-            <table class="data-table">
-              <thead><tr><th>Ruling No.</th><th>Date</th><th>Subject</th><th>Action</th></tr></thead>
-              <tbody>
-                <tr class="issuance-row"><td>DA-032-25</td><td>Feb 5, 2025</td><td>VAT Treatment of Digital Services</td><td><a href="../pages/downloads.html" class="btn btn-sm btn-outline issuance-link">PDF</a></td></tr>
-                <tr class="issuance-row"><td>DA-188-24</td><td>Aug 20, 2024</td><td>VAT Exemption of Health Maintenance Organizations</td><td><a href="../pages/downloads.html" class="btn btn-sm btn-outline issuance-link">PDF</a></td></tr>
-                <tr class="issuance-row"><td>DA-155-24</td><td>Jul 1, 2024</td><td>Income Tax Treatment of Government Retirement Benefits</td><td><a href="../pages/downloads.html" class="btn btn-sm btn-outline issuance-link">PDF</a></td></tr>
-                <tr class="issuance-row"><td>DA-088-24</td><td>Apr 12, 2024</td><td>DST on Electronic Certificates of Title</td><td><a href="../pages/downloads.html" class="btn btn-sm btn-outline issuance-link">PDF</a></td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
+      </div><!-- /.issuances-tabs-section -->
+    </div><!-- /.page-content -->
   </main>
 
   <div id="footer-placeholder"></div>
   <script src="../assets/js/main.js"></script>
-  <script>
-    document.querySelectorAll('[data-year]').forEach(chip => {
-      chip.addEventListener('click', () => {
-        document.querySelectorAll('[data-year]').forEach(c => c.classList.remove('active'));
-        chip.classList.add('active');
-      });
-    });
-
-    document.getElementById('issuances-search') && document.getElementById('issuances-search').addEventListener('input', function() {
-      const q = this.value.toLowerCase();
-      document.querySelectorAll('.issuance-row').forEach(row => {
-        row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none';
-      });
-    });
-  </script>
+  <script src="../assets/js/issuances.js"></script>
 </body>
 </html>
