@@ -7,6 +7,37 @@
   <meta name="description" content="Frequently asked questions about the BIR Electronic Filing and Payment System (eFPS)."/>
   <meta name="robots" content="noindex, nofollow">
   <link rel="stylesheet" href="../assets/css/style.css"/>
+  <style>
+  .page-hero { 
+    background-image: linear-gradient(135deg, rgba(11, 37, 69, 0.95) 0%, rgba(22, 58, 107, 0.85) 60%, rgba(30, 79, 142, 0.3) 100%), 
+                      url('../assets/img/kelly-sikkema-kA50vHmCxbk-unsplash.webp'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    padding: 0.75rem 1.5rem;
+    position: relative; 
+    overflow: hidden; 
+  }
+
+  @media (max-width: 200px) { 
+    /* Updates mobile rendering to use the same background hook */
+    .page-hero { 
+      background-image: linear-gradient(to bottom, rgba(11, 37, 69, 0.95) 10%, rgba(22, 58, 107, 0.8) 60%, rgba(30, 79, 142, 0.1) 100%), 
+                        url('../assets/img/kelly-sikkema-kA50vHmCxbk-unsplash.webp'); 
+      padding: 1.25rem 1.25rem 1.25rem; 
+    } 
+    .hero-content { max-width: 100%; }
+    .home-hero-inner { grid-template-columns: 1fr; gap: 2rem; display: block; }
+    .content-area { grid-template-columns: 1fr; }
+    .ql-grid { flex-wrap: wrap; }
+    .ql-item { min-width: 33.33%; border-bottom: 1px solid #d4dae2; }
+  }
+
+  @media (max-width: 600px) { 
+    .ql-item { min-width: 50%; } 
+    .maintenance-card { flex-direction: column; align-items: flex-start; }
+  }
+</style>
 </head>
 <body>
 
@@ -22,7 +53,7 @@
     <div class="hero-deco-ring hero-deco-ring-2"></div>
     <div class="hero-deco-ring hero-deco-ring-3"></div>
 
-    <div class="page-hero-inner hero-pad-bottom">
+    <div class="page-hero-inner">
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="../pages/efps-home.html">Home</a>
         <span aria-hidden="true">›</span>
@@ -36,7 +67,7 @@
             Help Center
           </div>
           <h1>Frequently <em>Asked</em><br>Questions</h1>
-          <p>Find answers to the most common questions about eFPS enrollment, filing, payment, and troubleshooting.</p>
+          <p>Find answers to the most common questions about eFPS enrollment, filing, payment, and general concerns.</p>
         </div>
       </div>
     </div>
@@ -519,5 +550,12 @@
   <div id="footer-placeholder"></div>
   <script src="../assets/js/main.js"></script>
   <script src="../assets/js/faqs.js"></script>
+
+  <!-- BACK TO TOP BUTTON -->
+  <button id="backToTopBtn" title="Go to top" aria-label="Back to top">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="18 15 12 9 6 15"></polyline>
+  </svg>
+  
 </body>
 </html>

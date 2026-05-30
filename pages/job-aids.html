@@ -28,6 +28,35 @@
     .checklist { display: flex; flex-direction: column; gap: .5rem; }
     .checklist-item { display: flex; gap: .65rem; align-items: flex-start; padding: .55rem .8rem; border-radius: var(--radius-sm); background: var(--gray-100); font-size: .88rem; color: var(--gray-600); }
     .checklist-item .check { color: var(--green-ok); font-size: 1rem; flex-shrink: 0; }
+  .page-hero { 
+    background-image: linear-gradient(135deg, rgba(11, 37, 69, 0.95) 0%, rgba(22, 58, 107, 0.85) 60%, rgba(30, 79, 142, 0.3) 100%), 
+                      url('../assets/img/kelly-sikkema-kA50vHmCxbk-unsplash.webp'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    padding: 0.75rem 1.5rem;
+    position: relative; 
+    overflow: hidden; 
+  }
+
+  @media (max-width: 200px) { 
+    /* Updates mobile rendering to use the same background hook */
+    .page-hero { 
+      background-image: linear-gradient(to bottom, rgba(11, 37, 69, 0.95) 10%, rgba(22, 58, 107, 0.8) 60%, rgba(30, 79, 142, 0.1) 100%), 
+                        url('../assets/img/kelly-sikkema-kA50vHmCxbk-unsplash.webp'); 
+      padding: 1.25rem 1.25rem 1.25rem; 
+    } 
+    .hero-content { max-width: 100%; }
+    .home-hero-inner { grid-template-columns: 1fr; gap: 2rem; display: block; }
+    .content-area { grid-template-columns: 1fr; }
+    .ql-grid { flex-wrap: wrap; }
+    .ql-item { min-width: 33.33%; border-bottom: 1px solid #d4dae2; }
+  }
+
+  @media (max-width: 600px) { 
+    .ql-item { min-width: 50%; } 
+    .maintenance-card { flex-direction: column; align-items: flex-start; }
+  }
   </style>
 </head>
 <body>
@@ -225,7 +254,7 @@
                 <span class="video-duration">18:32</span>
               </div>
               <div class="card-body">
-                <p style="font-size:.88rem;color:var(--gray-600);">Explains when to file using EFPS (Electronic Filing and Payment System), Offline eBIR forms and Online eBIR Forms.</p>
+                <p style="font-size:.88rem;color:var(--gray-600);">Explains when to file using EFPS, Offline eBIR forms and Online eBIR Forms.</p>
                 <a href="https://youtu.be/gH1zMrZYuh8?si=eE2NMs3f1NknWLWq" target="_blank" rel="noopener" class="btn btn-outline btn-sm mt-2">Watch on YouTube ↗</a>
               </div>
             </article>
@@ -258,12 +287,13 @@
                 <h3 class="section-title" style="font-size:1.3rem;">Individual ITR Filing Checklist</h3>
                 <div class="divider-accent"></div>
                 <div class="checklist">
-                  <div class="checklist-item"><span class="check">☑</span> BIR Form 1701 or 1701A (as applicable)</div>
-                  <div class="checklist-item"><span class="check">☑</span> Certificate of Compensation Payment (BIR Form 2316)</div>
-                  <div class="checklist-item"><span class="check">☑</span> Official Receipts / Invoices (for self-employed)</div>
+                  <div class="checklist-item"><span class="check">☑</span> BIR Form 1701-MS or 1700 (as applicable)</div>
+                  <div class="checklist-item"><span class="check">☑</span> Certificate of Compensation Payment (BIR Form 2316, 2304, 2307)</div>
+                  <div class="checklist-item"><span class="check">☑</span> Official Audited Financial Statements (AFS) (for self-employed)</div>
                   <div class="checklist-item"><span class="check">☑</span> Income records from all sources</div>
                   <div class="checklist-item"><span class="check">☑</span> Certificates of Tax Withheld (BIR Form 2307)</div>
                   <div class="checklist-item"><span class="check">☑</span> Proof of deductions (if itemized)</div>
+                  <div class="checklist-item"><span class="check">☑</span> Prepare Administrative Requirements (Email Confirmation & Valid ID)</div>
                 </div>
                 <a href="#" class="btn btn-outline btn-sm mt-3" download>Download Checklist PDF</a>
               </div>
@@ -321,14 +351,11 @@
             <button class="forms-sub-btn active" role="tab" aria-selected="false" data-sub="app">
               <span class="sub-icon">🖥️</span> eFPS Application
             </button>
-            <button class="forms-sub-btn" role="tab" aria-selected="false" data-sub="online">
-              <span class="sub-icon">🌐</span> Online Form Job Aids
-            </button>
             <button class="forms-sub-btn" role="tab" aria-selected="false" data-sub="offline">
               <span class="sub-icon">💾</span> Offline Form Job Aids
             </button>
             <button class="forms-sub-btn" role="tab" aria-selected="false" data-sub="tp">
-              <span class="sub-icon">📘</span> TPs Guide for eFPS
+              <span class="sub-icon">📘</span> Guide for eFPS
             </button>
           </div>
 
@@ -355,7 +382,7 @@
         <div class="app-guide-icon">💳</div>
         <div class="app-guide-info">
           <strong>ePayment Guide</strong>
-          <span>How to pay taxes via AAB through eFPS</span>
+          <span>How to pay taxes through eFPS</span>
         </div>
         <a href="#" class="btn btn-outline btn-sm" download>Download PDF</a>
       </div>
@@ -365,116 +392,63 @@
 
 </div>
 
-          <!-- ── Sub-panel 2: Online Form Job Aids ── -->
-          <div class="forms-sub-panel" id="sub-online">
-
-            <div class="forms-section">
-              <div class="forms-section-header">
-                <h3>Online Form Job Aids</h3>
-                <span class="section-count">30 forms</span>
-              </div>
-              <div class="forms-grid">
-                <div class="form-aid-row"><span class="form-aid-name">Form 0605</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 1600</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 1600WP</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 1601C</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 1702 (Nov 2011)</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 1601E (Jan 2004)</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 1601E (Feb 2007)</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 1601F</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 1602</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 1700 (June 2013)</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 1603</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 1604CF</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 1604E</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 1700</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 1701 (June 2013)</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 1701</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 1701Q</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 1702 (Oct 2002)</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 1702 (Sept 2005)</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 1702-EX (June 2013)</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 1702Q (Aug 2002)</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 1702Q (Sep 2005)</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 1702Q (Oct 2007)</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 1704</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 1702-MX (June 2013)</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 2000</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 2200A</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 2200AN</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 2200M</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 1702-RT (June 2013)</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 2200P</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 2200T</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 2550M (Oct 2002)</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 2550M (Sep 2005)</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 2550M (Feb 2007)</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 2550Q (Oct 2002)</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 2550Q (Sep 2005)</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 2550Q (Feb 2007)</span><a class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 2551</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 2551M</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 2552</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 2553</span><a href="#" class="btn btn-outline btn-sm" download>PDF</a></div>
-              </div>
-            </div>
-
-          </div>
-
           <!-- ── Sub-panel 3: Offline Form Job Aids ── -->
-          <div class="forms-sub-panel" id="sub-offline">
+<div class="forms-sub-panel" id="sub-offline">
 
-            <div class="forms-section">
-              <div class="forms-section-header">
-                <h3>How to Use the eFPS Offline Form Application</h3>
-                <span class="section-count">1 guide</span>
-              </div>
-              <div class="forms-grid" style="margin-bottom:1.5rem;">
-                <div class="form-aid-row" style="grid-column:1/-1; max-width:360px;">
-                  <span class="form-aid-name">How to Use the eFPS Offline Form Application</span>
-                  <a href="#" class="form-aid-dl" data-pdf-download="eFPS-Offline-Guide.pdf">PDF</a>
-                </div>
-              </div>
-            </div>
+  <div class="forms-section">
+    <div class="forms-section-header">
+      <h3>How to Use the eFPS Offline Form Application</h3>
+      <span class="section-count">1 guide</span>
+    </div>
+    <div class="app-guide-grid">
+      <div class="app-guide-card form-aid-row">
+        <div class="app-guide-icon">📖</div>
+        <div class="app-guide-info">
+          <strong>Offline Form Application Guide</strong>
+          <span>Step-by-step guide on using the eFPS Offline Form Application</span>
+        </div>
+        <a href="#" class="btn btn-outline btn-sm" download>Download PDF</a>
+      </div>
+    </div>
+  </div>
 
-            <div class="forms-section">
-              <div class="forms-section-header">
-                <h3>Offline Form Job Aids</h3>
-                <span class="section-count">28 forms</span>
-              </div>
-              <div class="forms-grid">
-                <div class="form-aid-row"><span class="form-aid-name">Form 0605</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-0605.pdf">PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 1600</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-1600.pdf">PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 1600WP</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-1600WP.pdf">PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 1601C</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-1601C.pdf">PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 1601E</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-1601E.pdf">PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 1601F</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-1601F.pdf">PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 1602</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-1602.pdf">PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 1603</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-1603.pdf">PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 1604CF</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-1604CF.pdf">PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 1604E</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-1604E.pdf">PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 1700</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-1700.pdf">PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 1701</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-1701.pdf">PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 1701Q</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-1701Q.pdf">PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 1702</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-1702.pdf">PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 170Q</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-170Q.pdf">PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 1704</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-1704.pdf">PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 2000</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-2000.pdf">PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 2200A</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-2200A.pdf">PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 2200AN</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-2200AN.pdf">PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 2200M</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-2200M.pdf">PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 2200P</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-2200P.pdf">PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 2200T</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-2200T.pdf">PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 2550M</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-2550M.pdf">PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 2550Q</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-2550Q.pdf">PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 2551</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-2551.pdf">PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 2551M</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-2551M.pdf">PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 2552</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-2552.pdf">PDF</a></div>
-                <div class="form-aid-row"><span class="form-aid-name">Form 2553</span><a href="#" class="form-aid-dl" data-pdf-download="Offline-Form-2553.pdf">PDF</a></div>
-              </div>
-            </div>
-
-          </div>
+  <div class="forms-section">
+    <div class="forms-section-header">
+      <h3>Offline Form Job Aids</h3>
+      <span class="section-count">28 forms</span>
+    </div>
+    <div class="app-guide-grid">
+      <div class="app-guide-card form-aid-row"><div class="app-guide-icon">📄</div><div class="app-guide-info"><strong>Form 0605</strong><span>Payment Form</span></div><a href="#" class="btn btn-outline btn-sm" download>Download PDF</a></div>
+      <div class="app-guide-card form-aid-row"><div class="app-guide-icon">📄</div><div class="app-guide-info"><strong>Form 1600</strong><span>Monthly Remittance Return of Value-Added Tax and Other Percentage Taxes Withheld</span></div><a href="#" class="btn btn-outline btn-sm" download>Download PDF</a></div>
+      <div class="app-guide-card form-aid-row"><div class="app-guide-icon">📄</div><div class="app-guide-info"><strong>Form 1600WP</strong><span>Remittance Return of Percentage Tax on Winnings and Prizes</span></div><a href="#" class="btn btn-outline btn-sm" download>Download PDF</a></div>
+      <div class="app-guide-card form-aid-row"><div class="app-guide-icon">📄</div><div class="app-guide-info"><strong>Form 1601C</strong><span>Monthly Remittance Return of Income Taxes Withheld on Compensation</span></div><a href="#" class="btn btn-outline btn-sm" download>Download PDF</a></div>
+      <div class="app-guide-card form-aid-row"><div class="app-guide-icon">📄</div><div class="app-guide-info"><strong>Form 1601E</strong><span>Monthly Remittance Return of Creditable Income Taxes Withheld (Expanded)</span></div><a href="#" class="btn btn-outline btn-sm" download>Download PDF</a></div>
+      <div class="app-guide-card form-aid-row"><div class="app-guide-icon">📄</div><div class="app-guide-info"><strong>Form 1601F</strong><span>Monthly Remittance Return of Final Income Taxes Withheld</span></div><a href="#" class="btn btn-outline btn-sm" download>Download PDF</a></div>
+      <div class="app-guide-card form-aid-row"><div class="app-guide-icon">📄</div><div class="app-guide-info"><strong>Form 1602</strong><span>Monthly Remittance Return of Final Income Taxes Withheld on Interest Paid on Deposits</span></div><a href="#" class="btn btn-outline btn-sm" download>Download PDF</a></div>
+      <div class="app-guide-card form-aid-row"><div class="app-guide-icon">📄</div><div class="app-guide-info"><strong>Form 1603</strong><span>Quarterly Remittance Return of Final Income Taxes Withheld on Fringe Benefits</span></div><a href="#" class="btn btn-outline btn-sm" download>Download PDF</a></div>
+      <div class="app-guide-card form-aid-row"><div class="app-guide-icon">📄</div><div class="app-guide-info"><strong>Form 1604CF</strong><span>Annual Information Return of Income Tax Withheld on Compensation and Final Withholding Taxes</span></div><a href="#" class="btn btn-outline btn-sm" download>Download PDF</a></div>
+      <div class="app-guide-card form-aid-row"><div class="app-guide-icon">📄</div><div class="app-guide-info"><strong>Form 1604E</strong><span>Annual Information Return of Creditable Income Taxes Withheld (Expanded)</span></div><a href="#" class="btn btn-outline btn-sm" download>Download PDF</a></div>
+      <div class="app-guide-card form-aid-row"><div class="app-guide-icon">📄</div><div class="app-guide-info"><strong>Form 1700</strong><span>Annual Income Tax Return for Individuals Earning Purely Compensation Income</span></div><a href="#" class="btn btn-outline btn-sm" download>Download PDF</a></div>
+      <div class="app-guide-card form-aid-row"><div class="app-guide-icon">📄</div><div class="app-guide-info"><strong>Form 1701</strong><span>Annual Income Tax Return for Self-Employed Individuals, Estates and Trusts</span></div><a href="#" class="btn btn-outline btn-sm" download>Download PDF</a></div>
+      <div class="app-guide-card form-aid-row"><div class="app-guide-icon">📄</div><div class="app-guide-info"><strong>Form 1701Q</strong><span>Quarterly Income Tax Return for Self-Employed Individuals, Estates and Trusts</span></div><a href="#" class="btn btn-outline btn-sm" download>Download PDF</a></div>
+      <div class="app-guide-card form-aid-row"><div class="app-guide-icon">📄</div><div class="app-guide-info"><strong>Form 1702</strong><span>Annual Income Tax Return for Corporations and Partnerships</span></div><a href="#" class="btn btn-outline btn-sm" download>Download PDF</a></div>
+      <div class="app-guide-card form-aid-row"><div class="app-guide-icon">📄</div><div class="app-guide-info"><strong>Form 170Q</strong><span>Quarterly Income Tax Return for Corporations and Partnerships</span></div><a href="#" class="btn btn-outline btn-sm" download>Download PDF</a></div>
+      <div class="app-guide-card form-aid-row"><div class="app-guide-icon">📄</div><div class="app-guide-info"><strong>Form 1704</strong><span>Improperly Accumulated Earnings Tax Return</span></div><a href="#" class="btn btn-outline btn-sm" download>Download PDF</a></div>
+      <div class="app-guide-card form-aid-row"><div class="app-guide-icon">📄</div><div class="app-guide-info"><strong>Form 2000</strong><span>Monthly Documentary Stamp Tax Declaration/Return</span></div><a href="#" class="btn btn-outline btn-sm" download>Download PDF</a></div>
+      <div class="app-guide-card form-aid-row"><div class="app-guide-icon">📄</div><div class="app-guide-info"><strong>Form 2200A</strong><span>Excise Tax Return for Alcohol Products</span></div><a href="#" class="btn btn-outline btn-sm" download>Download PDF</a></div>
+      <div class="app-guide-card form-aid-row"><div class="app-guide-icon">📄</div><div class="app-guide-info"><strong>Form 2200AN</strong><span>Excise Tax Return for Automobiles and Non-Essential Goods</span></div><a href="#" class="btn btn-outline btn-sm" download>Download PDF</a></div>
+      <div class="app-guide-card form-aid-row"><div class="app-guide-icon">📄</div><div class="app-guide-info"><strong>Form 2200M</strong><span>Excise Tax Return for Mineral Products</span></div><a href="#" class="btn btn-outline btn-sm" download>Download PDF</a></div>
+      <div class="app-guide-card form-aid-row"><div class="app-guide-icon">📄</div><div class="app-guide-info"><strong>Form 2200P</strong><span>Excise Tax Return for Petroleum Products</span></div><a href="#" class="btn btn-outline btn-sm" download>Download PDF</a></div>
+      <div class="app-guide-card form-aid-row"><div class="app-guide-icon">📄</div><div class="app-guide-info"><strong>Form 2200T</strong><span>Excise Tax Return for Tobacco Products</span></div><a href="#" class="btn btn-outline btn-sm" download>Download PDF</a></div>
+      <div class="app-guide-card form-aid-row"><div class="app-guide-icon">📄</div><div class="app-guide-info"><strong>Form 2550M</strong><span>Monthly Value-Added Tax Declaration</span></div><a href="#" class="btn btn-outline btn-sm" download>Download PDF</a></div>
+      <div class="app-guide-card form-aid-row"><div class="app-guide-icon">📄</div><div class="app-guide-info"><strong>Form 2550Q</strong><span>Quarterly Value-Added Tax Return</span></div><a href="#" class="btn btn-outline btn-sm" download>Download PDF</a></div>
+      <div class="app-guide-card form-aid-row"><div class="app-guide-icon">📄</div><div class="app-guide-info"><strong>Form 2551</strong><span>Quarterly Percentage Tax Return</span></div><a href="#" class="btn btn-outline btn-sm" download>Download PDF</a></div>
+      <div class="app-guide-card form-aid-row"><div class="app-guide-icon">📄</div><div class="app-guide-info"><strong>Form 2551M</strong><span>Monthly Percentage Tax Return</span></div><a href="#" class="btn btn-outline btn-sm" download>Download PDF</a></div>
+      <div class="app-guide-card form-aid-row"><div class="app-guide-icon">📄</div><div class="app-guide-info"><strong>Form 2552</strong><span>Percentage Tax Return for Transactions Involving Shares of Stock</span></div><a href="#" class="btn btn-outline btn-sm" download>Download PDF</a></div>
+      <div class="app-guide-card form-aid-row"><div class="app-guide-icon">📄</div><div class="app-guide-info"><strong>Form 2553</strong><span>Return of Percentage Tax Payable Under Special Laws</span></div><a href="#" class="btn btn-outline btn-sm" download>Download PDF</a></div>
+    </div>
+  </div>
+</div>
 
           <!-- ── Sub-panel 4: TPs Guide for eFPS ── -->
           <div class="forms-sub-panel" id="sub-tp">
@@ -609,5 +583,11 @@
   <div id="footer-placeholder"></div>
   <script src="../assets/js/main.js"></script>
   <script src="../assets/js/job-aids.js"></script>
+
+  <button id="backToTopBtn" title="Go to top" aria-label="Back to top">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="18 15 12 9 6 15"></polyline>
+  </svg>
+</button>
 </body>
 </html>

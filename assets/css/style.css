@@ -920,7 +920,7 @@ ol {
 }
 
 .accordion-content {
-  padding: 0 1.4rem 1.3rem;
+  padding: 1.3rem 1.4rem;
   color: var(--gray-600);
   font-size: 0.93rem;
   line-height: 1.7;
@@ -1661,6 +1661,15 @@ footer {
 }
 
 /* ── Application guide cards (Enrollment / ePayment) ── */
+.guide-card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.guide-card-body .btn {
+  margin-top: auto;
+}
+
 .app-guide-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -1732,3 +1741,75 @@ footer {
 @media (max-width: 480px) {
   .forms-grid { grid-template-columns: 1fr 1fr; }
 }
+
+/* Enable smooth scrolling across the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Button Styling */
+#backToTopBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 99; /* Ensures it stays on top of other elements */
+  background-color: #2563eb; /* Change to your theme color */
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  
+  /* Smooth transition for fading in/out and hovering */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease;
+}
+
+/* Active state triggered by JavaScript */
+#backToTopBtn.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Hover and active effects */
+#backToTopBtn:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-3px); /* Subtle lift effect */
+}
+
+#backToTopBtn:active {
+  transform: translateY(0);
+}
+
+.filing-overlay {
+  display: none;
+}
+
+.alt-tin-seg {
+  flex: 1;
+  min-width: 0;
+  height: 46px;
+  border: 1.5px solid var(--gray-200);
+  border-radius: 8px;
+  padding: 0 8px;
+  font-family: var(--font-body);
+  font-size: .9rem;
+  text-align: center;
+  letter-spacing: .1em;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.alt-tin-seg:focus {
+  border-color: var(--navy-light);
+  box-shadow: 0 0 0 3px rgba(30,79,142,.12);
+}
+
+.btn-next { padding: 0.6rem 1.4rem; border-radius: 6px; background: var(--navy); color: #fff; border: none; cursor: pointer; font-family: var(--font-sans); font-size: 0.9rem; font-weight: 500; }
+.btn-next:hover { background: var(--navy-light); }
