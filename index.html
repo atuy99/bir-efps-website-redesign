@@ -9,90 +9,83 @@
   <link rel="stylesheet" href="assets/css/style.css"/>
   <style>
     .efps-hub-page { flex: 1; display: flex; flex-direction: column; background: var(--off-white); }
-    
-    /* ADJUSTMENTS added to hub-hero, ::before, and inner*/
-    /* added an image bg to the login/register part */
+
     .hub-hero {
-    background: linear-gradient(160deg, var(--navy) 0%, #0d2d5a 55%, #0f3068 100%);
-    padding: 3.5rem 1.5rem 4rem;
-    position: relative;
-    overflow: hidden;
-    background-image: url(assets/img/bg-index.png);
-    background-size: contain;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+      background: linear-gradient(160deg, var(--navy) 0%, #0d2d5a 55%, #0f3068 100%);
+      padding: 3.5rem 1.5rem 4rem;
+      position: relative;
+      overflow: hidden;
+      background-image: url(assets/img/bg-index.png);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
     }
 
     .hub-hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(160deg, 
-        rgba(11, 37, 69, 0.88) 0%, 
-        rgba(13, 45, 90, 0.85) 55%, 
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg,
+        rgba(11, 37, 69, 0.88) 0%,
+        rgba(13, 45, 90, 0.85) 55%,
         rgba(15, 48, 104, 0.82) 100%
-    );
-    z-index: 0;
-    pointer-events: none;
+      );
+      z-index: 0;
+      pointer-events: none;
     }
 
     .hub-inner {
-    max-width: 480px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
+      max-width: 480px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
-    
+
     .login-card { background: #fff; border-radius: 20px; box-shadow: 0 24px 64px rgba(0,0,0,.28), 0 4px 16px rgba(0,0,0,.12); overflow: hidden; position: relative; }
     .login-card-top { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%); padding: 2rem 2rem 1.5rem; text-align: center; position: relative; }
-    
+
     .bir-seal-wrap { width: 80px; height: 80px; border-radius: 50%; background: #ffffff; border: 3px solid rgba(255,255,255,.3); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; overflow: hidden; }
     .bir-seal-wrap img { width: 100%; height: 100%; object-fit: contain; transform: scale(1.15); }
-    
+
     .login-card-top h2 { font-family: var(--font-display); font-size: 1.35rem; color: var(--white); margin-bottom: .25rem; }
     .login-card-top p { font-size: .8rem; color: rgba(255,255,255,.55); letter-spacing: .04em; }
     .login-card-body { padding: 1.75rem 2rem 1.5rem; }
-    
+
     .field-group { margin-bottom: 1.1rem; }
     .field-group label { display: block; font-size: .78rem; font-weight: 700; color: var(--gray-600); letter-spacing: .06em; text-transform: uppercase; margin-bottom: .45rem; }
     .field-group input, .field-group select, .field-group textarea { width: 100%; height: 46px; padding: 0 14px; border: 1.5px solid var(--gray-200); border-radius: 8px; font-family: var(--font-body); font-size: .95rem; color: var(--gray-800); background: var(--white); transition: border-color var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease); outline: none; }
     .field-group input:focus, .field-group select:focus { border-color: var(--navy-light); box-shadow: 0 0 0 3px rgba(30,79,142,.12); }
     .field-group input::placeholder { color: var(--gray-400); }
     .field-group input[aria-invalid="true"] { border-color: var(--red-err); }
-    
+
     .tin-row { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr; gap: 6px; }
     .tin-row input { text-align: center; font-size: .9rem; letter-spacing: .08em; padding: 0 8px; }
     .tin-separator { display: flex; align-items: center; justify-content: center; color: var(--gray-400); font-weight: 700; font-size: 1.1rem; user-select: none; }
     .tin-row-wrap { display: flex; align-items: center; gap: 4px; }
     .tin-seg { text-align: center; letter-spacing: .08em; }
-    .tin-seg-3 { flex: 3; }
-    .tin-seg-3b { flex: 3; }
-    .tin-seg-3c { flex: 3; }
-    .tin-seg-5 { flex: 4; }
-    
+
     .pw-wrap { position: relative; }
     .pw-wrap input { padding-right: 46px; }
     .pw-toggle { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; padding: 4px; color: var(--gray-400); display: flex; align-items: center; border-radius: 4px; transition: color var(--dur-fast); }
     .pw-toggle:hover { color: var(--navy); }
     .pw-toggle:focus-visible { outline: 2px solid var(--gold-light); }
-    
+
     .forgot-link { display: block; font-size: .83rem; color: var(--navy-light); margin-top: .4rem; text-align: right; font-weight: 600; }
     .forgot-link:hover { color: var(--gold); }
-    
+
     .btn-login { width: 100%; height: 48px; background: var(--navy); color: var(--white); border: none; border-radius: 9px; font-family: var(--font-body); font-size: 1rem; font-weight: 700; cursor: pointer; letter-spacing: .04em; margin-top: 1.25rem; transition: background var(--dur-fast), box-shadow var(--dur-fast); display: flex; align-items: center; justify-content: center; gap: 8px; }
     .btn-login:hover { background: var(--navy-light); box-shadow: 0 6px 20px rgba(11,37,69,.3); }
     .btn-login:focus-visible { outline: 3px solid var(--gold-light); outline-offset: 2px; }
-    
+
     .enroll-strip { border-top: 1px solid var(--gray-100); background: var(--off-white); padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
     .enroll-strip p { font-size: .88rem; color: var(--gray-600); line-height: 1.4; }
     .enroll-strip strong { display: block; font-size: .92rem; color: var(--gray-800); margin-bottom: 2px; }
-    
+
     .btn-enroll { flex-shrink: 0; display: inline-flex; align-items: center; gap: 6px; padding: .55rem 1.2rem; background: var(--gold); color: var(--navy); border-radius: 8px; font-weight: 700; font-size: .88rem; border: 2px solid var(--gold); cursor: pointer; white-space: nowrap; transition: background var(--dur-fast), box-shadow var(--dur-fast); text-decoration: none; }
     .btn-enroll:hover { background: var(--gold-light); border-color: var(--gold-light); color: var(--navy); box-shadow: 0 4px 14px rgba(201,146,42,.35); }
-    
+
     .hub-content { max-width: 1200px; margin: 0 auto; padding: 2.5rem 1.5rem 3.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-    
+
     .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(11,37,69,.72); backdrop-filter: blur(4px); z-index: 1000; align-items: center; justify-content: center; padding: 1rem; }
     .modal-overlay.open { display: flex; }
     .modal-box { background: var(--white); border-radius: 20px; width: 100%; max-width: 680px; max-height: 90vh; overflow-y: auto; box-shadow: 0 32px 80px rgba(0,0,0,.35); animation: modalIn .25s var(--ease) both; }
@@ -103,7 +96,8 @@
     .modal-close { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.8); border-radius: 8px; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.1rem; transition: background var(--dur-fast); flex-shrink: 0; }
     .modal-close:hover { background: rgba(255,255,255,.2); }
     .modal-close:focus-visible { outline: 2px solid var(--gold-light); }
-    
+
+    /* ── Shared step-tabs (enrollment + filing) ── */
     .step-tabs { display: flex; border-bottom: 2px solid var(--gray-100); padding: 0 1.75rem; background: var(--white); gap: 0; }
     .step-tab { padding: .9rem 1.25rem; font-size: .83rem; font-weight: 700; letter-spacing: .04em; color: var(--gray-400); border-bottom: 3px solid transparent; margin-bottom: -2px; white-space: nowrap; display: flex; align-items: center; gap: 7px; user-select: none; }
     .step-tab.active { color: var(--navy); border-bottom-color: var(--navy-light); }
@@ -111,28 +105,33 @@
     .step-num { width: 22px; height: 22px; border-radius: 50%; background: var(--gray-100); display: flex; align-items: center; justify-content: center; font-size: .72rem; font-weight: 800; color: var(--gray-400); flex-shrink: 0; }
     .step-tab.active .step-num { background: var(--navy); color: var(--white); }
     .step-tab.done .step-num { background: var(--green-ok); color: var(--white); }
-    
+
+    /* ── Enrollment body/steps ── */
     .enrollment-body { padding: 1.75rem 1.75rem 1.5rem; }
     .enrollment-step { display: none; }
     .enrollment-step.active { display: block; }
-    
+
+    /* ── Filing body/steps (mirrors enrollment exactly) ── */
+    .filing-body { padding: 1.75rem 1.75rem 1.5rem; }
+    .filing-step { display: none; }
+    .filing-step.active { display: block; }
+
     .tp-type-row { display: flex; gap: .75rem; margin-bottom: 1.5rem; }
     .tp-type-btn { flex: 1; padding: .75rem; border: 2px solid var(--gray-200); border-radius: 10px; background: var(--white); cursor: pointer; text-align: center; font-family: var(--font-body); font-size: .9rem; font-weight: 700; color: var(--gray-600); transition: all var(--dur-fast); display: flex; align-items: center; justify-content: center; gap: 8px; }
     .tp-type-btn.selected { border-color: var(--navy-light); background: rgba(30,79,142,.05); color: var(--navy); box-shadow: 0 0 0 3px rgba(30,79,142,.1); }
     .tp-type-btn:focus-visible { outline: 3px solid var(--gold-light); }
-    
+
     .form-grid { display: grid; gap: .9rem; }
     .form-grid-2 { grid-template-columns: 1fr 1fr; }
     .form-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
-    
     .col-span-2 { grid-column: span 2; }
     .col-span-3 { grid-column: span 3; }
-    
+
     .field-hint { display: block; font-size: .75rem; color: var(--gray-400); margin-top: .3rem; }
     .field-important { display: block; font-size: .78rem; color: #b45309; background: #fffbeb; border: 1px solid #fde68a; border-radius: 6px; padding: .5rem .75rem; margin-top: .75rem; line-height: 1.5; }
-    
+
+    /* ── Shared step-nav ── */
     .step-nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-top: 1.25rem; border-top: 1px solid var(--gray-100); margin-top: 1.5rem; }
-    
     .btn-step { display: inline-flex; align-items: center; gap: 6px; padding: .65rem 1.5rem; border-radius: 8px; font-family: var(--font-body); font-size: .9rem; font-weight: 700; cursor: pointer; border: 2px solid transparent; transition: all var(--dur-fast); }
     .btn-step-next { background: var(--navy); color: var(--white); border-color: var(--navy); }
     .btn-step-next:hover { background: var(--navy-light); border-color: var(--navy-light); box-shadow: 0 4px 14px rgba(11,37,69,.28); }
@@ -143,29 +142,26 @@
     .btn-step-submit { background: var(--gold); color: var(--navy); border-color: var(--gold); }
     .btn-step-submit:hover { background: var(--gold-light); border-color: var(--gold-light); box-shadow: 0 4px 14px rgba(201,146,42,.35); }
     .btn-step-submit:focus-visible, .btn-step-next:focus-visible { outline: 3px solid var(--gold-light); outline-offset: 2px; }
-    
+
     .captcha-area { border: 2px dashed var(--gray-200); border-radius: 10px; padding: 1rem; text-align: center; background: var(--gray-100); }
-    .captcha-display { font-family: 'Courier New', monospace; font-size: 1.6rem; font-weight: 800; letter-spacing: .25em; color: var(--navy); background: rgba(255,255,255,.8); border-radius: 6px; padding: .5rem 1rem; display: inline-block; margin-bottom: .75rem; text-decoration: line-through wavy var(--gold) 1.5px; text-decoration-skip-ink: none; user-select: none; position: relative; }
+    .captcha-display { font-family: 'Courier New', monospace; font-size: 1.6rem; font-weight: 800; letter-spacing: .25em; color: var(--navy); background: rgba(255,255,255,.8); border-radius: 6px; padding: .5rem 1rem; display: inline-block; margin-bottom: .75rem; text-decoration: line-through wavy var(--gold) 1.5px; text-decoration-skip-ink: none; user-select: none; }
     .captcha-refresh { background: none; border: none; cursor: pointer; color: var(--navy-light); font-size: .82rem; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; margin-left: .5rem; }
     .captcha-refresh:hover { color: var(--gold); }
-    
+
     .verify-modal-box { background: var(--white); border-radius: 16px; max-width: 420px; width: 100%; padding: 2rem; box-shadow: 0 24px 64px rgba(0,0,0,.3); text-align: center; animation: modalIn .2s var(--ease) both; }
     .verify-icon { width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; }
     .verify-modal-box h3 { font-family: var(--font-display); font-size: 1.2rem; color: var(--navy); margin-bottom: .75rem; }
     .verify-modal-box p { font-size: .93rem; color: var(--gray-600); line-height: 1.6; margin-bottom: 1.5rem; }
     .verify-modal-box p strong { color: var(--navy); }
-    
     .btn-verify-ok { width: 100%; height: 46px; background: var(--navy); color: var(--white); border: none; border-radius: 8px; font-family: var(--font-body); font-size: .95rem; font-weight: 700; cursor: pointer; transition: background var(--dur-fast); }
     .btn-verify-ok:hover { background: var(--navy-light); }
-    
+
     .util-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 12px; overflow: hidden; }
-    
     .card-header { padding: 1.1rem 1.5rem; border-bottom: 1px solid var(--gray-100); display: flex; align-items: center; justify-content: space-between; }
     .card-title { font-size: .82rem; font-weight: 700; color: var(--navy); letter-spacing: .07em; text-transform: uppercase; }
-    
     .view-all { font-size: .85rem; color: var(--navy-light); }
     .view-all:hover { color: var(--gold); }
-    
+
     .dl-item, .news-item { padding: 1.1rem 1.5rem; border-bottom: 1px solid var(--gray-100); display: flex; align-items: flex-start; gap: 14px; }
     .dl-item:last-child, .news-item:last-child { border-bottom: none; }
     .dl-date { min-width: 44px; text-align: center; flex-shrink: 0; }
@@ -174,57 +170,87 @@
     .dl-form { font-size: .95rem; font-weight: 600; color: var(--navy); line-height: 1.3; margin-bottom: 3px; }
     .dl-desc { font-size: .85rem; color: var(--gray-400); }
     .dl-badge { display: inline-block; font-size: .72rem; font-weight: 600; padding: 2px 8px; border-radius: 4px; margin-top: 6px; }
-    
     .badge-urgent { background: #fef2f2; color: #b91c1c; border: 1px solid #fca5a5; }
     .badge-upcoming { background: #f0f9ff; color: #075985; border: 1px solid #7dd3fc; }
-    
+
     .news-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 8px; }
     .news-title { font-size: .92rem; color: var(--navy); line-height: 1.5; margin-bottom: 3px; }
     .news-meta { font-size: .8rem; color: var(--gray-400); }
     .news-type { background: var(--gray-100); color: var(--gray-600); padding: 2px 6px; border-radius: 4px; font-weight: 600; font-size: .72rem; }
-    
     .card-footer { padding: .9rem 1.5rem; background: var(--off-white); border-top: 1px solid var(--gray-100); text-align: right; }
-    
+
     .notice-bar { background: #0a1f3d; padding: 11px 1.5rem; display: flex; justify-content: center; }
     .notice-bar-inner { max-width: 1200px; width: 100%; display: flex; align-items: center; gap: 10px; }
     .notice-bar span { font-size: .88rem; color: #4d7aaa; }
     .notice-bar strong { color: #6a94bc; }
-    
     .notice-bar a { color: #6a94bc; border-bottom: 1px solid #4d7aaa; }
-    
+
     .maintenance-card { grid-column: 1 / -1; background: var(--white); border: 1px solid var(--gray-200); border-left: 4px solid var(--navy); border-radius: 10px; padding: 1.25rem 1.5rem; display: flex; align-items: flex-start; gap: 1.25rem; }
     .maint-icon-wrap { width: 42px; height: 42px; background: var(--gray-100); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .maint-title { font-size: 1rem; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
     .maint-desc { font-size: .9rem; color: var(--gray-600); line-height: 1.6; }
 
-    @media (max-width: 900px) { 
-      .hub-content { grid-template-columns: 1fr; } 
-    }
+    /* ── Filing form inline field styles ── */
+    .filing-field { margin-bottom: 1.1rem; }
+    .filing-field label { display: block; font-size: .78rem; font-weight: 700; color: var(--gray-600); letter-spacing: .06em; text-transform: uppercase; margin-bottom: .45rem; }
+    .filing-field input,
+    .filing-field select { width: 100%; height: 46px; padding: 0 14px; border: 1.5px solid var(--gray-200); border-radius: 8px; font-family: var(--font-body); font-size: .95rem; color: var(--gray-800); background: var(--white); outline: none; transition: border-color var(--dur-fast), box-shadow var(--dur-fast); box-sizing: border-box; }
+    .filing-field input:focus,
+    .filing-field select:focus { border-color: var(--navy-light); box-shadow: 0 0 0 3px rgba(30,79,142,.12); }
+    .filing-field input::placeholder { color: var(--gray-400); }
 
-    @media (max-width: 640px) { 
-      .hub-hero { padding: 2.5rem 1rem 3rem; } 
-      .login-card-body { padding: 1.5rem 1.25rem 1.25rem; } 
-      .login-card-top { padding: 1.5rem 1.25rem 1.25rem; } 
-      .enroll-strip { flex-direction: column; text-align: center; } 
-      .enroll-strip 
-      .btn-enroll { width: 100%; justify-content: center; } 
-      .step-tabs { overflow-x: auto; padding: 0 1rem; } 
-      .step-tab { padding: .85rem .9rem; font-size: .78rem; } 
-      .enrollment-body { padding: 1.25rem 1.25rem 1rem; } 
-      .form-grid-2 { grid-template-columns: 1fr; } 
-      .form-grid-3 { grid-template-columns: 1fr; } 
-      .col-span-2, .col-span-3 { grid-column: span 1; } 
-      .tp-type-row { flex-direction: column; } 
-      .modal-header { padding: 1.25rem; } }
-  
+    .filing-error { font-size: .78rem; color: var(--red-err); margin-top: .3rem; display: none; }
+    .filing-field.has-err input,
+    .filing-field.has-err select { border-color: var(--red-err); }
+
+    /* summary info bar between steps */
+    .filing-summary { background: var(--gray-100); border-radius: 8px; padding: .85rem 1rem; margin-bottom: 1.25rem; font-size: .88rem; color: var(--gray-600); line-height: 1.6; }
+    .filing-summary strong { color: var(--navy); }
+
+    /* radio options — same style as enrollment */
+    .radio-opts { display: flex; flex-direction: column; gap: .65rem; margin-top: .45rem; }
+    .radio-opt { display: flex; align-items: flex-start; gap: 10px; padding: .85rem 1rem; border: 1.5px solid var(--gray-200); border-radius: 8px; cursor: pointer; transition: border-color var(--dur-fast), background var(--dur-fast); }
+    .radio-opt:hover { border-color: var(--navy-light); background: rgba(30,79,142,.03); }
+    .radio-opt input[type=radio] { margin-top: 3px; accent-color: var(--navy); flex-shrink: 0; width: auto; height: auto; }
+    .radio-opt-label { font-size: .93rem; font-weight: 700; color: var(--navy); margin: 0 0 2px; }
+    .radio-opt-desc { font-size: .82rem; color: var(--gray-400); margin: 0; line-height: 1.45; }
+
+    /* success state */
+    .filing-success { text-align: center; padding: 2rem 1rem; }
+    .filing-success-icon { width: 64px; height: 64px; border-radius: 50%; background: #d4edda; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; }
+    .filing-success-icon svg { width: 32px; height: 32px; color: #1a7a4a; }
+    .filing-success h3 { font-family: var(--font-display); font-size: 1.2rem; color: var(--navy); margin-bottom: .5rem; }
+    .filing-success p { font-size: .93rem; color: var(--gray-600); line-height: 1.6; }
+
+    @media (max-width: 900px) { .hub-content { grid-template-columns: 1fr; } }
+    @media (max-width: 640px) {
+      .hub-hero { padding: 2.5rem 1rem 3rem; }
+      .login-card-body { padding: 1.5rem 1.25rem 1.25rem; }
+      .login-card-top { padding: 1.5rem 1.25rem 1.25rem; }
+      .enroll-strip { flex-direction: column; text-align: center; }
+      .enroll-strip .btn-enroll { width: 100%; justify-content: center; }
+      .step-tabs { overflow-x: auto; padding: 0 1rem; }
+      .step-tab { padding: .85rem .9rem; font-size: .78rem; }
+      .enrollment-body, .filing-body { padding: 1.25rem 1.25rem 1rem; }
+      .form-grid-2 { grid-template-columns: 1fr; }
+      .form-grid-3 { grid-template-columns: 1fr; }
+      .col-span-2, .col-span-3 { grid-column: span 1; }
+      .tp-type-row { flex-direction: column; }
+      .modal-header { padding: 1.25rem; }
+    }
   </style>
 </head>
 <body class="efps-hub-page">
-  <div style="background-color: #dc2626; color: white; text-align: center; padding: 10px; font-weight: bold; position: sticky; top: 0; z-index: 9999; font-size: 14px; letter-spacing: 0.05em;">
-  ⚠️ ACADEMIC PROJECT ONLY: This is a student redesign mockup for an HCI class. This is NOT the official BIR eFPS website. Do not enter real personal information.
+
+  <div style="background-color:#dc2626;color:white;text-align:center;padding:10px;font-weight:bold;position:sticky;top:0;z-index:9999;font-size:14px;letter-spacing:.05em;">
+    ⚠️ ACADEMIC PROJECT ONLY: This is a student redesign mockup for an HCI class. This is NOT the official BIR eFPS website. Do not enter real personal information.
   </div>
+
   <div id="nav-placeholder"></div>
 
+  <!-- ══════════════════════════════════════════════
+       HERO — Login card
+  ══════════════════════════════════════════════ -->
   <section class="hub-hero" aria-label="eFPS Login and Enrollment">
     <div class="hub-inner">
       <div class="login-card" role="main" aria-label="eFPS Login">
@@ -237,32 +263,32 @@
         </div>
 
         <div class="login-card-body">
-          <form id="loginForm" novalidate aria-label="eFPS Login form" onsubmit="event.preventDefault();">
+          <form id="loginForm" novalidate aria-label="eFPS Login form">
 
             <div class="field-group" id="fg-tin">
               <label for="tin-part1" id="tin-label">Taxpayer Identification Number (TIN)</label>
               <div class="tin-row-wrap" role="group" aria-labelledby="tin-label">
-                <input class="field-group input tin-seg" id="tin-part1" name="tin1" type="text" inputmode="numeric" maxlength="3" placeholder="XXX" pattern="\d{3}" autocomplete="off" aria-label="TIN first three digits" required style="flex:3; height:46px; border:1.5px solid var(--gray-200); border-radius:8px; padding:0 10px; font-family:var(--font-body); font-size:.95rem; text-align:center; letter-spacing:.1em; outline:none; transition: border-color .16s, box-shadow .16s;" />
+                <input class="tin-seg" id="tin-part1" name="tin1" type="text" inputmode="numeric" maxlength="3" placeholder="XXX" autocomplete="off" aria-label="TIN first three digits" style="flex:3;height:46px;border:1.5px solid var(--gray-200);border-radius:8px;padding:0 10px;font-family:var(--font-body);font-size:.95rem;text-align:center;letter-spacing:.1em;outline:none;transition:border-color .16s,box-shadow .16s;" />
                 <span class="tin-separator" aria-hidden="true">–</span>
-                <input class="field-group input tin-seg" id="tin-part2" name="tin2" type="text" inputmode="numeric" maxlength="3" placeholder="XXX" pattern="\d{3}" autocomplete="off" aria-label="TIN second three digits" required style="flex:3; height:46px; border:1.5px solid var(--gray-200); border-radius:8px; padding:0 10px; font-family:var(--font-body); font-size:.95rem; text-align:center; letter-spacing:.1em; outline:none; transition: border-color .16s, box-shadow .16s;" />
+                <input class="tin-seg" id="tin-part2" name="tin2" type="text" inputmode="numeric" maxlength="3" placeholder="XXX" autocomplete="off" aria-label="TIN second three digits" style="flex:3;height:46px;border:1.5px solid var(--gray-200);border-radius:8px;padding:0 10px;font-family:var(--font-body);font-size:.95rem;text-align:center;letter-spacing:.1em;outline:none;transition:border-color .16s,box-shadow .16s;" />
                 <span class="tin-separator" aria-hidden="true">–</span>
-                <input class="field-group input tin-seg" id="tin-part3" name="tin3" type="text" inputmode="numeric" maxlength="3" placeholder="XXX" pattern="\d{3}" autocomplete="off" aria-label="TIN third three digits" required style="flex:3; height:46px; border:1.5px solid var(--gray-200); border-radius:8px; padding:0 10px; font-family:var(--font-body); font-size:.95rem; text-align:center; letter-spacing:.1em; outline:none; transition: border-color .16s, box-shadow .16s;" />
+                <input class="tin-seg" id="tin-part3" name="tin3" type="text" inputmode="numeric" maxlength="3" placeholder="XXX" autocomplete="off" aria-label="TIN third three digits" style="flex:3;height:46px;border:1.5px solid var(--gray-200);border-radius:8px;padding:0 10px;font-family:var(--font-body);font-size:.95rem;text-align:center;letter-spacing:.1em;outline:none;transition:border-color .16s,box-shadow .16s;" />
                 <span class="tin-separator" aria-hidden="true">–</span>
-                <input class="field-group input tin-seg" id="tin-part4" name="tin3" type="text" inputmode="numeric" maxlength="3" placeholder="XXX" pattern="\d{3}" autocomplete="off" aria-label="TIN fourth three digits" required style="flex:3; height:46px; border:1.5px solid var(--gray-200); border-radius:8px; padding:0 10px; font-family:var(--font-body); font-size:.95rem; text-align:center; letter-spacing:.1em; outline:none; transition: border-color .16s, box-shadow .16s;" />
+                <input class="tin-seg" id="tin-part4" name="tin4" type="text" inputmode="numeric" maxlength="3" placeholder="XXX" autocomplete="off" aria-label="TIN fourth three digits" style="flex:3;height:46px;border:1.5px solid var(--gray-200);border-radius:8px;padding:0 10px;font-family:var(--font-body);font-size:.95rem;text-align:center;letter-spacing:.1em;outline:none;transition:border-color .16s,box-shadow .16s;" />
               </div>
             </div>
 
             <div class="field-group">
               <label for="login-username">Username</label>
-              <input type="text" id="login-username" name="username" autocomplete="username" placeholder="Enter your eFPS username" required aria-required="true" minlength="8" />
+              <input type="text" id="login-username" name="username" autocomplete="username" placeholder="Enter your eFPS username" />
             </div>
 
             <div class="field-group">
               <label for="login-password">Password</label>
               <div class="pw-wrap">
-                <input type="password" id="login-password" name="password" autocomplete="current-password" placeholder="Enter your password" required aria-required="true" />
+                <input type="password" id="login-password" name="password" autocomplete="current-password" placeholder="Enter your password" />
                 <button type="button" class="pw-toggle" aria-label="Show password" id="loginPwToggle">
-                  <svg id="eyeIconLogin" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
                     <path d="M10 4C5.5 4 2 10 2 10s3.5 6 8 6 8-6 8-6-3.5-6-8-6z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
                     <circle cx="10" cy="10" r="2.5" stroke="currentColor" stroke-width="1.5"/>
                   </svg>
@@ -278,92 +304,74 @@
               Log In
             </button>
           </form>
-
         </div>
 
         <div class="enroll-strip">
           <div>
-            <p><strong>New eFPS user?</strong>Start here — enrollment only takes a few minutes.</p>
+            <p><strong>New eFPS user?</strong> Start here — enrollment only takes a few minutes.</p>
           </div>
           <button type="button" class="btn-enroll" id="openEnrollBtn" aria-label="Open eFPS enrollment form" aria-haspopup="dialog">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 2v10M2 7h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
             Enroll Now
           </button>
         </div>
-
       </div>
     </div>
   </section>
 
-  <div class="notice-bar" aria-label="Scheduled maintenance notice">
-    <div class="notice-bar-inner">
-      <svg width="15" height="15" viewBox="0 0 14 14" fill="none" aria-hidden="true" style="flex-shrink:0">
-        <circle cx="7" cy="7" r="6" stroke="#4d7aaa" stroke-width="1.1"/>
-        <path d="M7 4v4M7 9.5v.5" stroke="#4d7aaa" stroke-width="1.1" stroke-linecap="round"/>
-      </svg>
-      <span><strong>Staggered deadlines in effect.</strong> eFPS Groups A–E have different ITR filing dates. <a href="pages/faqs.html">Check your group →</a></span>
-    </div>
-  </div>
-
+  <!-- Content cards -->
   <div class="hub-content" id="main-content">
 
     <div class="util-card" aria-labelledby="dl-heading">
       <div class="card-header">
         <span class="card-title" id="dl-heading">Upcoming Deadlines</span>
-        <a href="#" class="view-all">Full calendar →</a>
       </div>
       <div role="list">
-
         <div class="dl-item" role="listitem">
           <div class="dl-date" aria-label="June 10"><div class="dl-day">10</div><div class="dl-month">June</div></div>
           <div class="dl-info">
             <div class="dl-form">1601-C — Monthly Withholding Tax</div>
-            <div class="dl-desc">June 2026 &middot; Employers</div>
+            <div class="dl-desc">June 2026 · Employers</div>
             <span class="dl-badge badge-urgent">17 days</span>
           </div>
         </div>
-
-         <div class="dl-item" role="listitem">
+        <div class="dl-item" role="listitem">
           <div class="dl-date" aria-label="June 25"><div class="dl-day">25</div><div class="dl-month">June</div></div>
           <div class="dl-info">
             <div class="dl-form">2551Q — Quarterly Percentage Tax</div>
-            <div class="dl-desc">Q1 2026 &middot; Non-VAT registered</div>
+            <div class="dl-desc">Q1 2026 · Non-VAT registered</div>
             <span class="dl-badge badge-upcoming">25 days</span>
           </div>
         </div>
-       
         <div class="dl-item" role="listitem">
-          <div class="dl-date" aria-label="April 25"><div class="dl-day">27</div><div class="dl-month">July</div></div>
+          <div class="dl-date" aria-label="July 27"><div class="dl-day">27</div><div class="dl-month">July</div></div>
           <div class="dl-info">
             <div class="dl-form">2550Q — Quarterly VAT Return</div>
-            <div class="dl-desc">Q2 2026 &middot; All VAT-registered taxpayers</div>
+            <div class="dl-desc">Q2 2026 · All VAT-registered taxpayers</div>
             <span class="dl-badge badge-upcoming">2 months</span>
           </div>
         </div>
-
         <div class="dl-item" role="listitem">
           <div class="dl-date" aria-label="August 29"><div class="dl-day">29</div><div class="dl-month">Aug</div></div>
           <div class="dl-info">
             <div class="dl-form">1702-Q — Quarterly Income Tax Return</div>
-            <div class="dl-desc">Q2 2026 &middot; For corporations and partnerships</div>
+            <div class="dl-desc">Q2 2026 · For corporations and partnerships</div>
             <span class="dl-badge badge-upcoming">3 months</span>
           </div>
         </div>
-        </div>
-
-      <div class="card-footer"><a href="#" class="view-all">View full tax calendar →</a></div>
+      </div>
+      <div class="card-footer"><a href="https://cleodu-cpas.com/index.php/bir-tax-deadlines" class="view-all">View full tax calendar →</a></div>
     </div>
 
     <div class="util-card" aria-labelledby="iss-heading">
       <div class="card-header">
         <span class="card-title" id="iss-heading">Recent Issuances</span>
-        <a href="pages/issuances.html" class="view-all">All →</a>
       </div>
       <div role="list">
         <div class="news-item" role="listitem"><div class="news-dot" aria-hidden="true"></div><div><div class="news-title">RMC No. 52-2026 — Circularizing Republic Act No. 12021, Entitled "An Act Providing for the Magna Carta of Filipino Seafarers"</div><div class="news-meta"><span class="news-type">RMC</span>&nbsp; May 21, 2026</div></div></div>
         <div class="news-item" role="listitem"><div class="news-dot" aria-hidden="true"></div><div><div class="news-title">RMC No. 51-2026 — Guidelines on the Development of Agency Competency-Based Human Resource Management System</div><div class="news-meta"><span class="news-type">RMC</span>&nbsp; May 21, 2026</div></div></div>
-        <div class="news-item" role="listitem"><div class="news-dot" aria-hidden="true"></div><div><div class="news-title">RMC No. 50-2026 — Guidelines on the Conduct of Mid-Term and Full Term Review of Awardees of the Program to Institutionalize Meritocracy and Excellence in Human Resource Management</div><div class="news-meta"><span class="news-type">RMC</span>&nbsp; Feb 20, 2025</div></div></div>
-        <div class="news-item" role="listitem"><div class="news-dot" aria-hidden="true"></div><div><div class="news-title">RMO No. 11-2026 — Updated Cost to Collect Threshold for Accounts Receivable/Delinquent Accounts (AR/DA)</div><div class="news-meta"><span class="news-type">RMO</span>&nbsp; May 12, 2026</div></div></div>
+        <div class="news-item" role="listitem"><div class="news-dot" aria-hidden="true"></div><div><div class="news-title">RMC No. 50-2026 — Guidelines on the Conduct of Mid-Term and Full Term Review of Awardees</div><div class="news-meta"><span class="news-type">RMC</span>&nbsp; Feb 20, 2025</div></div></div>
+        <div class="news-item" role="listitem"><div class="news-dot" aria-hidden="true"></div><div><div class="news-title">RMO No. 11-2026 — Updated Cost to Collect Threshold for Accounts Receivable/Delinquent Accounts</div><div class="news-meta"><span class="news-type">RMO</span>&nbsp; May 12, 2026</div></div></div>
       </div>
       <div class="card-footer"><a href="pages/issuances.html" class="view-all">All issuances and rulings →</a></div>
     </div>
@@ -382,6 +390,10 @@
 
   <div id="footer-placeholder"></div>
 
+
+  <!-- ══════════════════════════════════════════════
+       ENROLLMENT MODAL
+  ══════════════════════════════════════════════ -->
   <div class="modal-overlay" id="enrollModal" role="dialog" aria-modal="true" aria-labelledby="enrollModalTitle">
     <div class="modal-box" id="enrollModalBox">
 
@@ -394,20 +406,15 @@
       </div>
 
       <div class="step-tabs" role="tablist" aria-label="Enrollment steps">
-        <div class="step-tab active" role="tab" aria-selected="true" aria-controls="step1" id="tab1">
-          <span class="step-num">1</span> Taxpayer Details
-        </div>
-        <div class="step-tab" role="tab" aria-selected="false" aria-controls="step2" id="tab2">
-          <span class="step-num">2</span> Account Details
-        </div>
-        <div class="step-tab" role="tab" aria-selected="false" aria-controls="step3" id="tab3">
-          <span class="step-num">3</span> Verification
-        </div>
+        <div class="step-tab active" role="tab" aria-selected="true" id="enroll-tab1"><span class="step-num">1</span> Taxpayer Details</div>
+        <div class="step-tab" role="tab" aria-selected="false" id="enroll-tab2"><span class="step-num">2</span> Account Details</div>
+        <div class="step-tab" role="tab" aria-selected="false" id="enroll-tab3"><span class="step-num">3</span> Verification</div>
       </div>
 
       <div class="enrollment-body">
 
-        <div class="enrollment-step active" id="step1" role="tabpanel" aria-labelledby="tab1">
+        <!-- Enroll step 1 -->
+        <div class="enrollment-step active" id="enroll-step1" role="tabpanel">
 
           <div class="tp-type-row" role="group" aria-label="Select taxpayer type">
             <button type="button" class="tp-type-btn selected" id="typeCorp" aria-pressed="true" onclick="selectTpType('corporate')">
@@ -420,57 +427,45 @@
             </button>
           </div>
 
-          <p style="font-size:.8rem; color:var(--gray-400); margin-bottom:1.1rem; line-height:1.5;">
+          <p style="font-size:.8rem;color:var(--gray-400);margin-bottom:1.1rem;line-height:1.5;">
             <strong style="color:var(--gray-600)">Note:</strong> All fields must be filled up, except Registered Name if account type is Individual.
           </p>
 
-          <form id="step1Form" novalidate onsubmit="event.preventDefault();">
+          <form id="enrollStep1Form" novalidate onsubmit="return false;">
             <div class="form-grid">
-
               <div class="field-group col-span-3" style="grid-column:1/-1">
                 <label id="enroll-tin-label">Taxpayer Identification Number (TIN)</label>
                 <div class="tin-row-wrap" role="group" aria-labelledby="enroll-tin-label">
-                  <input type="text" inputmode="numeric" maxlength="3" placeholder="XXX" aria-label="TIN digits 1-3" class="tin-seg" style="flex:3;height:46px;border:1.5px solid var(--gray-200);border-radius:8px;padding:0 8px;font-family:var(--font-body);font-size:.9rem;text-align:center;letter-spacing:.1em;outline:none;width:100%;"/>
+                  <input type="text" inputmode="numeric" maxlength="3" placeholder="XXX" aria-label="TIN digits 1-3" class="tin-seg enroll-tin-seg" style="flex:3;height:46px;border:1.5px solid var(--gray-200);border-radius:8px;padding:0 8px;font-family:var(--font-body);font-size:.9rem;text-align:center;letter-spacing:.1em;outline:none;width:100%;"/>
                   <span class="tin-separator" aria-hidden="true">–</span>
-                  <input type="text" inputmode="numeric" maxlength="3" placeholder="XXX" aria-label="TIN digits 4-6" class="tin-seg" style="flex:3;height:46px;border:1.5px solid var(--gray-200);border-radius:8px;padding:0 8px;font-family:var(--font-body);font-size:.9rem;text-align:center;letter-spacing:.1em;outline:none;width:100%;"/>
+                  <input type="text" inputmode="numeric" maxlength="3" placeholder="XXX" aria-label="TIN digits 4-6" class="tin-seg enroll-tin-seg" style="flex:3;height:46px;border:1.5px solid var(--gray-200);border-radius:8px;padding:0 8px;font-family:var(--font-body);font-size:.9rem;text-align:center;letter-spacing:.1em;outline:none;width:100%;"/>
                   <span class="tin-separator" aria-hidden="true">–</span>
-                  <input type="text" inputmode="numeric" maxlength="3" placeholder="XXX" aria-label="TIN digits 7-9" class="tin-seg" style="flex:3;height:46px;border:1.5px solid var(--gray-200);border-radius:8px;padding:0 8px;font-family:var(--font-body);font-size:.9rem;text-align:center;letter-spacing:.1em;outline:none;width:100%;"/>
+                  <input type="text" inputmode="numeric" maxlength="3" placeholder="XXX" aria-label="TIN digits 7-9" class="tin-seg enroll-tin-seg" style="flex:3;height:46px;border:1.5px solid var(--gray-200);border-radius:8px;padding:0 8px;font-family:var(--font-body);font-size:.9rem;text-align:center;letter-spacing:.1em;outline:none;width:100%;"/>
                   <span class="tin-separator" aria-hidden="true">–</span>
-                  <input type="text" inputmode="numeric" maxlength="3" placeholder="XXX" aria-label="TIN digits 10-12" class="tin-seg" style="flex:3;height:46px;border:1.5px solid var(--gray-200);border-radius:8px;padding:0 8px;font-family:var(--font-body);font-size:.9rem;text-align:center;letter-spacing:.1em;outline:none;width:100%;"/>
+                  <input type="text" inputmode="numeric" maxlength="3" placeholder="XXX" aria-label="TIN digits 10-12" class="tin-seg enroll-tin-seg" style="flex:3;height:46px;border:1.5px solid var(--gray-200);border-radius:8px;padding:0 8px;font-family:var(--font-body);font-size:.9rem;text-align:center;letter-spacing:.1em;outline:none;width:100%;"/>
                 </div>
               </div>
-
               <div class="field-group col-span-3" id="regNameField" style="grid-column:1/-1">
                 <label for="e-regname">Registered Name <span style="font-weight:400;color:var(--gray-400)">(Corporate accounts)</span></label>
                 <input type="text" id="e-regname" placeholder="Official corporate / business name" />
                 <span class="field-hint">If Corporate Account, Name should be of the business' authorized representative.</span>
               </div>
-
             </div>
 
             <div class="form-grid form-grid-3" style="margin-top:.9rem">
-              <div class="field-group">
-                <label for="e-lastname">Last Name</label>
-                <input type="text" id="e-lastname" autocomplete="family-name" placeholder="Dela Cruz" required aria-required="true"/>
-              </div>
-              <div class="field-group">
-                <label for="e-firstname">First Name</label>
-                <input type="text" id="e-firstname" autocomplete="given-name" placeholder="Juan" required aria-required="true"/>
-              </div>
-              <div class="field-group">
-                <label for="e-midname">Middle Name</label>
-                <input type="text" id="e-midname" autocomplete="additional-name" placeholder="Santos"/>
-              </div>
+              <div class="field-group"><label for="e-lastname">Last Name</label><input type="text" id="e-lastname" autocomplete="family-name" placeholder="Dela Cruz" /></div>
+              <div class="field-group"><label for="e-firstname">First Name</label><input type="text" id="e-firstname" autocomplete="given-name" placeholder="Juan" /></div>
+              <div class="field-group"><label for="e-midname">Middle Name</label><input type="text" id="e-midname" autocomplete="additional-name" placeholder="Santos"/></div>
             </div>
 
             <div class="form-grid form-grid-2" style="margin-top:.9rem">
               <div class="field-group">
                 <label for="e-dob">Date of Birth / Incorporation</label>
-                <input type="date" id="e-dob" required aria-required="true" style="height:46px;"/>
+                <input type="date" id="e-dob" style="height:46px;"/>
               </div>
               <div class="field-group">
                 <label for="e-efiling-reason">Reason for eFiling</label>
-                <select id="e-efiling-reason" required aria-required="true" style="height:46px;padding:0 14px;border:1.5px solid var(--gray-200);border-radius:8px;font-family:var(--font-body);font-size:.95rem;outline:none;background:var(--white);">
+                <select id="e-efiling-reason" style="height:46px;padding:0 14px;border:1.5px solid var(--gray-200);border-radius:8px;font-family:var(--font-body);font-size:.95rem;outline:none;background:var(--white);">
                   <option value="">Select reason for eFiling</option>
                   <option>Required by BIR (mandatory filer)</option>
                   <option>Voluntary enrollment</option>
@@ -483,14 +478,8 @@
             </div>
 
             <div class="form-grid form-grid-2" style="margin-top:.9rem">
-              <div class="field-group">
-                <label for="e-housenum">House / Building No.</label>
-                <input type="text" id="e-housenum" placeholder="Unit 4B, Tower 1"/>
-              </div>
-              <div class="field-group">
-                <label for="e-street">Street</label>
-                <input type="text" id="e-street" placeholder="Ayala Avenue"/>
-              </div>
+              <div class="field-group"><label for="e-housenum">House / Building No.</label><input type="text" id="e-housenum" placeholder="Unit 4B, Tower 1"/></div>
+              <div class="field-group"><label for="e-street">Street</label><input type="text" id="e-street" placeholder="Ayala Avenue"/></div>
             </div>
 
             <div class="form-grid form-grid-3" style="margin-top:.9rem">
@@ -498,12 +487,10 @@
                 <label for="e-region">Region</label>
                 <select id="e-region" style="height:46px;padding:0 14px;border:1.5px solid var(--gray-200);border-radius:8px;font-family:var(--font-body);font-size:.9rem;outline:none;background:var(--white);">
                   <option value="">Select Region</option>
-                  <option>NCR</option><option>Region I</option><option>Region II</option>
-                  <option>Region III</option><option>Region IV-A</option><option>Region IV-B</option>
-                  <option>Region V</option><option>Region VI</option><option>Region VII</option>
-                  <option>Region VIII</option><option>Region IX</option><option>Region X</option>
-                  <option>Region XI</option><option>Region XII</option><option>CARAGA</option>
-                  <option>CAR</option><option>BARMM</option>
+                  <option>NCR</option><option>Region I</option><option>Region II</option><option>Region III</option>
+                  <option>Region IV-A</option><option>Region IV-B</option><option>Region V</option><option>Region VI</option>
+                  <option>Region VII</option><option>Region VIII</option><option>Region IX</option><option>Region X</option>
+                  <option>Region XI</option><option>Region XII</option><option>CARAGA</option><option>CAR</option><option>BARMM</option>
                 </select>
               </div>
               <div class="field-group">
@@ -521,15 +508,12 @@
             </div>
 
             <div class="form-grid form-grid-2" style="margin-top:.9rem">
-              <div class="field-group">
-                <label for="e-contact">Contact Number</label>
-                <input type="tel" id="e-contact" autocomplete="tel" placeholder="+63 9XX XXX XXXX" inputmode="tel"/>
-              </div>
+              <div class="field-group"><label for="e-contact">Contact Number</label><input type="tel" id="e-contact" autocomplete="tel" placeholder="+63 9XX XXX XXXX"/></div>
             </div>
 
             <div class="step-nav">
               <button type="button" class="btn-step btn-step-cancel" onclick="closeEnroll()">Cancel</button>
-              <button type="button" class="btn-step btn-step-next" onclick="goStep(2)">
+              <button type="button" class="btn-step btn-step-next" onclick="enrollGoStep(2)">
                 Next: Account Details
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </button>
@@ -537,27 +521,26 @@
           </form>
         </div>
 
-        <div class="enrollment-step" id="step2" role="tabpanel" aria-labelledby="tab2">
-          <form id="step2Form" novalidate onsubmit="event.preventDefault();">
-
+        <!-- Enroll step 2 -->
+        <div class="enrollment-step" id="enroll-step2" role="tabpanel">
+          <form id="enrollStep2Form" novalidate onsubmit="return false;">
             <div class="form-grid form-grid-2">
               <div class="field-group">
                 <label for="e-username">Username</label>
-                <input type="text" id="e-username" autocomplete="username" placeholder="e.g. jdelacruz2025" minlength="8" required aria-required="true"/>
+                <input type="text" id="e-username" autocomplete="username" placeholder="e.g. jdelacruz2025" minlength="8"/>
                 <span class="field-hint">One word, at least 8 characters. No special characters.</span>
               </div>
               <div class="field-group">
                 <label for="e-email">Email Address</label>
-                <input type="email" id="e-email" autocomplete="email" placeholder="name@domain.com" required aria-required="true"/>
+                <input type="email" id="e-email" autocomplete="email" placeholder="name@domain.com"/>
                 <span class="field-hint">Verification code will be sent here.</span>
               </div>
             </div>
-
             <div class="form-grid form-grid-2" style="margin-top:.9rem">
               <div class="field-group">
                 <label for="e-password">Password</label>
                 <div class="pw-wrap">
-                  <input type="password" id="e-password" autocomplete="new-password" placeholder="8 to 15 characters" minlength="8" maxlength="15" required aria-required="true"/>
+                  <input type="password" id="e-password" autocomplete="new-password" placeholder="8 to 15 characters" minlength="8" maxlength="15"/>
                   <button type="button" class="pw-toggle" onclick="togglePw('e-password',this)" aria-label="Show password">
                     <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4C5.5 4 2 10 2 10s3.5 6 8 6 8-6 8-6-3.5-6-8-6z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="10" cy="10" r="2.5" stroke="currentColor" stroke-width="1.5"/></svg>
                   </button>
@@ -567,18 +550,17 @@
               <div class="field-group">
                 <label for="e-confirmpassword">Confirm Password</label>
                 <div class="pw-wrap">
-                  <input type="password" id="e-confirmpassword" autocomplete="new-password" placeholder="Re-enter password" required aria-required="true"/>
+                  <input type="password" id="e-confirmpassword" autocomplete="new-password" placeholder="Re-enter password"/>
                   <button type="button" class="pw-toggle" onclick="togglePw('e-confirmpassword',this)" aria-label="Show confirm password">
                     <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4C5.5 4 2 10 2 10s3.5 6 8 6 8-6 8-6-3.5-6-8-6z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="10" cy="10" r="2.5" stroke="currentColor" stroke-width="1.5"/></svg>
                   </button>
                 </div>
               </div>
             </div>
-
             <div class="form-grid form-grid-3" style="margin-top:.9rem">
               <div class="field-group col-span-2" style="grid-column:1/3">
                 <label for="e-challenge">Challenge Question</label>
-                <select id="e-challenge" style="height:46px;padding:0 14px;border:1.5px solid var(--gray-200);border-radius:8px;font-family:var(--font-body);font-size:.9rem;outline:none;background:var(--white);width:100%;" required>
+                <select id="e-challenge" style="height:46px;padding:0 14px;border:1.5px solid var(--gray-200);border-radius:8px;font-family:var(--font-body);font-size:.9rem;outline:none;background:var(--white);width:100%;">
                   <option value="">Select a challenge question</option>
                   <option>What is your mother's maiden name?</option>
                   <option>What was the name of your first pet?</option>
@@ -588,31 +570,19 @@
                 </select>
               </div>
             </div>
-
             <div class="form-grid form-grid-2" style="margin-top:.9rem">
-              <div class="field-group">
-                <label for="e-answer">Answer</label>
-                <input type="text" id="e-answer" placeholder="Your answer" required aria-required="true"/>
-                <span class="field-hint">Case-sensitive. No special characters.</span>
-              </div>
-              <div class="field-group">
-                <label for="e-confirmanswer">Confirm Answer</label>
-                <input type="text" id="e-confirmanswer" placeholder="Re-enter your answer" required aria-required="true"/>
-              </div>
+              <div class="field-group"><label for="e-answer">Answer</label><input type="text" id="e-answer" placeholder="Your answer"/><span class="field-hint">Case-sensitive. No special characters.</span></div>
+              <div class="field-group"><label for="e-confirmanswer">Confirm Answer</label><input type="text" id="e-confirmanswer" placeholder="Re-enter your answer"/></div>
             </div>
-
-            <span class="field-important">
-              ⚠ <strong>IMPORTANT:</strong> Username, Password, and Answer to Challenge Question are case-sensitive. Use of special characters is not allowed.
-            </span>
-
+            <span class="field-important">⚠ <strong>IMPORTANT:</strong> Username, Password, and Answer to Challenge Question are case-sensitive. Use of special characters is not allowed.</span>
             <div class="step-nav">
-              <button type="button" class="btn-step btn-step-prev" onclick="goStep(1)">
+              <button type="button" class="btn-step btn-step-prev" onclick="enrollGoStep(1)">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 3L5 7l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 Previous
               </button>
               <div style="display:flex;gap:.75rem;align-items:center;">
                 <button type="button" class="btn-step btn-step-cancel" onclick="closeEnroll()">Cancel</button>
-                <button type="button" class="btn-step btn-step-next" onclick="goStep(3)">
+                <button type="button" class="btn-step btn-step-next" onclick="enrollGoStep(3)">
                   Next: Verification
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
@@ -621,43 +591,40 @@
           </form>
         </div>
 
-        <div class="enrollment-step" id="step3" role="tabpanel" aria-labelledby="tab3">
-          <form id="step3Form" novalidate onsubmit="event.preventDefault();">
-
+        <!-- Enroll step 3 -->
+        <div class="enrollment-step" id="enroll-step3" role="tabpanel">
+          <form id="enrollStep3Form" novalidate onsubmit="return false;">
             <p style="font-size:.9rem;color:var(--gray-600);margin-bottom:1.25rem;line-height:1.6;">
               A verification code has been sent to <strong id="sentEmailDisplay" style="color:var(--navy)">your registered email</strong>. Please check your inbox and enter the code below.
             </p>
-
             <div class="form-grid">
               <div class="field-group">
                 <label for="e-vercode">E-mail Verification Code</label>
-                <input type="text" id="e-vercode" inputmode="numeric" autocomplete="one-time-code" placeholder="Enter the code sent to your email" required aria-required="true" maxlength="10"/>
+                <input type="text" id="e-vercode" inputmode="numeric" autocomplete="one-time-code" placeholder="Enter the code sent to your email" maxlength="10"/>
                 <span class="field-hint">Please check your email to retrieve the verification code.</span>
               </div>
             </div>
-
             <div class="field-group" style="margin-top:1rem">
               <label>Captcha Code</label>
               <div class="captcha-area" aria-label="CAPTCHA verification">
                 <div>
-                  <span class="captcha-display" id="captchaDisplay" aria-label="CAPTCHA characters, read aloud: ">KQDI0</span>
+                  <span class="captcha-display" id="captchaDisplay">KQDI0</span>
                   <button type="button" class="captcha-refresh" onclick="refreshCaptcha()" aria-label="Refresh CAPTCHA">
                     <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7a5 5 0 019.5-2M12 7a5 5 0 01-9.5 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M11.5 2v3h-3M2.5 12V9h3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     Refresh
                   </button>
                 </div>
               </div>
-              <input type="text" id="e-captcha" placeholder="Input the characters in the image above" style="margin-top:.75rem;" required aria-required="true" autocomplete="off" aria-describedby="captchaDisplay"/>
+              <input type="text" id="e-captcha" placeholder="Input the characters in the image above" style="margin-top:.75rem;" autocomplete="off" aria-describedby="captchaDisplay"/>
             </div>
-
             <div class="step-nav">
-              <button type="button" class="btn-step btn-step-prev" onclick="goStep(2)">
+              <button type="button" class="btn-step btn-step-prev" onclick="enrollGoStep(2)">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 3L5 7l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 Previous
               </button>
               <div style="display:flex;gap:.75rem;align-items:center;">
                 <button type="button" class="btn-step btn-step-cancel" onclick="closeEnroll()">Cancel</button>
-                <button type="button" class="btn-step btn-step-submit" id="submitEnrollBtn" onclick="submitEnrollment()">
+                <button type="button" class="btn-step btn-step-submit" onclick="submitEnrollment()">
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7l4 4 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   Submit Enrollment
                 </button>
@@ -666,10 +633,14 @@
           </form>
         </div>
 
-      </div>
-    </div>
-  </div>
+      </div><!-- /.enrollment-body -->
+    </div><!-- /.modal-box -->
+  </div><!-- /#enrollModal -->
 
+
+  <!-- ══════════════════════════════════════════════
+       EMAIL VERIFY SUB-MODAL
+  ══════════════════════════════════════════════ -->
   <div class="modal-overlay" id="verifyEmailModal" role="dialog" aria-modal="true" aria-labelledby="verifyModalTitle">
     <div class="verify-modal-box">
       <div class="verify-icon" aria-hidden="true">
@@ -680,181 +651,601 @@
       </div>
       <h3 id="verifyModalTitle">Check Your Email</h3>
       <p>The verification code was already sent to <strong id="verifyEmailAddr">your registered email</strong>. Please check your email to retrieve the code and complete your enrollment.</p>
-      <button type="button" class="btn-verify-ok" id="verifyOkBtn" onclick="closeVerifyModal()">OK</button>
+      <button type="button" class="btn-verify-ok" id="verifyOkBtn">OK</button>
     </div>
   </div>
 
 
+  <!-- ══════════════════════════════════════════════
+       FILING MODAL  (mirrors enrollment structure)
+  ══════════════════════════════════════════════ -->
+  <div class="modal-overlay" id="filingModal" role="dialog" aria-modal="true" aria-labelledby="filingModalTitle">
+    <div class="modal-box" id="filingModalBox">
+
+      <div class="modal-header">
+        <div>
+          <h2 id="filingModalTitle">eFPS Tax Filing</h2>
+          <p>Complete all steps to file your tax return.</p>
+        </div>
+        <button type="button" class="modal-close" id="closeFilingBtn" aria-label="Close filing form">✕</button>
+      </div>
+
+      <!-- Filing tabs -->
+      <div class="step-tabs" role="tablist" aria-label="Filing steps">
+        <div class="step-tab active" role="tab" aria-selected="true" id="filing-tab1"><span class="step-num">1</span> eFPS User Menu</div>
+        <div class="step-tab" role="tab" aria-selected="false" id="filing-tab2"><span class="step-num">2</span> Online / Offline Form</div>
+        <div id="filing-tab3" style="display: none;"></div>
+      </div>
+
+      <div class="filing-body">
+
+        <!-- Filing step 1 — eFPS User Menu -->
+        <div class="filing-step active" id="filing-step1" role="tabpanel">
+          <form id="filingStep1Form" novalidate onsubmit="return false;">
+
+            <div class="filing-field" id="ff-tin">
+              <label id="ff-tin-label">Taxpayer Identification Number (TIN)</label>
+              <div class="tin-row-wrap" role="group" aria-labelledby="ff-tin-label">
+                <input type="text" inputmode="numeric" maxlength="3" placeholder="XXX" aria-label="TIN digits 1-3" class="filing-tin-seg" style="flex:3;height:46px;border:1.5px solid var(--gray-200);border-radius:8px;padding:0 10px;font-family:var(--font-body);font-size:.95rem;text-align:center;letter-spacing:.1em;outline:none;transition:border-color .16s,box-shadow .16s;"/>
+                <span class="tin-separator" aria-hidden="true">–</span>
+                <input type="text" inputmode="numeric" maxlength="3" placeholder="XXX" aria-label="TIN digits 4-6" class="filing-tin-seg" style="flex:3;height:46px;border:1.5px solid var(--gray-200);border-radius:8px;padding:0 10px;font-family:var(--font-body);font-size:.95rem;text-align:center;letter-spacing:.1em;outline:none;transition:border-color .16s,box-shadow .16s;"/>
+                <span class="tin-separator" aria-hidden="true">–</span>
+                <input type="text" inputmode="numeric" maxlength="3" placeholder="XXX" aria-label="TIN digits 7-9" class="filing-tin-seg" style="flex:3;height:46px;border:1.5px solid var(--gray-200);border-radius:8px;padding:0 10px;font-family:var(--font-body);font-size:.95rem;text-align:center;letter-spacing:.1em;outline:none;transition:border-color .16s,box-shadow .16s;"/>
+                <span class="tin-separator" aria-hidden="true">–</span>
+                <input type="text" inputmode="numeric" maxlength="3" placeholder="XXX" aria-label="TIN digits 10-12" class="filing-tin-seg" style="flex:3;height:46px;border:1.5px solid var(--gray-200);border-radius:8px;padding:0 10px;font-family:var(--font-body);font-size:.95rem;text-align:center;letter-spacing:.1em;outline:none;transition:border-color .16s,box-shadow .16s;"/>
+              </div>
+              <div class="filing-error" id="ff-tin-err">Please enter your complete 12-digit TIN.</div>
+            </div>
+
+            <div class="filing-field" id="ff-regname-field">
+              <label for="ff-regname">Registered Name</label>
+              <input type="text" id="ff-regname" placeholder="Registered Name Here" />
+              <div class="filing-error" id="ff-regname-err">Registered name is required.</div>
+            </div>
+
+            <div class="filing-field" id="ff-form-field">
+  <label for="ff-form">Select Filing Form</label>
+  <select id="ff-form">
+    <option value="">– Select a form –</option>
+    
+    <optgroup label="Income Tax Returns (ITR)">
+      <option value="1700">Form 1700 – Annual ITR for Purely Compensation Earners</option>
+      <option value="1701">Form 1701 – Annual ITR for Self-Employed</option>
+      <option value="1701A">Form 1701A – Annual ITR for Business/Profession Income</option>
+      <option value="1701Q">Form 1701Q – Quarterly ITR for Individuals</option>
+      <option value="1702RT">Form 1702-RT – Annual ITR for Regular Corporations</option>
+      <option value="1702EX">Form 1702-EX – Annual ITR for Exempt Corporations</option>
+      <option value="1702MX">Form 1702-MX – Annual ITR for Mixed Income Corporations</option>
+      <option value="1702Q">Form 1702Q – Quarterly ITR for Corporations</option>
+      <option value="1704">Form 1704 – Improperly Accumulated Earnings Tax Return</option>
+    </optgroup>
+
+    <optgroup label="Withholding Tax Forms">
+      <option value="0619E">Form 0619-E – Monthly Remittance of Expanded Withholding Tax</option>
+      <option value="0619F">Form 0619-F – Monthly Remittance of Final Withholding Tax</option>
+      <option value="1600">Form 1600 – Monthly Remittance of VAT Withheld</option>
+      <option value="1600PT">Form 1600-PT – Monthly Remittance of Other Percentage Taxes Withheld</option>
+      <option value="1600WP">Form 1600WP – Remittance of Percentage Tax on Winnings and Prizes</option>
+      <option value="1601C">Form 1601-C – Monthly Remittance of Income Taxes Withheld on Compensation</option>
+      <option value="1601EQ">Form 1601EQ – Quarterly Remittance of Expanded Withholding Tax</option>
+      <option value="1601FQ">Form 1601FQ – Quarterly Remittance of Final Withholding Tax</option>
+      <option value="1602Q">Form 1602Q – Quarterly Remittance of Final Taxes Withheld on Interest Paid on Deposits</option>
+      <option value="1603Q">Form 1603Q – Quarterly Remittance of Final Income Taxes Withheld on Fringe Benefits</option>
+      <option value="1604C">Form 1604-C – Annual Info Return of Income Taxes Withheld on Compensation</option>
+      <option value="1604E">Form 1604-E – Annual Info Return of Expanded Withholding Tax</option>
+      <option value="1604F">Form 1604-F – Annual Info Return of Final Withholding Taxes</option>
+      <option value="1606">Form 1606 – Withholding Tax Remittance for Onerous Transfer of Real Property</option>
+    </optgroup>
+
+    <optgroup label="Value-Added Tax (VAT) &amp; Business Percentage Taxes">
+      <option value="2550M">Form 2550M – Monthly Value-Added Tax Declaration</option>
+      <option value="2550Q">Form 2550Q – Quarterly Value-Added Tax Return</option>
+      <option value="2551Q">Form 2551Q – Quarterly Percentage Tax Return</option>
+      <option value="2552">Form 2552 – Percentage Tax Return for Local Stock Exchange Transactions</option>
+      <option value="2553">Form 2553 – Return of Percentage Tax Payable Under Special Laws</option>
+    </optgroup>
+
+    <optgroup label="Excise Tax Returns">
+      <option value="2200A">Form 2200A – Excise Tax Return for Alcohol Products</option>
+      <option value="2200AN">Form 2200AN – Excise Tax Return for Automobiles and Non-Essential Goods</option>
+      <option value="2200M">Form 2200M – Excise Tax Return for Mineral Products</option>
+      <option value="2200P">Form 2200P – Excise Tax Return for Petroleum Products</option>
+      <option value="2200T">Form 2200T – Excise Tax Return for Tobacco Products</option>
+    </optgroup>
+
+    <optgroup label="Payment &amp; Miscellaneous Forms">
+      <option value="0605">Form 0605 – General Payment Form</option>
+      <option value="0620">Form 0620 – Monthly Remittance of Tax Withheld from Decedent's Account</option>
+      <option value="2000">Form 2000 – Documentary Stamp Tax Declaration / Return</option>
+      <option value="2000OT">Form 2000-OT – Documentary Stamp Tax Return (One-Time Transactions)</option>
+    </optgroup>
+  </select>
+  <div class="filing-error" id="ff-form-err">Please select a filing form.</div>
+</div>
+
+            <div class="step-nav">
+              <button type="button" class="btn-step btn-step-cancel" onclick="closeFiling()">Cancel</button>
+              <button type="button" class="btn-step btn-step-next" onclick="filingGoStep(2)">
+                Next: Online / Offline Form
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Filing step 2 — Online / Offline Form -->
+        <div class="filing-step" id="filing-step2" role="tabpanel">
+          <form id="filingStep2Form" novalidate onsubmit="return false;">
+            <div class="filing-summary" id="ff-summary2"></div>
+            <div class="field-group">
+  <label>Choose Filing Mode</label>
+  <div class="radio-opts">
+    <label class="radio-opt">
+      <input type="radio" name="filingSelection" value="online" checked id="radioOnline">
+      <div>
+        <div class="radio-opt-label">Online Interactive Mode</div>
+        <div class="radio-opt-desc">Fill out and Submit your return electronically via eFPS.</div>
+      </div>
+    </label>
+    
+    <label class="radio-opt">
+      <input type="radio" name="filingSelection" value="offline" id="radioOffline">
+      <div>
+        <div class="radio-opt-label">Offline Form Upload</div>
+        <div class="radio-opt-desc">Download your chosen Tax form to fill out and validate your tax data offline. Once completed, Upload the file for submission.</div>
+      </div>
+    </label>
+  </div>
+</div>
+
+<div id="filingMethodContent">
+
+  <div id="panelOnline" class="method-panel">
+    <div style="border: 2px dashed var(--gray-300); border-radius: 12px; padding: 2.5rem 1.5rem; text-align: center; background: var(--off-white); margin-bottom: 1.5rem;">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--navy-light)" stroke-width="1.5" style="margin-bottom: 0.75rem;">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+        <polyline points="14 2 14 8 20 8" />
+        <line x1="16" y1="13" x2="8" y2="13" />
+        <line x1="16" y1="17" x2="8" y2="17" />
+      </svg>
+      <h4 style="font-family: var(--font-display); color: var(--navy); margin: 0 0 0.25rem 0;">Fill Up Form View</h4>
+      <p style="color: var(--gray-600); font-size: 0.88rem; margin: 0 0 1.25rem 0; font-style: italic;">[ Form will be displayed here ]</p>
+    </div>
+  </div>
+
+  <div id="panelOffline" class="method-panel" style="display: none;">
+  <div style="border: 2px dashed var(--gray-300); border-radius: 12px; padding: 3rem 1.5rem; text-align: center; background: #ffffff; margin-bottom: 1.5rem;">
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--gray-400)" stroke-width="1.5" style="margin-bottom: 0.75rem;">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+    </svg>
+    <h4 style="font-family: var(--font-display); color: var(--navy); margin: 0 0 0.25rem 0;">Upload Return File</h4>
+    <p style="color: var(--gray-500); font-size: 0.85rem; margin: 0 0 1.25rem 0;">Select your output data payload structure generated via desktop applications (.xml / .pdf).</p>
+    <input type="file" id="offlineFileInput" style="display: none;">
+    <button type="button" class="btn-step btn-step-prev" onclick="document.getElementById('offlineFileInput').click()" style="padding: 0.5rem 1.25rem; font-size: 0.85rem; height: auto;">Browse Files</button>
+  </div>
+
+  <div style="background: var(--off-white); border: 1px solid var(--gray-200); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; text-align: left;">
+    <p style="font-size: 0.88rem; color: var(--gray-600); line-height: 1.5; margin: 0 0 1rem 0;">
+      You can find your desired tax forms in the <strong>eFPS Job Aids Section under the Offline Forms.</strong>  If it is not there, more documents from the BIR can be found in the <strong>Downloads Sections.</strong> 
+    </p>
+    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+      
+      <a href="pages\job-aids.html" class="btn-step btn-step-prev" style="text-decoration: none; font-size: 0.82rem; padding: 0.5rem 1rem; display: inline-flex; align-items: center; justify-content: center; height: auto;">
+        Go to Job Aids
+      </a>
+      <a href="../pages/downloads.html" class="btn-step btn-step-prev" style="text-decoration: none; font-size: 0.82rem; padding: 0.5rem 1rem; display: inline-flex; align-items: center; justify-content: center; height: auto;">
+        Go to Downloads Section
+      </a>
+    </div>
+  </div>
+</div>
+
+  <button type="button" id="btnSubmitFiling" class="btn-login" style="margin-top: 0.5rem;">Submit</button>
+</div>
+
+<div id="panelFilingConfirmation" style="display: none;">
+  <div class="filing-success">
+    <div class="filing-success-icon">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+    <h3>File Transmission Successful</h3>
+    <p style="margin-bottom: 1.75rem;">Your file submission has completed successfully. To stay updated, a system-generated receipt confirmation will be sent to your respective emails or contact information.</p>
+    <a href="pages\efps-home.html" class="btn-login" style="text-decoration: none; max-width: 180px; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
+      Exit to Home
+    </a>
+  </div>
+</div>
+
+
   <script src="assets/js/main.js"></script>
   <script>
-    (function(){
-      const parts = ['tin-part1','tin-part2','tin-part3','tin-part4'];
-      const maxLen = [3, 3, 3, 5];
-      parts.forEach((id, i) => {
-        const el = document.getElementById(id);
-        if (!el) return;
-        el.addEventListener('input', () => {
-          el.value = el.value.replace(/\D/g,'');
-          if (el.value.length >= maxLen[i] && i < parts.length - 1) {
-            document.getElementById(parts[i+1]).focus();
-          }
-        });
-        el.addEventListener('keydown', (e) => {
-          if (e.key === 'Backspace' && el.value === '' && i > 0) {
-            document.getElementById(parts[i-1]).focus();
-          }
-        });
-        el.addEventListener('focus', () => { el.style.borderColor = 'var(--navy-light)'; el.style.boxShadow = '0 0 0 3px rgba(30,79,142,.12)'; });
-        el.addEventListener('blur', () => { el.style.borderColor = 'var(--gray-200)'; el.style.boxShadow = 'none'; });
+  /* ============================================================
+     LOGIN TIN auto-advance
+  ============================================================ */
+  (function(){
+    var ids = ['tin-part1','tin-part2','tin-part3','tin-part4'];
+    ids.forEach(function(id, i){
+      var el = document.getElementById(id);
+      if (!el) return;
+      el.addEventListener('input', function(){
+        this.value = this.value.replace(/\D/g,'');
+        if (this.value.length === 3 && i < ids.length - 1)
+          document.getElementById(ids[i+1]).focus();
       });
-    })();
-
-    document.getElementById('loginPwToggle').addEventListener('click', function(){
-      const pw = document.getElementById('login-password');
-      const isHidden = pw.type === 'password';
-      pw.type = isHidden ? 'text' : 'password';
-      this.setAttribute('aria-label', isHidden ? 'Hide password' : 'Show password');
-    });
-
-    function togglePw(inputId, btn) {
-      const inp = document.getElementById(inputId);
-      const isHidden = inp.type === 'password';
-      inp.type = isHidden ? 'text' : 'password';
-      btn.setAttribute('aria-label', isHidden ? 'Hide password' : 'Show password');
-    }
-
-    const enrollModal = document.getElementById('enrollModal');
-
-    document.getElementById('openEnrollBtn').addEventListener('click', function(){
-      enrollModal.classList.add('open');
-      document.body.style.overflow = 'hidden';
-      document.getElementById('closeEnrollBtn').focus();
-      goStep(1, false);
-    });
-
-    function closeEnroll() {
-      enrollModal.classList.remove('open');
-      document.body.style.overflow = '';
-      document.getElementById('openEnrollBtn').focus();
-    }
-    document.getElementById('closeEnrollBtn').addEventListener('click', closeEnroll);
-
-    enrollModal.addEventListener('click', function(e) {
-      if (e.target === enrollModal) closeEnroll();
-    });
-
-    enrollModal.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeEnroll();
-    });
-
-    let currentStep = 1;
-    function goStep(num, animate = true) {
-      const steps = document.querySelectorAll('.enrollment-step');
-      const tabs = document.querySelectorAll('.step-tab');
-
-      steps.forEach((s, i) => {
-        s.classList.remove('active');
-        const tab = tabs[i];
-        tab.classList.remove('active', 'done');
-        tab.setAttribute('aria-selected', 'false');
-        if (i + 1 < num) tab.classList.add('done');
+      el.addEventListener('keydown', function(e){
+        if (e.key === 'Backspace' && this.value === '' && i > 0)
+          document.getElementById(ids[i-1]).focus();
       });
+      el.addEventListener('focus', function(){ this.style.borderColor='var(--navy-light)'; this.style.boxShadow='0 0 0 3px rgba(30,79,142,.12)'; });
+      el.addEventListener('blur',  function(){ this.style.borderColor='var(--gray-200)';  this.style.boxShadow='none'; });
+    });
+  })();
 
-      document.getElementById('step' + num).classList.add('active');
-      tabs[num - 1].classList.add('active');
-      tabs[num - 1].setAttribute('aria-selected', 'true');
-      currentStep = num;
+  /* ============================================================
+     LOGIN password toggle
+  ============================================================ */
+  document.getElementById('loginPwToggle').addEventListener('click', function(){
+    var pw = document.getElementById('login-password');
+    var hidden = pw.type === 'password';
+    pw.type = hidden ? 'text' : 'password';
+    this.setAttribute('aria-label', hidden ? 'Hide password' : 'Show password');
+  });
 
-      if (num === 3 && animate) {
-        const email = document.getElementById('e-email').value.trim();
-        if (email) {
-          showVerifyModal(email);
-        }
-      }
+  /* ============================================================
+     Generic password toggle (enrollment)
+  ============================================================ */
+  function togglePw(id, btn){
+    var inp = document.getElementById(id);
+    var hidden = inp.type === 'password';
+    inp.type = hidden ? 'text' : 'password';
+    btn.setAttribute('aria-label', hidden ? 'Hide password' : 'Show password');
+  }
 
-      const box = document.getElementById('enrollModalBox');
-      if (box) box.scrollTop = 0;
+  /* ============================================================
+     LOGIN FORM SUBMIT → open filing modal
+  ============================================================ */
+  document.getElementById('loginForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    openFiling();
+  });
+
+  /* ============================================================
+     ENROLLMENT MODAL
+  ============================================================ */
+  var enrollModal = document.getElementById('enrollModal');
+
+  document.getElementById('openEnrollBtn').addEventListener('click', function(){
+    enrollModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    enrollGoStep(1, false);
+    document.getElementById('closeEnrollBtn').focus();
+  });
+
+  function closeEnroll(){
+    enrollModal.classList.remove('open');
+    document.body.style.overflow = '';
+    document.getElementById('openEnrollBtn').focus();
+  }
+  document.getElementById('closeEnrollBtn').addEventListener('click', closeEnroll);
+  enrollModal.addEventListener('click', function(e){ if (e.target === enrollModal) closeEnroll(); });
+  enrollModal.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeEnroll(); });
+
+  function enrollGoStep(num, animate){
+    if (animate === undefined) animate = true;
+    var steps = document.querySelectorAll('.enrollment-step');
+    var tabs  = [
+      document.getElementById('enroll-tab1'),
+      document.getElementById('enroll-tab2'),
+      document.getElementById('enroll-tab3')
+    ];
+    steps.forEach(function(s, i){
+      s.classList.remove('active');
+      tabs[i].classList.remove('active','done');
+      tabs[i].setAttribute('aria-selected','false');
+      if (i + 1 < num) tabs[i].classList.add('done');
+    });
+    document.getElementById('enroll-step' + num).classList.add('active');
+    tabs[num-1].classList.add('active');
+    tabs[num-1].setAttribute('aria-selected','true');
+    if (num === 3 && animate){
+      var email = document.getElementById('e-email').value.trim();
+      if (email) showVerifyModal(email);
     }
+    var box = document.getElementById('enrollModalBox');
+    if (box) box.scrollTop = 0;
+  }
 
-    function selectTpType(type) {
-      const corp = document.getElementById('typeCorp');
-      const indiv = document.getElementById('typeIndiv');
-      const regField = document.getElementById('regNameField');
-
-      if (type === 'corporate') {
-        corp.classList.add('selected'); corp.setAttribute('aria-pressed','true');
-        indiv.classList.remove('selected'); indiv.setAttribute('aria-pressed','false');
-        if (regField) regField.style.display = '';
-      } else {
-        indiv.classList.add('selected'); indiv.setAttribute('aria-pressed','true');
-        corp.classList.remove('selected'); corp.setAttribute('aria-pressed','false');
-        if (regField) regField.style.display = 'none';
-      }
+  function selectTpType(type){
+    var corp  = document.getElementById('typeCorp');
+    var indiv = document.getElementById('typeIndiv');
+    var reg   = document.getElementById('regNameField');
+    if (type === 'corporate'){
+      corp.classList.add('selected');   corp.setAttribute('aria-pressed','true');
+      indiv.classList.remove('selected'); indiv.setAttribute('aria-pressed','false');
+      if (reg) reg.style.display = '';
+    } else {
+      indiv.classList.add('selected');   indiv.setAttribute('aria-pressed','true');
+      corp.classList.remove('selected'); corp.setAttribute('aria-pressed','false');
+      if (reg) reg.style.display = 'none';
     }
+  }
 
-    const verifyEmailModal = document.getElementById('verifyEmailModal');
+  /* enrollment TIN auto-advance */
+  (function(){
+    var segs = document.querySelectorAll('.enroll-tin-seg');
+    segs.forEach(function(el, i){
+      el.addEventListener('input', function(){
+        this.value = this.value.replace(/\D/g,'');
+        if (this.value.length === 3 && i < segs.length - 1) segs[i+1].focus();
+      });
+      el.addEventListener('keydown', function(e){
+        if (e.key === 'Backspace' && this.value === '' && i > 0) segs[i-1].focus();
+      });
+      el.addEventListener('focus', function(){ this.style.borderColor='var(--navy-light)'; this.style.boxShadow='0 0 0 3px rgba(30,79,142,.12)'; });
+      el.addEventListener('blur',  function(){ this.style.borderColor='var(--gray-200)'; this.style.boxShadow='none'; });
+    });
+  })();
 
-    function showVerifyModal(email) {
-      document.getElementById('verifyEmailAddr').textContent = email || 'your registered email';
-      verifyEmailModal.classList.add('open');
-    }
-
-    function closeVerifyModal() {
-      verifyEmailModal.classList.remove('open');
-      document.getElementById('e-vercode').focus();
-    }
-    document.getElementById('verifyOkBtn').addEventListener('click', closeVerifyModal);
-    verifyEmailModal.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeVerifyModal(); });
-
-    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789';
-    function generateCaptcha() {
-      let code = '';
-      for (let i = 0; i < 5; i++) code += chars[Math.floor(Math.random() * chars.length)];
-      return code;
-    }
-    let currentCaptcha = 'KQDI0';
-    function refreshCaptcha() {
-      currentCaptcha = generateCaptcha();
-      const el = document.getElementById('captchaDisplay');
-      el.textContent = currentCaptcha;
-      el.setAttribute('aria-label', 'CAPTCHA characters: ' + currentCaptcha.split('').join(' '));
-      document.getElementById('e-captcha').value = '';
+  /* CAPTCHA */
+  var captchaChars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789';
+  var currentCaptcha = 'KQDI0';
+  function refreshCaptcha(){
+    var code = '';
+    for (var i=0;i<5;i++) code += captchaChars[Math.floor(Math.random()*captchaChars.length)];
+    currentCaptcha = code;
+    var el = document.getElementById('captchaDisplay');
+    el.textContent = currentCaptcha;
+    document.getElementById('e-captcha').value = '';
+    document.getElementById('e-captcha').focus();
+  }
+  function submitEnrollment(){
+    var inp = document.getElementById('e-captcha').value.trim();
+    if (inp !== currentCaptcha){
+      document.getElementById('e-captcha').style.borderColor = 'var(--red-err)';
       document.getElementById('e-captcha').focus();
+      return;
+    }
+    alert('Enrollment submitted successfully! Please wait for email confirmation from BIR eFPS.');
+    closeEnroll();
+  }
+
+  /* email verify sub-modal */
+  var verifyEmailModal = document.getElementById('verifyEmailModal');
+  function showVerifyModal(email){
+    document.getElementById('verifyEmailAddr').textContent = email || 'your registered email';
+    verifyEmailModal.classList.add('open');
+  }
+  function closeVerifyModal(){
+    verifyEmailModal.classList.remove('open');
+    var el = document.getElementById('e-vercode');
+    if (el) el.focus();
+  }
+  document.getElementById('verifyOkBtn').addEventListener('click', closeVerifyModal);
+  verifyEmailModal.addEventListener('keydown', function(e){ if (e.key==='Escape') closeVerifyModal(); });
+
+
+  /* ============================================================
+     FILING MODAL  — mirrors enrollment exactly
+  ============================================================ */
+  var filingModal = document.getElementById('filingModal');
+
+  function openFiling(){
+    filingModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    filingGoStep(1, false);
+    document.getElementById('closeFilingBtn').focus();
+  }
+
+  function closeFiling(){
+    filingModal.classList.remove('open');
+    document.body.style.overflow = '';
+    document.getElementById('loginBtn').focus();
+  }
+  document.getElementById('closeFilingBtn').addEventListener('click', closeFiling);
+  filingModal.addEventListener('click', function(e){ if (e.target === filingModal) closeFiling(); });
+  filingModal.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeFiling(); });
+
+  /* filing TIN auto-advance */
+  (function(){
+    var segs = document.querySelectorAll('.filing-tin-seg');
+    segs.forEach(function(el, i){
+      el.addEventListener('input', function(){
+        this.value = this.value.replace(/\D/g,'');
+        if (this.value.length === 3 && i < segs.length - 1) segs[i+1].focus();
+      });
+      el.addEventListener('keydown', function(e){
+        if (e.key === 'Backspace' && this.value === '' && i > 0) segs[i-1].focus();
+      });
+      el.addEventListener('focus', function(){ this.style.borderColor='var(--navy-light)'; this.style.boxShadow='0 0 0 3px rgba(30,79,142,.12)'; });
+      el.addEventListener('blur',  function(){ this.style.borderColor='var(--gray-200)'; this.style.boxShadow='none'; });
+    });
+  })();
+
+  var FORM_LABELS = {
+  // Income Tax Returns
+  '1700'   : 'Form 1700 – Annual ITR for Purely Compensation Earners',
+  '1701'   : 'Form 1701 – Annual ITR for Self-Employed',
+  '1701A'  : 'Form 1701A – Annual ITR for Business/Profession Income',
+  '1701Q'  : 'Form 1701Q – Quarterly ITR for Individuals',
+  '1702RT' : 'Form 1702-RT – Annual ITR for Regular Corporations',
+  '1702EX' : 'Form 1702-EX – Annual ITR for Exempt Corporations',
+  '1702MX' : 'Form 1702-MX – Annual ITR for Mixed Income Corporations',
+  '1702Q'  : 'Form 1702Q – Quarterly ITR for Corporations',
+  '1704'   : 'Form 1704 – Improperly Accumulated Earnings Tax Return',
+
+  // Withholding Tax Forms
+  '0619E'  : 'Form 0619-E – Monthly Remittance of Expanded Withholding Tax',
+  '0619F'  : 'Form 0619-F – Monthly Remittance of Final Withholding Tax',
+  '1600'   : 'Form 1600 – Monthly Remittance of VAT Withheld',
+  '1600PT' : 'Form 1600-PT – Monthly Remittance of Other Percentage Taxes Withheld',
+  '1600WP' : 'Form 1600WP – Remittance of Percentage Tax on Winnings and Prizes',
+  '1601C'  : 'Form 1601-C – Monthly Remittance of Income Taxes Withheld on Compensation',
+  '1601EQ' : 'Form 1601EQ – Quarterly Remittance of Expanded Withholding Tax',
+  '1601FQ' : 'Form 1601FQ – Quarterly Remittance of Final Withholding Tax',
+  '1602Q'  : 'Form 1602Q – Quarterly Remittance of Final Taxes Withheld on Interest Paid on Deposits',
+  '1603Q'  : 'Form 1603Q – Quarterly Remittance of Final Income Taxes Withheld on Fringe Benefits',
+  '1604C'  : 'Form 1604-C – Annual Info Return of Income Taxes Withheld on Compensation',
+  '1604E'  : 'Form 1604-E – Annual Info Return of Expanded Withholding Tax',
+  '1604F'  : 'Form 1604-F – Annual Info Return of Final Withholding Taxes',
+  '1606'   : 'Form 1606 – Withholding Tax Remittance for Onerous Transfer of Real Property',
+
+  // VAT & Business Percentage Taxes
+  '2550M'  : 'Form 2550M – Monthly Value-Added Tax Declaration',
+  '2550Q'  : 'Form 2550Q – Quarterly Value-Added Tax Return',
+  '2551Q'  : 'Form 2551Q – Quarterly Percentage Tax Return',
+  '2552'   : 'Form 2552 – Percentage Tax Return for Local Stock Exchange Transactions',
+  '2553'   : 'Form 2553 – Return of Percentage Tax Payable Under Special Laws',
+
+  // Excise Tax Returns
+  '2200A'  : 'Form 2200A – Excise Tax Return for Alcohol Products',
+  '2200AN' : 'Form 2200AN – Excise Tax Return for Automobiles and Non-Essential Goods',
+  '2200M'  : 'Form 2200M – Excise Tax Return for Mineral Products',
+  '2200P'  : 'Form 2200P – Excise Tax Return for Petroleum Products',
+  '2200T'  : 'Form 2200T – Excise Tax Return for Tobacco Products',
+
+  // Payment & Miscellaneous Forms
+  '0605'   : 'Form 0605 – General Payment Form',
+  '0620'   : 'Form 0620 – Monthly Remittance of Tax Withheld from Decedent\'s Account',
+  '2000'   : 'Form 2000 – Documentary Stamp Tax Declaration / Return',
+  '2000OT' : 'Form 2000-OT – Documentary Stamp Tax Return (One-Time Transactions)'
+};
+
+  function filingClearErrs(){
+    document.querySelectorAll('.filing-error').forEach(function(e){ e.style.display='none'; });
+    document.querySelectorAll('.filing-field.has-err').forEach(function(f){ f.classList.remove('has-err'); });
+  }
+
+  function filingShowErr(id, fieldId){
+    var err = document.getElementById(id);
+    if (err) err.style.display = 'block';
+    if (fieldId){
+      var f = document.getElementById(fieldId);
+      if (f) f.classList.add('has-err');
+    }
+  }
+
+  function filingGoStep(num, animate){
+    if (animate === undefined) animate = true;
+    filingClearErrs();
+
+    /* ── Step 1 validation ── */
+    if (num === 2){
+      var segs = document.querySelectorAll('.filing-tin-seg');
+      var tin  = Array.from(segs).map(function(s){ return s.value.trim(); });
+      var tinOk = tin.every(function(s){ return s.length === 3 && /^\d+$/.test(s); });
+      var name = document.getElementById('ff-regname').value.trim();
+      var form = document.getElementById('ff-form').value;
+      var ok = true;
+      if (!tinOk){ filingShowErr('ff-tin-err', 'ff-tin'); ok = false; }
+      if (!name) { filingShowErr('ff-regname-err', 'ff-regname-field'); ok = false; }
+      if (!form) { filingShowErr('ff-form-err', 'ff-form-field'); ok = false; }
+      if (!ok) return;
+
+      /* populate step 2 summary */
+      document.getElementById('ff-summary2').innerHTML =
+        '<strong>' + name + '</strong> &nbsp;·&nbsp; TIN: ' + tin.join('-') +
+        '<br>' + (FORM_LABELS[form] || form);
     }
 
-    function submitEnrollment() {
-      const captchaInput = document.getElementById('e-captcha').value.trim();
-      if (captchaInput !== currentCaptcha) {
-        document.getElementById('e-captcha').style.borderColor = 'var(--red-err)';
-        document.getElementById('e-captcha').focus();
-        return;
-      }
-      alert('Enrollment submitted successfully! Please wait for email confirmation from BIR eFPS.');
-      closeEnroll();
+    /* ── Step 2 validation ── */
+    if (num === 3){
+      var method = document.querySelector('input[name="ff-method"]:checked');
+      var period = document.getElementById('ff-period').value;
+      var ok = true;
+      if (!method){ filingShowErr('ff-method-err'); ok = false; }
+      if (!period){ filingShowErr('ff-period-err', 'ff-period-field'); ok = false; }
+      if (!ok) return;
+
+      /* populate step 3 summary */
+      var name2  = document.getElementById('ff-regname').value.trim();
+      var form2  = document.getElementById('ff-form').value;
+      document.getElementById('ff-summary3').innerHTML =
+        '<strong>' + name2 + '</strong> &nbsp;·&nbsp; ' + (FORM_LABELS[form2] || form2) +
+        ' &nbsp;·&nbsp; ' + period +
+        '<br>Method: <strong>' + (method.value === 'online' ? 'Online Filing' : 'Offline / Paper Filing') + '</strong>';
     }
 
-    document.getElementById('loginForm').addEventListener('submit', function(e) {
-      e.preventDefault();
+    /* ── Update tabs & panels ── */
+    var tabs = [
+      document.getElementById('filing-tab1'),
+      document.getElementById('filing-tab2'),
+      document.getElementById('filing-tab3')
+    ];
+    var steps = document.querySelectorAll('.filing-step');
+
+    steps.forEach(function(s){ s.classList.remove('active'); });
+    tabs.forEach(function(t, i){
+      t.classList.remove('active','done');
+      t.setAttribute('aria-selected','false');
+      if (i + 1 < num) t.classList.add('done');
     });
 
-    (function(){
-      const tinFields = document.querySelectorAll('#step1 .tin-seg');
-      const maxLen = [3, 3, 3, 5];
-      tinFields.forEach((el, i) => {
-        el.addEventListener('input', () => {
-          el.value = el.value.replace(/\D/g,'');
-          if (el.value.length >= maxLen[i] && i < tinFields.length - 1) {
-            tinFields[i+1].focus();
-          }
-        });
-        el.addEventListener('keydown', (e) => {
-          if (e.key === 'Backspace' && el.value === '' && i > 0) tinFields[i-1].focus();
-        });
-        el.addEventListener('focus', () => { el.style.borderColor='var(--navy-light)'; el.style.boxShadow='0 0 0 3px rgba(30,79,142,.12)'; });
-        el.addEventListener('blur', () => { el.style.borderColor='var(--gray-200)'; el.style.boxShadow='none'; });
-      });
-    })();
-  </script>
+    var target = document.getElementById('filing-step' + num);
+    if (target){ target.classList.add('active'); }
+    if (tabs[num-1]){ tabs[num-1].classList.add('active'); tabs[num-1].setAttribute('aria-selected','true'); }
 
+    var box = document.getElementById('filingModalBox');
+    if (box) box.scrollTop = 0;
+  }
+
+  function submitFiling(){
+    filingClearErrs();
+    var income = document.getElementById('ff-income').value.trim();
+    if (!income){ filingShowErr('ff-income-err', 'ff-income-field'); return; }
+
+    /* hide all steps, show done */
+    document.querySelectorAll('.filing-step').forEach(function(s){ s.classList.remove('active'); });
+    document.querySelectorAll('#filingModal .step-tab').forEach(function(t){
+      t.classList.remove('active'); t.classList.add('done');
+    });
+    document.getElementById('filing-done').classList.add('active');
+
+    var box = document.getElementById('filingModalBox');
+    if (box) box.scrollTop = 0;
+  }
+
+  document.addEventListener("DOMContentLoaded", function() {
+  const radioOnline = document.getElementById("radioOnline");
+  const radioOffline = document.getElementById("radioOffline");
+  
+  const panelOnline = document.getElementById("panelOnline");
+  const panelOffline = document.getElementById("panelOffline");
+  
+  const btnSubmitFiling = document.getElementById("btnSubmitFiling");
+  const filingMethodContent = document.getElementById("filingMethodContent");
+  const panelFilingConfirmation = document.getElementById("panelFilingConfirmation");
+
+  // Toggle Visibility Panels based on selected mode
+  function handleMethodToggle() {
+    if (radioOnline.checked) {
+      panelOnline.style.display = "block";
+      panelOffline.style.display = "none";
+    } else if (radioOffline.checked) {
+      panelOnline.style.display = "none";
+      panelOffline.style.display = "block";
+    }
+  }
+
+  // Bind change event listeners to radio targets
+  if (radioOnline && radioOffline) {
+    radioOnline.addEventListener("change", handleMethodToggle);
+    radioOffline.addEventListener("change", handleMethodToggle);
+  }
+
+  // Handle Shared Form Submission View Controller Logic
+  if (btnSubmitFiling) {
+    btnSubmitFiling.addEventListener("click", function(e) {
+      e.preventDefault();
+      
+      // Hide input elements block cleanly, then trigger execution of success panel
+      filingMethodContent.style.display = "none";
+      panelFilingConfirmation.style.display = "block";
+    });
+  }
+});
+
+  </script>
 </body>
 </html>

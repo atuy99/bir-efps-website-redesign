@@ -782,3 +782,77 @@ document.addEventListener('DOMContentLoaded', () => {
     citySel.disabled = false;
   });
 })();
+
+document.addEventListener("DOMContentLoaded", () => {
+  const backToTopBtn = document.getElementById("backToTopBtn");
+
+  // Show button when user scrolls down 300px from the top
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      backToTopBtn.classList.add("show");
+    } else {
+      backToTopBtn.classList.remove("show");
+    }
+  });
+
+  // When the user clicks on the button, scroll to the top of the document
+  backToTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth" // Native smooth scroll backup
+    });
+  });
+});
+
+// Detect change instantly on step 1 dropdown select
+function handleFormDropdownChange() {
+    const dropdown = document.getElementById('filingForm');
+    const selectedText = dropdown.options[dropdown.selectedIndex].text;
+    const regNameField = document.getElementById('alt-regname-group');
+
+    // UX Logic: Auto-show/hide corporate field if a corporate form is selected
+    if (dropdown.value.startsWith('1702')) {
+        regNameField.style.display = 'flex';
+    } else {
+        // Optional: Hide or disable it if selecting an Individual Form like 1701
+        regNameField.style.display = 'none';
+    }
+}
+
+// Processing flow for Step 1
+function processStep1() {
+    const dropdown = document.getElementById('filingForm');
+    const selectedValue = dropdown.value;
+    const selectedText = dropdown.options[dropdown.selectedIndex].text;
+
+    // Validation: Stop progression if no form selection is made
+    if (!selectedValue) {
+        dropdown.style.borderColor = "var(--red-err, #dc2626)";
+        alert("Please select a valid filing tax form before continuing.");
+        return;
+    } else {
+        dropdown.style.borderColor = "var(--gray-200)";
+    }
+
+    // Pull TIN inputs
+    const t1 = document.getElementById('ft1').value;
+    const t2 = document.getElementById('ft2').value;
+    const t3 = document.getElementById('ft3').value;
+    const t4 = document.getElementById('ft4').value;
+
+    // Update Confirmation Data instantly inside the modal framework
+    document.getElementById('sum-name').innerText = document.getElementById('alt-data').value || '-';
+    document.getElementById('sum-tin').innerText = `${t1}-${t2}-${t3}-${t4}`;
+    
+    // Send selected dropdown text name directly to step 3 summary block
+    document.getElementById('sum-form').innerText = selectedText;
+
+    // Set contextual message for Step 2 based on selected form
+    const dynamicContext = document.getElementById('dynamicFormContext');
+    dynamicContext.style.display = 'block';
+    dynamicContext.innerHTML = `You are filing <strong>${selectedValue}</strong>. Please select your preferred handling method below:`;
+
+    // Forward animation step cleanly inside modal view
+    goToPanel('panel-filing2');
+}
+
